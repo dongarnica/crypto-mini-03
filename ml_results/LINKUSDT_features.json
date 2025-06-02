@@ -1,0 +1,21 @@
+{
+  "selected_features": [
+    "close",
+    "return_3",
+    "sma_10",
+    "sma_20",
+    "ema_12",
+    "ema_26",
+    "volatility_10",
+    "bb_width",
+    "hour",
+    "volatility_20",
+    "volume_flow_sma",
+    "rsi_7",
+    "open_close_gap",
+    "macd",
+    "atr_pct"
+  ],
+  "feature_count": 15,
+  "saved_at": "2025-06-02T23:20:08.076666"
+}

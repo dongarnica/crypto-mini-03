@@ -1,0 +1,142 @@
+# ================================================================
+# Production Docker Compose Override
+# ================================================================
+# Use this file for production deployments with optimized settings
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+version: '3.8'
+
+services:
+  crypto-trader:
+    # Production-specific configuration
+    restart: always
+    
+    # Enhanced resource limits for production
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+      restart_policy:
+        condition: any
+        delay: 30s
+        max_attempts: 5
+        window: 120s
+    
+    # Production logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
+        compress: "true"
+    
+    # Enhanced health check for production
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      interval: 2m
+      timeout: 30s
+      retries: 5
+      start_period: 5m
+    
+    # Production environment overrides
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+      - PAPER_TRADING=false  # WARNING: Set to true for testing
+      - MAX_TRADES_PER_DAY=20
+      - MIN_TIME_BETWEEN_TRADES=300
+    
+    # Security enhancements
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
+    
+    # Additional volume mounts for production
+    volumes:
+      - ./.env:/app/.env:ro
+      - trading-logs:/app/trading/logs
+      - historical-data:/app/historical_exports
+      - ml-models:/app/ml_results
+      - binance-data:/app/binance_exports
+      # Add custom config if needed
+      # - ./prod-config.json:/app/config/prod-config.json:ro
+
+  # Production monitoring stack
+  monitoring:
+    image: prom/prometheus:latest
+    container_name: crypto-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - crypto-trading-network
+    profiles:
+      - monitoring-prod
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: crypto-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=changeme123
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana:/etc/grafana/provisioning:ro
+    networks:
+      - crypto-trading-network
+    profiles:
+      - monitoring-prod
+
+# Production volumes with specific configurations
+volumes:
+  trading-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/crypto-trading/logs
+  
+  historical-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/crypto-trading/historical-data
+  
+  ml-models:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/crypto-trading/ml-models
+  
+  binance-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /opt/crypto-trading/binance-data
+  
+  prometheus-data:
+    driver: local
+  
+  grafana-data:
+    driver: local

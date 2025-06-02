@@ -82,8 +82,16 @@ class TradingStrategyEngine:
         """Setup logging configuration."""
         log_level = getattr(logging, self.config.log_level.upper())
         
+        # Determine log directory based on environment
+        if os.path.exists('/app'):
+            # Running in Docker container
+            log_dir = '/app/trading/logs'
+        else:
+            # Running in development environment
+            log_dir = '/workspaces/crypto-mini-03/trading/logs'
+        
         # Create logs directory
-        os.makedirs('/workspaces/crypto-mini-03/trading/logs', exist_ok=True)
+        os.makedirs(log_dir, exist_ok=True)
         
         # Setup logger
         self.logger = logging.getLogger('TradingEngine')
@@ -104,11 +112,13 @@ class TradingStrategyEngine:
         # File handler
         if self.config.save_trades:
             file_handler = logging.FileHandler(
-                f'/workspaces/crypto-mini-03/trading/logs/trading_{datetime.now().strftime("%Y%m%d")}.log'
+                f'{log_dir}/trading_{datetime.now().strftime("%Y%m%d")}.log'
             )
             file_formatter = logging.Formatter(
                 '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
             )
+            file_handler.setFormatter(file_formatter)
+            self.logger.addHandler(file_handler)
             file_handler.setFormatter(file_formatter)
             self.logger.addHandler(file_handler)
     
@@ -123,7 +133,13 @@ class TradingStrategyEngine:
             List of valid symbols that have historical data
         """
         valid_symbols = []
-        historical_exports_dir = '/workspaces/crypto-mini-03/historical_exports'
+        # Determine historical exports directory based on environment
+        if os.path.exists('/app'):
+            # Running in Docker container
+            historical_exports_dir = '/app/historical_exports'
+        else:
+            # Running in development environment
+            historical_exports_dir = '/workspaces/crypto-mini-03/historical_exports'
         
         try:
             if not os.path.exists(historical_exports_dir):
@@ -466,7 +482,7 @@ def main():
         min_confidence=0.35,     # 35% minimum confidence
         paper_trading=True,      # Start with paper trading
         max_trades_per_day=20,   # Max 20 trades per day
-        log_level="INFO"
+        log_level="DEBUG"        # Enable detailed logging
     )
     
     # Import symbols from centralized configuration

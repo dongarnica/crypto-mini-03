@@ -63,7 +63,7 @@ class TradingConfig:
     use_binary_classification: bool = False
     
     # Monitoring
-    log_level: str = "INFO"
+    log_level: str = "DEBUG"
     save_trades: bool = True
     real_time_monitoring: bool = True
 

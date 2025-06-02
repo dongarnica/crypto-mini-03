@@ -34,6 +34,28 @@ class MLEngine:
         self.ml_pipelines: Dict[str, ImprovedCryptoLSTMPipeline] = {}
         self.data_cache: Dict[str, any] = {}
         self.logger = logging.getLogger('MLEngine')
+        
+        # Configure logger level to match trading engine
+        log_level = getattr(logging, self.config.log_level.upper())
+        self.logger.setLevel(log_level)
+        
+        # Add file handler if save_trades is enabled
+        if self.config.save_trades and not self.logger.handlers:
+            # Determine log directory based on environment
+            if os.path.exists('/app'):
+                # Running in Docker container
+                log_file = f'/app/trading/logs/trading_{datetime.now().strftime("%Y%m%d")}.log'
+            else:
+                # Running in development environment
+                log_file = f'/workspaces/crypto-mini-03/trading/logs/trading_{datetime.now().strftime("%Y%m%d")}.log'
+            
+            file_handler = logging.FileHandler(log_file)
+            file_formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            file_handler.setFormatter(file_formatter)
+            file_handler.setLevel(log_level)
+            self.logger.addHandler(file_handler)
     
     def initialize_pipelines(self, symbols: List[str]) -> None:
         """
@@ -336,7 +358,14 @@ class MLEngine:
     
     def _get_model_path(self, symbol: str) -> str:
         """Get model file path for a symbol."""
-        model_dir = '/workspaces/crypto-mini-03/ml_results/models'
+        # Determine model directory based on environment
+        if os.path.exists('/app'):
+            # Running in Docker container
+            model_dir = '/app/ml_results/models'
+        else:
+            # Running in development environment
+            model_dir = '/workspaces/crypto-mini-03/ml_results/models'
+        
         os.makedirs(model_dir, exist_ok=True)
         return f'{model_dir}/{symbol}_improved_model.keras'
     

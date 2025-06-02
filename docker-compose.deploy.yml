@@ -1,0 +1,57 @@
+services:
+  crypto-trader:
+    image: codespacesdev/crypto-trading-engine:latest
+    container_name: crypto-trading-engine
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persistent data volumes
+      - ./logs:/app/trading/logs
+      - ./ml_results:/app/ml_results
+      - ./historical_exports:/app/historical_exports
+      # Configuration volume (optional)
+      - ./config:/app/config:ro
+    ports:
+      - "8080:8080"
+    networks:
+      - crypto-trading-network
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      interval: 5m
+      timeout: 30s
+      retries: 3
+      start_period: 2m
+    # Resource limits (adjust based on your server)
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  crypto-trading-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  trading_logs:
+    driver: local
+  ml_results:
+    driver: local
+  historical_data:
+    driver: local

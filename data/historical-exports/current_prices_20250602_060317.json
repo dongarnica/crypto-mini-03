@@ -1,0 +1,32 @@
+{
+  "BTCUSDT": {
+    "current_price": 104832.85,
+    "avg_price": 104747.55349237,
+    "price_change_24h": 504.31,
+    "price_change_percent_24h": 0.483,
+    "high_24h": 105813.97,
+    "low_24h": 103751.93,
+    "volume_24h": 4.41332,
+    "quote_volume_24h": 463575.588466,
+    "open_price": 104328.54,
+    "last_price": 104832.85,
+    "bid_price": 104802.35,
+    "ask_price": 104876.5,
+    "timestamp": "2025-06-02T06:03:16.545361"
+  },
+  "ETHUSDT": {
+    "current_price": 2492.75,
+    "avg_price": 2492.60442478,
+    "price_change_24h": -23.56,
+    "price_change_percent_24h": -0.936,
+    "high_24h": 2545.96,
+    "low_24h": 2470.07,
+    "volume_24h": 248.8548,
+    "quote_volume_24h": 622792.973201,
+    "open_price": 2516.31,
+    "last_price": 2492.75,
+    "bid_price": 2491.07,
+    "ask_price": 2493.43,
+    "timestamp": "2025-06-02T06:03:17.006306"
+  }
+}
