@@ -1,0 +1,18 @@
+2025-06-01 21:42:25,158 - TradingEngine - INFO - Trading Strategy Engine initialized
+2025-06-01 21:42:25,158 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'min_confidence': 0.35, 'high_confidence': 0.6, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'INFO', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-01 21:42:25,158 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-01 21:42:25,159 - TradingEngine - INFO - Initializing trading components...
+2025-06-01 21:42:25,159 - TradingEngine - ERROR - Failed to initialize trading client: API credentials required. Set ALPACA_API_KEY and ALPACA_SECRET_KEY environment variables.
+2025-06-01 21:42:25,159 - TradingEngine - ERROR - Fatal error in trading engine: API credentials required. Set ALPACA_API_KEY and ALPACA_SECRET_KEY environment variables.
+2025-06-01 21:42:25,160 - TradingEngine - ERROR - Traceback (most recent call last):
+  File "/workspaces/crypto-mini-03/trading/strategy_engine.py", line 804, in start_trading
+    self.initialize_components(symbols)
+  File "/workspaces/crypto-mini-03/trading/strategy_engine.py", line 238, in initialize_components
+    self.trading_client = AlpacaCryptoClient(paper=self.config.paper_trading)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/crypto-mini-03/alpaca/alpaca_client.py", line 68, in __init__
+    raise ValueError("API credentials required. Set ALPACA_API_KEY and ALPACA_SECRET_KEY environment variables.")
+ValueError: API credentials required. Set ALPACA_API_KEY and ALPACA_SECRET_KEY environment variables.
+
+2025-06-01 21:42:25,160 - TradingEngine - INFO - 🛑 Stopping trading engine...
+2025-06-01 21:42:25,160 - TradingEngine - INFO - ✅ Trading engine stopped
