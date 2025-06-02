@@ -37,7 +37,7 @@ class ImprovedCryptoLSTMPipeline:
     """
     
     def __init__(self, symbol='BTCUSDT', interval='1h', lookback_period=24, 
-                 prediction_horizon=4, confidence_threshold=0.35,
+                 prediction_horizon=4, confidence_threshold=0.25,
                  buy_threshold=0.005, sell_threshold=-0.005, 
                  use_binary_classification=False):
         """
@@ -48,7 +48,7 @@ class ImprovedCryptoLSTMPipeline:
             interval: Data interval
             lookback_period: Number of timesteps to look back
             prediction_horizon: Number of steps ahead to predict (increased to 4 for 4-hour moves)
-            confidence_threshold: Minimum confidence for trading (lowered to 35%)
+            confidence_threshold: Minimum confidence for trading (lowered to 25%)
             buy_threshold: Threshold for buy signals (increased to 0.5%)
             sell_threshold: Threshold for sell signals (increased to -0.5%)
             use_binary_classification: Whether to use binary (True) or 3-class (False) classification

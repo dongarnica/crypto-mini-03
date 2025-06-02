@@ -44,8 +44,8 @@ class TradingConfig:
     trailing_stop_loss: bool = True  # Enable trailing stop-loss
     
     # Signal Thresholds
-    min_confidence: float = 0.30  # Minimum ML confidence
-    high_confidence: float = 0.60  # High confidence threshold
+    min_confidence: float = 0.25  # Minimum ML confidence (lowered from 0.30)
+    high_confidence: float = 0.55  # High confidence threshold (lowered from 0.60)
     
     # Position Sizing
     base_position_size: float = 0.02  # 2% base position

@@ -65,3 +65,15 @@
 2025-06-02 23:23:13,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
 2025-06-02 23:23:13,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
 2025-06-02 23:23:13,459 - MLEngine - WARNING - No ML pipeline for ADAUSDT
+2025-06-02 23:28:13,459 - TradingEngine - INFO - 📡 Processing trading signals for 3 symbols...
+2025-06-02 23:28:13,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-02 23:28:13,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-02 23:28:13,459 - MLEngine - WARNING - No ML pipeline for ADAUSDT
+2025-06-02 23:33:13,459 - TradingEngine - INFO - 📡 Processing trading signals for 3 symbols...
+2025-06-02 23:33:13,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-02 23:33:13,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-02 23:33:13,459 - MLEngine - WARNING - No ML pipeline for ADAUSDT
+2025-06-02 23:38:13,459 - TradingEngine - INFO - 📡 Processing trading signals for 3 symbols...
+2025-06-02 23:38:13,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-02 23:38:13,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-02 23:38:13,459 - MLEngine - WARNING - No ML pipeline for ADAUSDT

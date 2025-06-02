@@ -1,0 +1,38 @@
+{
+  "BTCUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:27.095777"
+  },
+  "ETHUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:28.288988"
+  },
+  "DOTUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:29.468322"
+  },
+  "LINKUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:30.653662"
+  },
+  "LTCUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:31.857047"
+  },
+  "BCHUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:33.036044"
+  },
+  "UNIUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:34.209886"
+  },
+  "SOLUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:35.385146"
+  },
+  "AVAXUSDT": {
+    "error": "'NoneType' object has no attribute 'fit'",
+    "timestamp": "2025-06-02T23:28:36.599707"
+  }
+}
