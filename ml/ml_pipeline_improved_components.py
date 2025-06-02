@@ -1347,6 +1347,97 @@ class ImprovedCryptoLSTMPipeline:
             print(f"\n❌ Failed symbols: {failed}")
         
         return results
+    
+    def load_trained_model(self, model_path):
+        """
+        Load a pre-trained model and its associated data.
+        
+        Args:
+            model_path: Path to the saved Keras model file
+        """
+        try:
+            from tensorflow.keras.models import load_model
+            
+            print(f"Loading trained model from {model_path}...")
+            
+            # Load the model
+            self.model = load_model(model_path)
+            print(f"✅ Model loaded successfully")
+            
+            # Try to load associated preprocessor data if it exists
+            model_dir = os.path.dirname(model_path)
+            symbol = os.path.basename(model_path).split('_')[0]
+            
+            # Load scaler if available
+            scaler_path = f'{model_dir}/{symbol}_scaler.pkl'
+            if os.path.exists(scaler_path):
+                import pickle
+                with open(scaler_path, 'rb') as f:
+                    self.scaler = pickle.load(f)
+                print(f"✅ Scaler loaded from {scaler_path}")
+            
+            # Load selected features if available
+            features_path = f'{model_dir}/{symbol}_features.json'
+            if os.path.exists(features_path):
+                with open(features_path, 'r') as f:
+                    feature_data = json.load(f)
+                    self.selected_features = feature_data.get('selected_features', [])
+                print(f"✅ Feature list loaded: {len(self.selected_features)} features")
+            
+            # If we don't have the preprocessing data, we'll need to recreate it
+            if not hasattr(self, 'selected_features') or not self.selected_features:
+                print("⚠️  No feature data found - will need to recreate preprocessing")
+                
+            return True
+            
+        except Exception as e:
+            print(f"❌ Error loading model: {str(e)}")
+            self.model = None
+            return False
+    
+    def save_model_components(self, model_path):
+        """
+        Save model along with preprocessing components.
+        
+        Args:
+            model_path: Path where to save the model
+        """
+        try:
+            # Save the model
+            self.model.save(model_path)
+            print(f"💾 Model saved to {model_path}")
+            
+            # Save preprocessing components
+            model_dir = os.path.dirname(model_path)
+            symbol = os.path.basename(model_path).split('_')[0]
+            
+            # Save scaler
+            if hasattr(self, 'scaler') and self.scaler is not None:
+                import pickle
+                scaler_path = f'{model_dir}/{symbol}_scaler.pkl'
+                with open(scaler_path, 'wb') as f:
+                    pickle.dump(self.scaler, f)
+                print(f"💾 Scaler saved to {scaler_path}")
+            
+            # Save selected features
+            if hasattr(self, 'selected_features') and self.selected_features:
+                features_path = f'{model_dir}/{symbol}_features.json'
+                feature_data = {
+                    'selected_features': self.selected_features,
+                    'feature_count': len(self.selected_features),
+                    'saved_at': datetime.now().isoformat()
+                }
+                with open(features_path, 'w') as f:
+                    json.dump(feature_data, f, indent=2)
+                print(f"💾 Features saved to {features_path}")
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Error saving model components: {str(e)}")
+            return False
+
+    # ...existing code...
 def main():
     """Main function to test the FIXED pipeline addressing all critical issues."""
     # Use automatic file discovery instead of hardcoded paths

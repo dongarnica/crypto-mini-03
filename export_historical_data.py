@@ -5,7 +5,11 @@ Historical Market Data Export Script
 
 This script exports 1 year of hourly market data history for specified cryptocurrency symbols.
 It handles Binance API rate limits by chunking requests and provides comprehensive error handling.
-
+Configuration
+-------------
+This script uses a configurable list of symbols (currencies) from a symbols config file if present.
+If a file named `symbols.json` or `symbols.txt` exists in the script directory, its contents will be used as the default symbols list.
+Otherwise, a built-in list of popular coins is used.
 Features:
 - Exports 1 year of hourly OHLCV data
 - Automatic request chunking to handle API limits
@@ -66,12 +70,56 @@ class HistoricalDataExporter:
         # Setup logging
         self.setup_logging()
         
-        # Default symbols for export
-        self.default_symbols = [
-            'BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'DOTUSDT',
-            'LINKUSDT', 'LTCUSDT', 'BCHUSDT', 'XLMUSDT',
-            'UNIUSDT', 'SOLUSDT', 'MATICUSDT', 'AVAXUSDT'
+        # Load symbols from environment variable or use default
+        symbols_env = os.getenv('CRYPTO_SYMBOLS')
+        if symbols_env:
+            self.default_symbols = [s.strip().upper() for s in symbols_env.split(',') if s.strip()]
+            self.logger.info(f"Loaded {len(self.default_symbols)} symbols from CRYPTO_SYMBOLS environment variable")
+        else:
+            self.default_symbols = [
+                'BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'DOTUSDT',
+                'LINKUSDT', 'LTCUSDT', 'BCHUSDT', 'XLMUSDT',
+                'UNIUSDT', 'SOLUSDT', 'MATICUSDT', 'AVAXUSDT'
+            ]
+            self.logger.info("Using default symbols list")
+        
+        # Optionally load additional symbol groups
+        self._load_additional_symbols()
+        
+        self.logger.info(f"Default symbols: {', '.join(self.default_symbols)}")
+        
+    def _load_additional_symbols(self):
+        """Load additional symbols from other environment variables."""
+        additional_groups = [
+            ('DEFI_SYMBOLS', 'DeFi'),
+            ('ALTCOIN_SYMBOLS', 'Altcoin'),
+            ('PRIMARY_SYMBOL', 'Primary'),
+            ('SECONDARY_SYMBOL', 'Secondary'),
+            ('TERTIARY_SYMBOL', 'Tertiary')
         ]
+        
+        all_additional = []
+        
+        for env_var, group_name in additional_groups:
+            env_value = os.getenv(env_var)
+            if env_value:
+                if ',' in env_value:
+                    # Multiple symbols
+                    symbols = [s.strip().upper() for s in env_value.split(',') if s.strip()]
+                else:
+                    # Single symbol
+                    symbols = [env_value.strip().upper()]
+                
+                # Add to default symbols if not already present
+                for symbol in symbols:
+                    if symbol not in self.default_symbols:
+                        all_additional.append(symbol)
+                        
+                self.logger.info(f"Found {len(symbols)} {group_name} symbols: {', '.join(symbols)}")
+        
+        if all_additional:
+            self.default_symbols.extend(all_additional)
+            self.logger.info(f"Added {len(all_additional)} additional symbols from environment variables")
         
         # API limits configuration
         self.max_klines_per_request = 1000  # Binance limit
@@ -457,6 +505,129 @@ class HistoricalDataExporter:
         
         return results
 
+    def get_current_prices(self, symbols: List[str] = None) -> Dict[str, Dict]:
+        """
+        Get current price information for specified symbols.
+        
+        Args:
+            symbols: List of symbols to get prices for. If None, uses default symbols.
+            
+        Returns:
+            Dictionary with symbol prices and market data
+        """
+        if symbols is None:
+            symbols = self.default_symbols
+            
+        self.logger.info(f"Fetching current prices for {len(symbols)} symbols...")
+        print(f"\n🏷️  Getting Current Prices for {len(symbols)} Symbols")
+        print("=" * 60)
+        
+        price_data = {}
+        successful_count = 0
+        failed_count = 0
+        
+        for i, symbol in enumerate(symbols, 1):
+            try:
+                # Get current price
+                current_price = self.client.get_price(symbol)
+                
+                # Get average price
+                avg_price = self.client.get_avg_price(symbol)
+                
+                # Get 24hr ticker for additional info
+                ticker_24hr = self.client.get_24hr_ticker(symbol)
+                
+                # Store comprehensive price data
+                price_data[symbol] = {
+                    'current_price': current_price['price'],
+                    'avg_price': avg_price['price'],
+                    'price_change_24h': ticker_24hr['priceChange'],
+                    'price_change_percent_24h': ticker_24hr['priceChangePercent'],
+                    'high_24h': ticker_24hr['highPrice'],
+                    'low_24h': ticker_24hr['lowPrice'],
+                    'volume_24h': ticker_24hr['volume'],
+                    'quote_volume_24h': ticker_24hr['quoteVolume'],
+                    'open_price': ticker_24hr['openPrice'],
+                    'last_price': ticker_24hr['lastPrice'],
+                    'bid_price': ticker_24hr['bidPrice'],
+                    'ask_price': ticker_24hr['askPrice'],
+                    'timestamp': datetime.now().isoformat()
+                }
+                
+                # Display price info
+                change_emoji = "📈" if ticker_24hr['priceChangePercent'] > 0 else "📉"
+                print(f"{i:2d}. {symbol:<12} ${current_price['price']:>10.2f} "
+                      f"{change_emoji} {ticker_24hr['priceChangePercent']:>6.2f}% "
+                      f"Vol: {ticker_24hr['volume']:>12,.0f}")
+                
+                successful_count += 1
+                
+                # Rate limiting
+                time.sleep(self.request_delay)
+                
+            except Exception as e:
+                self.logger.error(f"Failed to get price for {symbol}: {str(e)}")
+                print(f"{i:2d}. {symbol:<12} ❌ Error: {str(e)}")
+                failed_count += 1
+                
+                # Store error info
+                price_data[symbol] = {
+                    'error': str(e),
+                    'timestamp': datetime.now().isoformat()
+                }
+        
+        # Summary
+        print(f"\n📊 Price Retrieval Summary:")
+        print(f"   ✅ Successful: {successful_count}/{len(symbols)} ({successful_count/len(symbols)*100:.1f}%)")
+        print(f"   ❌ Failed: {failed_count}/{len(symbols)} ({failed_count/len(symbols)*100:.1f}%)")
+        
+        if successful_count > 0:
+            # Show top gainers and losers
+            successful_symbols = [s for s in price_data if 'current_price' in price_data[s]]
+            if len(successful_symbols) > 1:
+                gainers = sorted(successful_symbols, 
+                               key=lambda x: price_data[x]['price_change_percent_24h'], 
+                               reverse=True)[:3]
+                losers = sorted(successful_symbols, 
+                              key=lambda x: price_data[x]['price_change_percent_24h'])[:3]
+                
+                print(f"\n🚀 Top Gainers:")
+                for symbol in gainers:
+                    data = price_data[symbol]
+                    print(f"   {symbol:<12} +{data['price_change_percent_24h']:>6.2f}% (${data['current_price']:>8.2f})")
+                
+                print(f"\n📉 Top Losers:")
+                for symbol in losers:
+                    data = price_data[symbol]
+                    print(f"   {symbol:<12} {data['price_change_percent_24h']:>7.2f}% (${data['current_price']:>8.2f})")
+        
+        self.logger.info(f"Price retrieval completed: {successful_count} successful, {failed_count} failed")
+        return price_data
+    
+    def save_price_data(self, price_data: Dict[str, Dict], filename: str = None) -> str:
+        """
+        Save price data to JSON file.
+        
+        Args:
+            price_data: Price data dictionary to save
+            filename: Optional custom filename
+            
+        Returns:
+            Path to saved file
+        """
+        if filename is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"current_prices_{timestamp}.json"
+        
+        filepath = self.output_dir / filename
+        
+        with open(filepath, 'w') as f:
+            json.dump(price_data, f, indent=2, default=str)
+        
+        self.logger.info(f"Price data saved to {filepath}")
+        print(f"\n💾 Price data saved to: {filepath}")
+        return str(filepath)
+
 def parse_arguments():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
@@ -503,6 +674,12 @@ Examples:
         help='Output directory (default: historical_exports)'
     )
     
+    parser.add_argument(
+        '--prices',
+        action='store_true',
+        help='Get current prices instead of historical data'
+    )
+    
     return parser.parse_args()
 
 def main():
@@ -518,6 +695,26 @@ def main():
     else:
         symbols = exporter.default_symbols
     
+    # Check if user wants current prices instead of historical data
+    if args.prices:
+        print(f"🔍 Fetching current prices for {len(symbols)} symbols...")
+        try:
+            price_data = exporter.get_current_prices(symbols)
+            
+            # Save price data to JSON file
+            saved_file = exporter.save_price_data(price_data)
+            
+            print(f"\n🎉 Current price retrieval completed successfully!")
+            print(f"💾 Data saved to: {saved_file}")
+            
+        except KeyboardInterrupt:
+            print(f"\n⏹️  Price retrieval interrupted by user")
+        except Exception as e:
+            print(f"\n💥 Price retrieval failed: {e}")
+            exporter.logger.error(f"Price retrieval failed: {e}")
+        return
+    
+    # Continue with historical data export if --prices not specified
     # Parse dates
     if args.start_date:
         start_date = datetime.strptime(args.start_date, '%Y-%m-%d')

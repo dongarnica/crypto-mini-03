@@ -1,0 +1,21 @@
+{
+  "selected_features": [
+    "close",
+    "sma_10",
+    "sma_20",
+    "ema_12",
+    "ema_26",
+    "price_vs_sma20",
+    "momentum_10",
+    "atr_pct",
+    "bb_width",
+    "rate_of_change",
+    "volatility_20",
+    "volume_flow_sma",
+    "atr_ratio",
+    "macd",
+    "volatility_10"
+  ],
+  "feature_count": 15,
+  "saved_at": "2025-06-02T03:57:09.833475"
+}

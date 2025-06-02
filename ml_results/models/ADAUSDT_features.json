@@ -1,0 +1,21 @@
+{
+  "selected_features": [
+    "close",
+    "sma_10",
+    "sma_20",
+    "ema_12",
+    "ema_26",
+    "rsi",
+    "macd",
+    "bb_width",
+    "high_low_spread",
+    "intraday_range",
+    "day_of_week",
+    "atr_ratio",
+    "europe_session",
+    "volatility_10",
+    "atr_pct"
+  ],
+  "feature_count": 15,
+  "saved_at": "2025-06-02T04:38:36.370981"
+}

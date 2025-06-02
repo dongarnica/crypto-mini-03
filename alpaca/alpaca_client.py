@@ -249,11 +249,43 @@ class AlpacaCryptoClient:
             Optional[float]: Current price or None
         """
         try:
-            latest_trade = self.api.get_latest_crypto_trade(symbol)
-            if latest_trade:
-                price = float(latest_trade.price)
-                self.logger.info(f"{symbol} current price: ${price:,.2f}")
-                return price
+            # Method 1: Try to get latest quote
+            try:
+                latest_quote = self.api.get_latest_crypto_quote(symbol)
+                if latest_quote and hasattr(latest_quote, 'ask_price'):
+                    # Use mid price between bid and ask
+                    ask_price = float(latest_quote.ask_price)
+                    bid_price = float(latest_quote.bid_price) if hasattr(latest_quote, 'bid_price') else ask_price
+                    price = (ask_price + bid_price) / 2
+                    self.logger.info(f"{symbol} current price: ${price:,.2f}")
+                    return price
+            except AttributeError:
+                pass
+            
+            # Method 2: Try to get latest trade (different method name)
+            try:
+                latest_trade = self.api.get_latest_trade(symbol)
+                if latest_trade and hasattr(latest_trade, 'price'):
+                    price = float(latest_trade.price)
+                    self.logger.info(f"{symbol} current price: ${price:,.2f}")
+                    return price
+            except AttributeError:
+                pass
+            
+            # Method 3: Fall back to using recent bars
+            try:
+                bars = self.get_crypto_bars(symbol, timeframe='1Min', limit=1)
+                if bars and len(bars) > 0:
+                    # Use the close price of the most recent bar
+                    latest_bar = bars[-1]
+                    price = float(latest_bar.get('close', latest_bar.get('c', 0)))
+                    if price > 0:
+                        self.logger.info(f"{symbol} current price (from bars): ${price:,.2f}")
+                        return price
+            except Exception:
+                pass
+            
+            self.logger.warning(f"Could not retrieve current price for {symbol}")
             return None
             
         except Exception as e:
@@ -705,6 +737,28 @@ class AlpacaCryptoClient:
             
         except Exception as e:
             self.logger.error(f"Error printing portfolio summary: {e}")
+    
+    def get_all_positions(self) -> List[Dict]:
+        """
+        Get all current positions in the account.
+        
+        Returns:
+            List[Dict]: List of all position information
+        """
+        try:
+            positions = self.api.list_positions()
+            positions_list = []
+            
+            for position in positions:
+                position_dict = position._raw
+                positions_list.append(position_dict)
+            
+            self.logger.info(f"Retrieved {len(positions_list)} positions")
+            return positions_list
+            
+        except Exception as e:
+            self.logger.error(f"Error getting all positions: {e}")
+            return []
 
 
 def main():
