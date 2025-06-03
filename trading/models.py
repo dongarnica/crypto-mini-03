@@ -57,10 +57,10 @@ class TradingConfig:
     min_time_between_trades: int = 300  # 5 minutes
     paper_trading: bool = True  # Start with paper trading
     
-    # ML Model Settings
+    # ML Model Settings - CRITICAL: ONLY 3-CLASS MODELS
     prediction_horizon: int = 4  # 4 hours
     lookback_period: int = 24  # 24 hours
-    use_binary_classification: bool = False
+    use_binary_classification: bool = False  # FORCED: Always use 3-class for profitable execution
     
     # Monitoring
     log_level: str = "DEBUG"

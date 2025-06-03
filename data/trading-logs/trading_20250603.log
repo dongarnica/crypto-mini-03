@@ -1,0 +1,148 @@
+2025-06-03 01:16:01,791 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 01:16:01,792 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 01:16:01,792 - TradingEngine - INFO - 📁 Found historical data for 0 symbols: []
+2025-06-03 01:16:01,792 - TradingEngine - WARNING - ❌ BTCUSDT: No historical data found
+2025-06-03 01:16:01,792 - TradingEngine - WARNING - ❌ ETHUSDT: No historical data found
+2025-06-03 01:16:01,792 - TradingEngine - WARNING - ❌ DOTUSDT: No historical data found
+2025-06-03 01:16:01,792 - TradingEngine - WARNING - ❌ LINKUSDT: No historical data found
+2025-06-03 01:16:01,792 - TradingEngine - ERROR - No valid symbols found with historical data!
+2025-06-03 01:16:01,792 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 01:16:01,792 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 01:16:01,792 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD']
+2025-06-03 01:16:01,990 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 01:16:01,990 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 01:16:01,990 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 01:16:01,990 - MLEngine - INFO - No existing 3-class model for BTCUSDT, training new model...
+2025-06-03 01:16:01,991 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for BTCUSDT: No historical export files found for symbol BTCUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:16:01,991 - MLEngine - INFO - No existing 3-class model for ETHUSDT, training new model...
+2025-06-03 01:16:01,991 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for ETHUSDT: No historical export files found for symbol ETHUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:16:01,991 - MLEngine - INFO - No existing 3-class model for DOTUSDT, training new model...
+2025-06-03 01:16:01,991 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for DOTUSDT: No historical export files found for symbol DOTUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:16:01,991 - MLEngine - INFO - Initialized 0 3-class ML pipelines
+2025-06-03 01:16:01,991 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 01:16:01,991 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 01:16:02,180 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 01:16:02,180 - TradingEngine - INFO - 📡 Processing trading signals for 3 symbols...
+2025-06-03 01:16:02,180 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:16:02,180 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:16:02,180 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:17:19,493 - TradingEngine - INFO - Received signal 15, stopping trading...
+2025-06-03 01:20:50,071 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 01:20:50,071 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 01:20:50,072 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 01:20:50,072 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 01:20:50,072 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 01:20:50,072 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 01:20:50,072 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 01:20:50,072 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 01:20:50,072 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 01:20:50,072 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 01:20:50,072 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 01:20:50,271 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 01:20:50,271 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 01:20:50,271 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 01:20:50,271 - MLEngine - INFO - No existing 3-class model for BTCUSDT, training new model...
+2025-06-03 01:20:50,271 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for BTCUSDT: No historical export files found for symbol BTCUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:20:50,271 - MLEngine - INFO - No existing 3-class model for ETHUSDT, training new model...
+2025-06-03 01:20:50,272 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for ETHUSDT: No historical export files found for symbol ETHUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:20:50,272 - MLEngine - INFO - No existing 3-class model for DOTUSDT, training new model...
+2025-06-03 01:20:50,272 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for DOTUSDT: No historical export files found for symbol DOTUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:20:50,272 - MLEngine - INFO - No existing 3-class model for LINKUSDT, training new model...
+2025-06-03 01:20:50,272 - MLEngine - ERROR - Failed to initialize 3-class ML pipeline for LINKUSDT: No historical export files found for symbol LINKUSDT in /workspaces/crypto-mini-03/historical_exports
+2025-06-03 01:20:50,272 - MLEngine - INFO - Initialized 0 3-class ML pipelines
+2025-06-03 01:20:50,272 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 01:20:50,272 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 01:20:50,458 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 01:20:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:20:50,458 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:20:50,458 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:20:50,458 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:20:50,458 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:22:13,392 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 01:22:13,392 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 10, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 01:22:13,392 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 01:22:13,393 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 01:22:13,393 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 01:22:13,393 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 01:22:13,393 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 01:22:13,393 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 01:25:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:25:50,458 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:25:50,458 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:25:50,458 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:25:50,458 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:30:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:30:50,458 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:30:50,458 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:30:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:30:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:35:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:35:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:35:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:35:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:35:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:40:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:40:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:40:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:40:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:40:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:45:50,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:45:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:45:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:45:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:45:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:50:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:50:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:50:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:50:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:50:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 01:55:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 01:55:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 01:55:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 01:55:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 01:55:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:00:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:00:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:00:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:00:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:00:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:05:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:05:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:05:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:05:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:05:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:10:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:10:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:10:50,459 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:10:50,459 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:10:50,459 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:15:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:15:50,459 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:15:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:15:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:15:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:20:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:20:50,460 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:20:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:20:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:20:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:25:50,459 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:25:50,460 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:25:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:25:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:25:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:30:50,460 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:30:50,460 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:30:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:30:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:30:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:35:50,460 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:35:50,460 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:35:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:35:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:35:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT
+2025-06-03 02:40:50,460 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:40:50,460 - MLEngine - WARNING - No ML pipeline for BTCUSDT
+2025-06-03 02:40:50,460 - MLEngine - WARNING - No ML pipeline for ETHUSDT
+2025-06-03 02:40:50,460 - MLEngine - WARNING - No ML pipeline for DOTUSDT
+2025-06-03 02:40:50,460 - MLEngine - WARNING - No ML pipeline for LINKUSDT

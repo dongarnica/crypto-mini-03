@@ -71,8 +71,8 @@ COPY --chown=trader:trader start.sh /app/start.sh
 COPY --chown=trader:trader healthcheck.py /app/healthcheck.py
 RUN chmod +x /app/start.sh /app/healthcheck.py
 
-# Create data persistence volumes
-VOLUME ["/app/trading/logs", "/app/historical_exports", "/app/ml_results"]
+# Create data persistence volumes (excluding historical_exports to use image data)
+VOLUME ["/app/trading/logs", "/app/ml_results"]
 
 # ================================================================
 # Stage 4: Production Image

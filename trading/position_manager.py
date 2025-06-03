@@ -14,6 +14,7 @@ from datetime import datetime
 from typing import Dict, List, Optional
 
 from trading.models import Position, PositionType, TradingConfig
+from config.symbol_manager import symbol_manager
 
 
 class PositionManager:
@@ -211,12 +212,5 @@ class PositionManager:
             return None
     
     def _convert_alpaca_symbol_to_binance(self, alpaca_symbol: str) -> str:
-        """Convert Alpaca symbol format to Binance format (BTC/USD -> BTCUSDT)."""
-        try:
-            if '/' in alpaca_symbol:
-                base, quote = alpaca_symbol.split('/')
-                if quote in ['USD', 'USDT']:
-                    return f"{base}USDT"
-            return alpaca_symbol.replace('/', '')
-        except Exception:
-            return alpaca_symbol
+        """Convert Alpaca symbol format to Binance format using SymbolManager."""
+        return symbol_manager.alpaca_to_binance_format(alpaca_symbol)

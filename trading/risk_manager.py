@@ -19,6 +19,7 @@ import pandas as pd
 import numpy as np
 
 from trading.models import Position, PositionType, TradingConfig, TradingSignal
+from config.symbol_manager import symbol_manager
 
 
 class RiskManager:
@@ -54,34 +55,31 @@ class RiskManager:
             positions = self.position_manager.get_all_positions()
             
             for symbol, position in list(positions.items()):
-                # Get current price with error handling
-                alpaca_symbol = self._convert_symbol_format(symbol)
-                try:
-                    current_price = self.trading_client.get_current_price(alpaca_symbol)
-                except Exception as price_error:
-                    self.logger.warning(f"Failed to get current price for {symbol}: {price_error}")
+                # Skip price updates - prices should be updated from main trading loop via Binance
+                # The strategy engine will call update_position_price with Binance prices
+                current_price = position.current_price
+                if not current_price or current_price <= 0:
+                    self.logger.debug(f"No current price available for {symbol}, skipping risk checks")
                     continue
                 
-                if current_price:
-                    # Update position price
-                    self.position_manager.update_position_price(symbol, current_price)
-                    
-                    # Update dynamic stop-loss if enabled
-                    if self.config.dynamic_stop_loss:
-                        self._update_dynamic_stop_loss(symbol, position, current_price)
-                    
-                    # Update trailing stop-loss if enabled
-                    if self.config.trailing_stop_loss:
-                        self._update_trailing_stop_loss(symbol, position, current_price)
-                    
-                    # Check stop loss
-                    if position.stop_loss and current_price <= position.stop_loss:
-                        self.logger.warning(f"⚠️ Stop loss triggered for {symbol} @ ${current_price:.2f} "
-                                          f"(SL: ${position.stop_loss:.2f})")
-                        self._trigger_stop_loss(symbol, current_price)
-                    
-                    # Check take profit
-                    elif position.take_profit and current_price >= position.take_profit:
+                # Update position price is handled by main trading loop
+                
+                # Update dynamic stop-loss if enabled
+                if self.config.dynamic_stop_loss:
+                    self._update_dynamic_stop_loss(symbol, position, current_price)
+                
+                # Update trailing stop-loss if enabled
+                if self.config.trailing_stop_loss:
+                    self._update_trailing_stop_loss(symbol, position, current_price)
+                
+                # Check stop loss
+                if position.stop_loss and current_price <= position.stop_loss:
+                    self.logger.warning(f"⚠️ Stop loss triggered for {symbol} @ ${current_price:.2f} "
+                                      f"(SL: ${position.stop_loss:.2f})")
+                    self._trigger_stop_loss(symbol, current_price)
+                
+                # Check take profit
+                elif position.take_profit and current_price >= position.take_profit:
                         self.logger.info(f"🎯 Take profit triggered for {symbol} @ ${current_price:.2f} "
                                        f"(TP: ${position.take_profit:.2f})")
                         self._trigger_take_profit(symbol, current_price)
@@ -305,11 +303,5 @@ class RiskManager:
             self.logger.error(f"Error triggering take profit for {symbol}: {e}")
     
     def _convert_symbol_format(self, symbol: str) -> str:
-        """Convert symbol format from Binance to Alpaca format."""
-        try:
-            if symbol.endswith('USDT'):
-                base = symbol[:-4]
-                return f"{base}/USD"
-            return symbol
-        except Exception:
-            return symbol
+        """Convert symbol format from Binance to Alpaca format using SymbolManager."""
+        return symbol_manager.binance_to_alpaca_format(symbol)

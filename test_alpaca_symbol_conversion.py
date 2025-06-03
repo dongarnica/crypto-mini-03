@@ -12,16 +12,13 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'alpaca'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'trading'))
 
 from alpaca_client import AlpacaCryptoClient
+from config.symbol_manager import symbol_manager
 from dotenv import load_dotenv
 load_dotenv()
 
 def convert_symbol_format(binance_symbol):
-    """Convert Binance symbol format to Alpaca format"""
-    # Remove USDT suffix and add slash
-    if binance_symbol.endswith('USDT'):
-        base = binance_symbol[:-4]  # Remove 'USDT'
-        return f"{base}/USD"
-    return binance_symbol
+    """Convert Binance symbol format to Alpaca format using SymbolManager"""
+    return symbol_manager.binance_to_alpaca_format(binance_symbol)
 
 def test_alpaca_symbol_conversion():
     """Test Alpaca symbol conversion and price retrieval"""

@@ -34,6 +34,7 @@ from trading.risk_manager import RiskManager
 from trading.trade_executor import TradeExecutor
 from trading.ml_engine import MLEngine
 from trading.portfolio_manager import PortfolioManager
+from trading.enhanced_output import EnhancedOutputDisplay
 
 # Load environment variables
 load_dotenv('/workspaces/crypto-mini-03/.env')
@@ -45,6 +46,9 @@ try:
 except ImportError:
     SYMBOLS_CONFIG_AVAILABLE = False
     print("⚠️  Warning: Centralized symbols configuration not available, using fallback")
+
+# Import centralized symbol manager
+from config.symbol_manager import symbol_manager
 
 
 class TradingStrategyEngine:
@@ -74,6 +78,7 @@ class TradingStrategyEngine:
         self.trade_executor = None
         self.ml_engine = None
         self.portfolio_manager = None
+        self.enhanced_display = None
         
         self.logger.info("🚀 Trading Strategy Engine initialized")
         self.logger.info(f"Configuration: {self.config.__dict__}")
@@ -219,12 +224,18 @@ class TradingStrategyEngine:
         self.risk_manager = RiskManager(self.config, self.position_manager, self.trading_client)
         self.ml_engine = MLEngine(self.config)
         
-        # Initialize ML pipelines with original symbols (for historical data)
+        # Initialize enhanced output display
+        self.enhanced_display = EnhancedOutputDisplay(self.logger)
+        
+        # Initialize ML pipelines with original symbols (for historical data) - 3-CLASS ONLY
         self.ml_engine.initialize_pipelines(symbols)
         
         # Store both original and converted symbols for reference
         self.original_symbols = symbols
         self.converted_symbols = converted_symbols
+        
+        self.logger.info("🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned")
+        self.logger.info("📊 3-class models provide: Buy, Hold, Sell signals with higher profitability")
         
         # Load existing positions and update portfolio info
         self.position_manager.load_existing_positions()
@@ -245,6 +256,9 @@ class TradingStrategyEngine:
         try:
             self.logger.info(f"📡 Processing trading signals for {len(symbols)} symbols...")
             
+            # Collect all ML predictions for enhanced display
+            ml_predictions = []
+            
             for i, symbol in enumerate(symbols):
                 try:
                     # Get ML prediction using original symbol format
@@ -252,6 +266,10 @@ class TradingStrategyEngine:
                     
                     if not ml_prediction:
                         continue
+                    
+                    # Add symbol to prediction for display
+                    ml_prediction['symbol'] = symbol
+                    ml_predictions.append(ml_prediction)
                     
                     signal_str = ml_prediction.get('signal', 'HOLD')
                     confidence = ml_prediction.get('confidence', 0.0)
@@ -267,6 +285,7 @@ class TradingStrategyEngine:
                     binance_price = self.get_current_price_with_fallback(trading_symbol, symbol)
                     if binance_price > 0:
                         current_price = binance_price
+                        ml_prediction['current_price'] = current_price  # Update for display
                         self.logger.debug(f"💰 Using Binance price for {symbol}: ${current_price:,.2f}")
                     elif current_price <= 0:
                         self.logger.warning(f"❌ No price data available for {symbol}, skipping")
@@ -312,6 +331,13 @@ class TradingStrategyEngine:
                 except Exception as e:
                     self.logger.error(f"Error processing {symbol}: {e}")
                     continue
+            
+            # Display enhanced output with signal summary and predictions
+            if ml_predictions and self.enhanced_display:
+                self.enhanced_display.display_full_status(ml_predictions)
+            
+            # Update position prices with current Binance data before risk checks
+            self.update_position_prices_from_binance()
             
             # Check risk management for all positions
             self.risk_manager.check_risk_management(
@@ -371,7 +397,10 @@ class TradingStrategyEngine:
                     loop_duration = time.time() - loop_start
                     sleep_time = max(0, update_interval - loop_duration)
                     
-                    if sleep_time > 0:
+                    # Display countdown timer if enhanced display is available
+                    if sleep_time > 0 and self.enhanced_display:
+                        self.enhanced_display.display_countdown(int(sleep_time))
+                    elif sleep_time > 0:
                         time.sleep(sleep_time)
                     
                 except KeyboardInterrupt:
@@ -406,17 +435,8 @@ class TradingStrategyEngine:
         self.running = False
     
     def _convert_symbol_format(self, symbol: str) -> str:
-        """Convert symbol format from Binance to Alpaca format."""
-        # Convert BTCUSDT -> BTC/USD
-        if symbol.endswith('USDT'):
-            base = symbol[:-4]
-            return f"{base}/USD"
-        elif symbol.endswith('USD') and '/' not in symbol:
-            base = symbol[:-3]
-            return f"{base}/USD"
-        else:
-            # Assume it's already in correct format
-            return symbol
+        """Convert symbol format from Binance to Alpaca format using SymbolManager."""
+        return symbol_manager.binance_to_alpaca_format(symbol)
     
     def _convert_signal_string(self, signal_str: str) -> TradingSignal:
         """Convert signal string to TradingSignal enum."""
@@ -469,7 +489,30 @@ class TradingStrategyEngine:
         except Exception as e:
             self.logger.error(f"Error getting price for {original_symbol}: {e}")
             return 0.0
-
+    
+    def update_position_prices_from_binance(self) -> None:
+        """Update all position prices using Binance price data."""
+        try:
+            positions = self.position_manager.get_all_positions()
+            
+            for symbol, position in positions.items():
+                try:
+                    # Get current price from Binance
+                    binance_price = self.get_current_price_with_fallback(None, symbol)
+                    
+                    if binance_price > 0:
+                        # Update position with current Binance price
+                        self.position_manager.update_position_price(symbol, binance_price)
+                        self.logger.debug(f"💰 Updated {symbol} position price: ${binance_price:,.2f}")
+                    else:
+                        self.logger.warning(f"❌ Failed to get Binance price for position {symbol}")
+                        
+                except Exception as e:
+                    self.logger.error(f"Error updating price for position {symbol}: {e}")
+                    continue
+                    
+        except Exception as e:
+            self.logger.error(f"Error updating position prices from Binance: {e}")
 
 def main():
     """Example usage of the refactored trading strategy engine."""
@@ -479,10 +522,11 @@ def main():
     # Configuration
     config = TradingConfig(
         max_position_size=0.05,  # 5% max per position
-        min_confidence=0.35,     # 35% minimum confidence
+        min_confidence=0.35,     # 35% minimum confidence (optimized for 3-class)
         paper_trading=True,      # Start with paper trading
         max_trades_per_day=20,   # Max 20 trades per day
-        log_level="DEBUG"        # Enable detailed logging
+        log_level="DEBUG",       # Enable detailed logging
+        use_binary_classification=False  # CRITICAL: 3-class models only
     )
     
     # Import symbols from centralized configuration

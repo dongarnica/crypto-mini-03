@@ -59,56 +59,56 @@ class MLEngine:
     
     def initialize_pipelines(self, symbols: List[str]) -> None:
         """
-        Initialize ML pipelines for given symbols.
+        Initialize ML pipelines for given symbols - ONLY 3-CLASS MODELS.
         
         Args:
             symbols: List of crypto symbols to initialize
         """
-        self.logger.info("🤖 Initializing ML pipelines...")
+        self.logger.info("🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...")
         
         for symbol in symbols:
             try:
-                # Create improved ML pipeline
+                # CRITICAL: Force 3-class classification - abandon binary entirely
                 pipeline = ImprovedCryptoLSTMPipeline(
                     symbol=symbol,
                     lookback_period=self.config.lookback_period,
                     prediction_horizon=self.config.prediction_horizon,
                     confidence_threshold=self.config.min_confidence,
-                    use_binary_classification=self.config.use_binary_classification
+                    use_binary_classification=False  # FORCED: Never use binary models
                 )
                 
-                # Check for existing trained model
-                model_path = self._get_model_path(symbol)
+                # Check for existing 3-class model only
+                model_path = self._get_model_path(symbol, use_3class=True)
                 
                 if os.path.exists(model_path):
-                    self.logger.info(f"Found existing model for {symbol}")
+                    self.logger.info(f"Found existing 3-class model for {symbol}")
                     try:
                         # First load the data (required for predictions)
                         pipeline.load_data_from_symbol(symbol)
                         pipeline.add_essential_indicators()
                         
-                        # Then load the trained model
+                        # Then load the trained 3-class model
                         pipeline.load_trained_model(model_path)
-                        self.logger.info(f"✅ Loaded trained model for {symbol}")
+                        self.logger.info(f"✅ Loaded 3-class model for {symbol}")
                     except Exception as load_error:
-                        self.logger.warning(f"Failed to load model for {symbol}: {load_error}")
-                        self.logger.info(f"Will train new model for {symbol}")
+                        self.logger.warning(f"Failed to load 3-class model for {symbol}: {load_error}")
+                        self.logger.info(f"Will train new 3-class model for {symbol}")
                         self._train_pipeline_model(pipeline, symbol)
                 else:
-                    self.logger.info(f"No existing model for {symbol}, training new model...")
+                    self.logger.info(f"No existing 3-class model for {symbol}, training new model...")
                     # Load data before training
                     pipeline.load_data_from_symbol(symbol)
                     pipeline.add_essential_indicators()
                     self._train_pipeline_model(pipeline, symbol)
                 
                 self.ml_pipelines[symbol] = pipeline
-                self.logger.info(f"✅ ML pipeline ready for {symbol}")
+                self.logger.info(f"✅ 3-class ML pipeline ready for {symbol}")
                 
             except Exception as e:
-                self.logger.error(f"Failed to initialize ML pipeline for {symbol}: {e}")
+                self.logger.error(f"Failed to initialize 3-class ML pipeline for {symbol}: {e}")
                 # Continue with other symbols
         
-        self.logger.info(f"Initialized {len(self.ml_pipelines)} ML pipelines")
+        self.logger.info(f"Initialized {len(self.ml_pipelines)} 3-class ML pipelines")
     
     def get_prediction(self, symbol: str) -> Optional[Dict]:
         """
@@ -136,7 +136,7 @@ class MLEngine:
             prediction = pipeline.predict_with_lower_threshold()
             
             if prediction and not prediction.get('error'):
-                # Enhanced prediction processing
+                # Enhanced prediction processing with 3-class focus
                 signal = prediction.get('signal', 'HOLD')
                 confidence = prediction.get('confidence', 0.0)
                 current_price = prediction.get('current_price', 0.0)
@@ -145,14 +145,16 @@ class MLEngine:
                 tradeable = prediction.get('tradeable', False)
                 high_confidence = prediction.get('high_confidence', False)
                 
-                # Log prediction details
-                self.logger.debug(f"🔮 ML Prediction for {symbol}:")
+                # Log prediction details with 3-class emphasis
+                self.logger.debug(f"🔮 3-Class ML Prediction for {symbol}:")
                 self.logger.debug(f"   Signal: {signal} (confidence: {confidence:.1%})")
                 self.logger.debug(f"   Price: ${current_price:.2f}")
                 self.logger.debug(f"   Tradeable: {tradeable}")
                 self.logger.debug(f"   Recommendation: {recommendation}")
+                if probabilities:
+                    self.logger.debug(f"   Probabilities: {probabilities}")
                 
-                # Enhanced prediction with additional metadata
+                # Enhanced prediction with 3-class metadata
                 enhanced_prediction = {
                     'symbol': symbol,
                     'signal': signal,
@@ -163,7 +165,7 @@ class MLEngine:
                     'tradeable': tradeable,
                     'high_confidence': high_confidence,
                     'prediction_timestamp': datetime.now().isoformat(),
-                    'classification_type': prediction.get('classification_type', 'unknown'),
+                    'classification_type': '3-class',  # Always 3-class now
                     'features_used': prediction.get('features_used', 0),
                     'features_missing': prediction.get('features_missing', 0)
                 }
@@ -356,18 +358,20 @@ class MLEngine:
             self.logger.error(f"Error validating data for {symbol}: {e}")
             return False
     
-    def _get_model_path(self, symbol: str) -> str:
-        """Get model file path for a symbol."""
+    def _get_model_path(self, symbol: str, use_3class: bool = True) -> str:
+        """Get model file path for a symbol - ONLY 3-CLASS MODELS."""
         # Determine model directory based on environment
         if os.path.exists('/app'):
             # Running in Docker container
             model_dir = '/app/ml_results/models'
         else:
             # Running in development environment
-            model_dir = '/workspaces/crypto-mini-03/ml_results/models'
+            model_dir = '/workspaces/crypto-mini-03/ml_results'
         
         os.makedirs(model_dir, exist_ok=True)
-        return f'{model_dir}/{symbol}_improved_model.keras'
+        
+        # CRITICAL: Only use 3-class enhanced models
+        return f'{model_dir}/{symbol}_3class_enhanced.h5'
     
     def get_pipeline_count(self) -> int:
         """Get number of initialized pipelines."""

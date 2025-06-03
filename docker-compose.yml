@@ -31,7 +31,7 @@ services:
       
       # Persistent data storage
       - trading-logs:/app/trading/logs
-      - historical-data:/app/historical_exports
+      # historical-data:/app/historical_exports  # COMMENTED OUT: Use historical data from image
       - ml-models:/app/ml_results
       - binance-data:/app/binance_exports
       

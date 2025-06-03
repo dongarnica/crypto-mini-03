@@ -90,7 +90,7 @@ coverage.xml
 # Data Files (exclude from image, mount as volumes)
 # ================================================================
 trading/logs/
-historical_exports/*.csv
+# historical_exports/*.csv  # COMMENTED OUT: Include historical data in image
 binance_exports/*.csv
 ml_results/
 data/

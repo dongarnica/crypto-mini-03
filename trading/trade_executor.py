@@ -279,22 +279,23 @@ class TradeExecutor:
         """Place order with retry logic."""
         for attempt in range(max_retries):
             try:
-                if notional:
-                    order = self.trading_client.place_crypto_order(
-                        symbol=symbol,
-                        side=side,
-                        order_type=order_type,
-                        time_in_force='gtc',
-                        notional=notional
-                    )
+                if order_type == 'market':
+                    if notional:
+                        order = self.trading_client.place_market_order(
+                            symbol=symbol,
+                            side=side,
+                            notional=notional
+                        )
+                    else:
+                        order = self.trading_client.place_market_order(
+                            symbol=symbol,
+                            side=side,
+                            qty=qty
+                        )
                 else:
-                    order = self.trading_client.place_crypto_order(
-                        symbol=symbol,
-                        side=side,
-                        order_type=order_type,
-                        time_in_force='gtc',
-                        qty=qty
-                    )
+                    # For other order types, can extend later
+                    self.logger.warning(f"Order type {order_type} not implemented yet")
+                    return None
                 
                 if order:
                     return order
