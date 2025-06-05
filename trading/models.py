@@ -35,20 +35,20 @@ class PositionType(Enum):
 @dataclass
 class TradingConfig:
     """Configuration for trading strategy."""
-    # Risk Management
-    max_position_size: float = 0.05  # 5% max per position
-    max_portfolio_risk: float = 0.20  # 20% max total risk
+    # Risk Management - UPDATED FOR DEDICATED CRYPTO TRADING
+    max_position_size: float = 0.25  # 25% max per position (increased from 5% for crypto focus)
+    max_portfolio_risk: float = 0.95  # 95% max total risk (increased from 35% for active trading)
     stop_loss_pct: float = 0.02  # 2% stop loss
     take_profit_pct: float = 0.04  # 4% take profit
     dynamic_stop_loss: bool = True  # Enable dynamic stop-loss based on volatility
     trailing_stop_loss: bool = True  # Enable trailing stop-loss
     
     # Signal Thresholds
-    min_confidence: float = 0.25  # Minimum ML confidence (lowered from 0.30)
+    min_confidence: float = 0.20  # Minimum ML confidence (lowered from 0.30)
     high_confidence: float = 0.55  # High confidence threshold (lowered from 0.60)
     
-    # Position Sizing
-    base_position_size: float = 0.02  # 2% base position
+    # Position Sizing - UPDATED FOR ACTIVE CRYPTO TRADING
+    base_position_size: float = 0.10  # 10% base position (increased from 2% for meaningful positions)
     confidence_multiplier: float = 2.0  # Scale position by confidence
     volatility_adjustment: bool = True  # Adjust for volatility
     

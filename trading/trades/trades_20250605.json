@@ -1,0 +1,54 @@
+[
+  {
+    "timestamp": "2025-06-05T00:50:15.194069",
+    "symbol": "BTC/USD",
+    "action": "BUY",
+    "quantity": 0.06307973880258815,
+    "price": 104858.0,
+    "confidence": 0.33693042397499084,
+    "ml_signal": "Buy",
+    "order_id": "58a62131-a97a-4c8f-b37f-3c719fee1483",
+    "commission": 0.0,
+    "pnl": 0.0,
+    "reason": "ML Signal: TRADE: Buy (MEDIUM confidence: 33.7%)"
+  },
+  {
+    "timestamp": "2025-06-05T00:50:16.016713",
+    "symbol": "DOT/USD",
+    "action": "BUY",
+    "quantity": 1717.3307464221493,
+    "price": 4.003,
+    "confidence": 0.3501775562763214,
+    "ml_signal": "Buy",
+    "order_id": "c24985a4-d3b2-48af-bbb8-b394dad23619",
+    "commission": 0.0,
+    "pnl": 0.0,
+    "reason": "ML Signal: TRADE: Buy (MEDIUM confidence: 35.0%)"
+  },
+  {
+    "timestamp": "2025-06-05T01:26:38.221307",
+    "symbol": "AVAX/USD",
+    "action": "BUY",
+    "quantity": 343.602244524092,
+    "price": 20.15,
+    "confidence": 0.353210985660553,
+    "ml_signal": "Buy",
+    "order_id": "5292ec87-d9eb-440e-8b54-e182c88beaaa",
+    "commission": 0.0,
+    "pnl": 0.0,
+    "reason": "ML Signal: TRADE: Buy (MEDIUM confidence: 35.3%)"
+  },
+  {
+    "timestamp": "2025-06-05T01:26:39.044542",
+    "symbol": "DOT/USD",
+    "action": "BUY",
+    "quantity": 1702.733630435659,
+    "price": 4.025,
+    "confidence": 0.34963569045066833,
+    "ml_signal": "Buy",
+    "order_id": "d126a098-2ac6-4aea-a493-cb1b0333d780",
+    "commission": 0.0,
+    "pnl": 0.0,
+    "reason": "ML Signal: TRADE: Buy (MEDIUM confidence: 35.0%)"
+  }
+]

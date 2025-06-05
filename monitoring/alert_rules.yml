@@ -1,0 +1,154 @@
+groups:
+- name: crypto-trading-alerts
+  rules:
+  
+  # Application Health Alerts
+  - alert: CryptoTradingEngineDown
+    expr: up{job="crypto-trading-engine"} == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Crypto Trading Engine is down"
+      description: "The crypto trading engine has been down for more than 1 minute."
+
+  - alert: HighErrorRate
+    expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High error rate detected"
+      description: "Error rate is {{ $value }} errors per second."
+
+  # Trading Alerts
+  - alert: NoTradesExecuted
+    expr: increase(trades_total[1h]) == 0
+    for: 1h
+    labels:
+      severity: warning
+    annotations:
+      summary: "No trades executed in the last hour"
+      description: "The trading engine hasn't executed any trades in the last hour."
+
+  - alert: HighTradingLoss
+    expr: trading_pnl_total < -1000
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High trading losses detected"
+      description: "Total P&L has dropped below -$1000: {{ $value }}"
+
+  - alert: MaxDailyTradesReached
+    expr: increase(trades_total[1d]) >= 20
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Maximum daily trades reached"
+      description: "The system has reached the maximum number of daily trades (20)."
+
+  # System Resource Alerts
+  - alert: HighMemoryUsage
+    expr: (container_memory_usage_bytes / container_spec_memory_limit_bytes) * 100 > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High memory usage"
+      description: "Memory usage is above 80%: {{ $value }}%"
+
+  - alert: HighCPUUsage
+    expr: rate(container_cpu_usage_seconds_total[5m]) * 100 > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High CPU usage"
+      description: "CPU usage is above 80%: {{ $value }}%"
+
+  - alert: LowDiskSpace
+    expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100 < 10
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Low disk space"
+      description: "Disk space is below 10%: {{ $value }}%"
+
+  # Redis Alerts
+  - alert: RedisDown
+    expr: redis_up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Redis is down"
+      description: "Redis instance has been down for more than 1 minute."
+
+  - alert: RedisHighMemoryUsage
+    expr: redis_memory_used_bytes / redis_memory_max_bytes * 100 > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Redis high memory usage"
+      description: "Redis memory usage is above 80%: {{ $value }}%"
+
+  # ML Model Alerts
+  - alert: MLModelPredictionAccuracyLow
+    expr: ml_model_accuracy < 0.6
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: "ML model prediction accuracy is low"
+      description: "ML model accuracy has dropped below 60%: {{ $value }}"
+
+  - alert: MLModelNotUpdated
+    expr: time() - ml_model_last_update_timestamp > 7200
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "ML model hasn't been updated"
+      description: "ML model hasn't been updated in over 2 hours."
+
+  # Network and API Alerts
+  - alert: BinanceAPIErrors
+    expr: rate(binance_api_errors_total[5m]) > 0.1
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High Binance API error rate"
+      description: "Binance API error rate is {{ $value }} per second."
+
+  - alert: APIRateLimitReached
+    expr: rate(api_rate_limit_exceeded_total[1m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "API rate limit reached"
+      description: "API rate limit has been exceeded."
+
+  # Data Quality Alerts
+  - alert: StaleMarketData
+    expr: time() - market_data_last_update_timestamp > 300
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Stale market data"
+      description: "Market data hasn't been updated in over 5 minutes."
+
+  - alert: MissingHistoricalData
+    expr: historical_data_gaps_total > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Missing historical data detected"
+      description: "{{ $value }} gaps detected in historical data."

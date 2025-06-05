@@ -16,6 +16,7 @@ from datetime import datetime
 from typing import Dict, List, Optional
 
 from trading.models import Position, PositionType, TradingConfig, TradingSignal, TradeRecord
+from config.symbol_manager import symbol_manager
 
 
 class TradeExecutor:
@@ -362,14 +363,8 @@ class TradeExecutor:
             self.logger.error(f"Error saving trade record: {e}")
     
     def _convert_symbol_format(self, symbol: str) -> str:
-        """Convert symbol format from Binance to Alpaca format."""
-        try:
-            if symbol.endswith('USDT'):
-                base = symbol[:-4]
-                return f"{base}/USD"
-            return symbol
-        except Exception:
-            return symbol
+        """Convert symbol format from Binance to Alpaca format using SymbolManager."""
+        return symbol_manager.binance_to_alpaca_format(symbol)
     
     def get_trade_history(self) -> List[TradeRecord]:
         """Get trade history."""

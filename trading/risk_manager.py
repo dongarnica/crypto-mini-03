@@ -25,7 +25,7 @@ from config.symbol_manager import symbol_manager
 class RiskManager:
     """Manages risk controls and position monitoring."""
     
-    def __init__(self, config: TradingConfig, position_manager, trading_client):
+    def __init__(self, config: TradingConfig, position_manager, trading_client, trade_executor=None):
         """
         Initialize risk manager.
         
@@ -33,11 +33,18 @@ class RiskManager:
             config: Trading configuration
             position_manager: Position manager instance
             trading_client: Trading client for price data and order execution
+            trade_executor: Trade executor instance (optional, can be set later)
         """
         self.config = config
         self.position_manager = position_manager
         self.trading_client = trading_client
+        self.trade_executor = trade_executor  # Allow setting later to avoid circular imports
         self.logger = logging.getLogger('RiskManager')
+    
+    def set_trade_executor(self, trade_executor) -> None:
+        """Set the trade executor (to avoid circular imports)."""
+        self.trade_executor = trade_executor
+        self.logger.info("🔗 Trade executor linked to risk manager")
     
     def check_risk_management(self, portfolio_value: float) -> None:
         """
@@ -102,9 +109,20 @@ class RiskManager:
         Returns:
             True if trade should be allowed
         """
+        # CRITICAL: Reject negative or zero position sizes immediately
+        if position_size <= 0:
+            self.logger.warning(f"Trade rejected: invalid position size ${position_size:.2f}")
+            return False
+        
         # Check portfolio risk limits
         current_position_value = self.position_manager.get_total_position_value()
         portfolio_risk = current_position_value / portfolio_value if portfolio_value > 0 else 0.0
+        
+        # Enhanced debug logging
+        self.logger.debug(f"Risk check for {symbol} {signal.value}:")
+        self.logger.debug(f"  Current portfolio risk: {portfolio_risk:.1%}")
+        self.logger.debug(f"  Max portfolio risk: {self.config.max_portfolio_risk:.1%}")
+        self.logger.debug(f"  Proposed position size: ${position_size:.2f}")
         
         if signal == TradingSignal.BUY:
             # Check if adding this position would exceed portfolio risk
@@ -113,6 +131,10 @@ class RiskManager:
                 self.logger.warning(f"Trade would exceed portfolio risk limit: "
                                   f"{new_portfolio_risk:.1%} > {self.config.max_portfolio_risk:.1%}")
                 return False
+        elif signal in [TradingSignal.SELL, TradingSignal.CLOSE_LONG, TradingSignal.CLOSE_SHORT]:
+            # Always allow sell trades as they reduce risk
+            self.logger.debug(f"Allowing {signal.value} trade to reduce portfolio risk")
+            return True
         
         # Check if already at max position size for this symbol
         if self.position_manager.has_position(symbol):
@@ -162,13 +184,47 @@ class RiskManager:
             # Ensure we don't exceed available cash
             position_size = min(position_size, available_cash * 0.95)  # Leave 5% buffer
             
+            # Debug logging for risk calculation
+            current_position_value = self.position_manager.get_total_position_value()
+            portfolio_risk = current_position_value / portfolio_value if portfolio_value > 0 else 0.0
+            
+            self.logger.debug(f"Position sizing debug for {symbol}:")
+            self.logger.debug(f"  Portfolio value: ${portfolio_value:,.2f}")
+            self.logger.debug(f"  Available cash: ${available_cash:,.2f}")
+            self.logger.debug(f"  Current position value: ${current_position_value:,.2f}")
+            self.logger.debug(f"  Current portfolio risk: {portfolio_risk:.1%}")
+            self.logger.debug(f"  Max portfolio risk: {self.config.max_portfolio_risk:.1%}")
+            self.logger.debug(f"  Base position size: ${base_size:.2f}")
+            self.logger.debug(f"  Confidence adjusted: ${confidence_adjusted:.2f}")
+            self.logger.debug(f"  Position size before risk check: ${position_size:.2f}")
+            
             # Ensure we don't exceed portfolio risk limits
             current_position_value = self.position_manager.get_total_position_value()
             portfolio_risk = current_position_value / portfolio_value if portfolio_value > 0 else 0.0
             
-            if portfolio_risk + (position_size / portfolio_value) > self.config.max_portfolio_risk:
+            # CRITICAL FIX: Handle case where portfolio risk already exceeds maximum
+            if portfolio_risk >= self.config.max_portfolio_risk:
+                self.logger.warning(f"🚨 Portfolio risk {portfolio_risk:.1%} already exceeds maximum {self.config.max_portfolio_risk:.1%}")
+                self.logger.warning(f"🛑 Blocking new trades until risk is reduced")
+                return 0.0
+            
+            # Check if adding this position would exceed portfolio risk
+            proposed_risk = portfolio_risk + (position_size / portfolio_value)
+            if proposed_risk > self.config.max_portfolio_risk:
                 remaining_risk = self.config.max_portfolio_risk - portfolio_risk
-                position_size = min(position_size, remaining_risk * portfolio_value)
+                # Ensure remaining_risk is positive before calculating position size
+                if remaining_risk > 0:
+                    max_allowed_size = remaining_risk * portfolio_value
+                    position_size = min(position_size, max_allowed_size)
+                    self.logger.info(f"⚠️ Position size reduced to stay within risk limits: ${position_size:.2f}")
+                else:
+                    self.logger.warning(f"🚨 No remaining risk capacity: portfolio_risk={portfolio_risk:.1%}, max={self.config.max_portfolio_risk:.1%}")
+                    return 0.0
+            
+            # CRITICAL SAFETY CHECK: Ensure position size is never negative
+            if position_size < 0:
+                self.logger.error(f"CRITICAL: Position size calculation resulted in negative value: ${position_size:.2f}")
+                return 0.0
             
             # Minimum position size check
             min_size = 10.0  # $10 minimum
@@ -283,10 +339,37 @@ class RiskManager:
     def _trigger_stop_loss(self, symbol: str, current_price: float) -> None:
         """Trigger stop loss by closing the position."""
         try:
-            # This would typically integrate with the trade executor
-            # For now, just log the action
             self.logger.warning(f"🛑 STOP LOSS TRIGGERED: {symbol} @ ${current_price:.2f}")
-            # TODO: Integrate with trade executor to actually close the position
+            
+            # CRITICAL FIX: Actually execute the stop loss trade
+            if self.trade_executor and self.position_manager.has_position(symbol):
+                position = self.position_manager.get_position(symbol)
+                
+                # Create a mock ML prediction for the close order
+                mock_prediction = {
+                    'signal': 'CLOSE',
+                    'confidence': 1.0,  # High confidence for risk management action
+                    'recommendation': f'Stop loss triggered @ ${current_price:.2f}',
+                    'current_price': current_price
+                }
+                
+                # Execute close order
+                close_signal = TradingSignal.CLOSE_LONG if position.position_type == PositionType.LONG else TradingSignal.CLOSE_SHORT
+                trade_record = self.trade_executor.execute_trade(
+                    symbol=symbol,
+                    signal=close_signal,
+                    confidence=1.0,
+                    current_price=current_price,
+                    position_size=0,  # Not needed for close
+                    ml_prediction=mock_prediction
+                )
+                
+                if trade_record:
+                    self.logger.info(f"✅ Stop loss executed for {symbol}")
+                else:
+                    self.logger.error(f"❌ Failed to execute stop loss for {symbol}")
+            else:
+                self.logger.warning(f"⚠️ Cannot execute stop loss - trade executor not available or no position for {symbol}")
             
         except Exception as e:
             self.logger.error(f"Error triggering stop loss for {symbol}: {e}")
@@ -294,10 +377,37 @@ class RiskManager:
     def _trigger_take_profit(self, symbol: str, current_price: float) -> None:
         """Trigger take profit by closing the position."""
         try:
-            # This would typically integrate with the trade executor
-            # For now, just log the action
             self.logger.info(f"🎯 TAKE PROFIT TRIGGERED: {symbol} @ ${current_price:.2f}")
-            # TODO: Integrate with trade executor to actually close the position
+            
+            # CRITICAL FIX: Actually execute the take profit trade
+            if self.trade_executor and self.position_manager.has_position(symbol):
+                position = self.position_manager.get_position(symbol)
+                
+                # Create a mock ML prediction for the close order
+                mock_prediction = {
+                    'signal': 'CLOSE',
+                    'confidence': 1.0,  # High confidence for risk management action
+                    'recommendation': f'Take profit triggered @ ${current_price:.2f}',
+                    'current_price': current_price
+                }
+                
+                # Execute close order
+                close_signal = TradingSignal.CLOSE_LONG if position.position_type == PositionType.LONG else TradingSignal.CLOSE_SHORT
+                trade_record = self.trade_executor.execute_trade(
+                    symbol=symbol,
+                    signal=close_signal,
+                    confidence=1.0,
+                    current_price=current_price,
+                    position_size=0,  # Not needed for close
+                    ml_prediction=mock_prediction
+                )
+                
+                if trade_record:
+                    self.logger.info(f"✅ Take profit executed for {symbol}")
+                else:
+                    self.logger.error(f"❌ Failed to execute take profit for {symbol}")
+            else:
+                self.logger.warning(f"⚠️ Cannot execute take profit - trade executor not available or no position for {symbol}")
             
         except Exception as e:
             self.logger.error(f"Error triggering take profit for {symbol}: {e}")

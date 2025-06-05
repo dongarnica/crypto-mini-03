@@ -326,44 +326,183 @@ class BinanceUSClient:
     
     def get_price(self, symbol: Optional[str] = None) -> Union[Dict, List[Dict]]:
         """
-        Get latest price for symbol(s).
+        Get latest price for symbol(s) with enhanced error handling.
         
         Args:
             symbol: Trading pair symbol (if None, returns all symbols)
             
         Returns:
             Price data for symbol or all symbols
+            
+        Raises:
+            ValueError: If symbol format is invalid
+            requests.HTTPError: If API request fails
         """
-        params = {}
-        if symbol:
-            params['symbol'] = symbol.upper()
-            weight = 1
-        else:
-            weight = 2
-        
-        data = self._make_request("/api/v3/ticker/price", params, weight=weight)
-        
-        # Convert price to float
-        if isinstance(data, list):
-            for item in data:
-                item['price'] = float(item['price'])
-        else:
-            data['price'] = float(data['price'])
-        
-        return data
+        try:
+            params = {}
+            if symbol is not None:
+                # Validate and normalize symbol
+                symbol_clean = symbol.upper().strip()
+                if not self._validate_symbol_format(symbol_clean):
+                    raise ValueError(f"Invalid symbol format: {symbol}")
+                
+                params['symbol'] = symbol_clean
+                weight = 1
+            else:
+                weight = 2
+            
+            data = self._make_request("/api/v3/ticker/price", params, weight=weight)
+            
+            # Validate response data
+            if not data:
+                raise ValueError(f"No price data returned for {symbol}")
+            
+            # Convert price to float with validation
+            if isinstance(data, list):
+                for item in data:
+                    if 'price' not in item:
+                        self.logger.warning(f"Missing price field in response: {item}")
+                        continue
+                    try:
+                        item['price'] = float(item['price'])
+                    except (ValueError, TypeError) as e:
+                        self.logger.warning(f"Invalid price value: {item.get('price')} - {e}")
+                        item['price'] = 0.0
+            else:
+                if 'price' not in data:
+                    raise ValueError(f"Missing price field in response for {symbol}")
+                try:
+                    data['price'] = float(data['price'])
+                except (ValueError, TypeError) as e:
+                    raise ValueError(f"Invalid price value for {symbol}: {data.get('price')} - {e}")
+            
+            return data
+            
+        except Exception as e:
+            self.logger.error(f"Error getting price for {symbol}: {e}")
+            raise
     
     def get_avg_price(self, symbol: str) -> Dict:
         """
-        Get current average price for a symbol.
+        Get current average price for a symbol with enhanced validation.
         
         Args:
             symbol: Trading pair symbol
             
         Returns:
             Average price data
+            
+        Raises:
+            ValueError: If symbol format is invalid or no data returned
         """
-        params = {'symbol': symbol.upper()}
-        data = self._make_request("/api/v3/avgPrice", params, weight=1)
-        data['price'] = float(data['price'])
-        return data
+        try:
+            # Validate and normalize symbol
+            symbol_clean = symbol.upper().strip()
+            if not self._validate_symbol_format(symbol_clean):
+                raise ValueError(f"Invalid symbol format: {symbol}")
+            
+            params = {'symbol': symbol_clean}
+            data = self._make_request("/api/v3/avgPrice", params, weight=1)
+            
+            # Validate response
+            if not data or 'price' not in data:
+                raise ValueError(f"No average price data returned for {symbol}")
+            
+            try:
+                data['price'] = float(data['price'])
+            except (ValueError, TypeError) as e:
+                raise ValueError(f"Invalid average price value for {symbol}: {data.get('price')} - {e}")
+            
+            return data
+            
+        except Exception as e:
+            self.logger.error(f"Error getting average price for {symbol}: {e}")
+            raise
+    
+    def _validate_symbol_format(self, symbol: str) -> bool:
+        """
+        Validate symbol format for Binance API.
+        
+        Args:
+            symbol: Symbol to validate
+            
+        Returns:
+            True if valid Binance symbol format
+        """
+        try:
+            if not symbol or not isinstance(symbol, str):
+                return False
+            
+            symbol = symbol.upper().strip()
+            
+            # Basic format checks
+            if len(symbol) < 6:  # Minimum length for crypto pairs
+                return False
+            
+            # Check for valid characters (only letters and numbers)
+            if not symbol.replace('1', '').replace('2', '').replace('3', '').isalpha():
+                return False
+            
+            # Common Binance pair patterns
+            valid_quotes = ['USDT', 'USD', 'BTC', 'ETH', 'BNB', 'BUSD']
+            for quote in valid_quotes:
+                if symbol.endswith(quote) and len(symbol) > len(quote):
+                    base = symbol[:-len(quote)]
+                    if base.isalpha() and len(base) >= 2:
+                        return True
+            
+            return False
+            
+        except Exception:
+            return False
+    
+    def test_symbol_connectivity(self, symbol: str) -> Dict[str, bool]:
+        """
+        Test connectivity and data availability for a symbol.
+        
+        Args:
+            symbol: Symbol to test
+            
+        Returns:
+            Dictionary with test results
+        """
+        results = {
+            'symbol_valid': False,
+            'price_available': False,
+            'avg_price_available': False,
+            'ticker_available': False
+        }
+        
+        try:
+            # Test symbol format
+            results['symbol_valid'] = self._validate_symbol_format(symbol)
+            
+            if not results['symbol_valid']:
+                return results
+            
+            # Test price endpoint
+            try:
+                price_data = self.get_price(symbol)
+                results['price_available'] = bool(price_data and 'price' in price_data)
+            except Exception as e:
+                self.logger.debug(f"Price test failed for {symbol}: {e}")
+            
+            # Test average price endpoint
+            try:
+                avg_data = self.get_avg_price(symbol)
+                results['avg_price_available'] = bool(avg_data and 'price' in avg_data)
+            except Exception as e:
+                self.logger.debug(f"Avg price test failed for {symbol}: {e}")
+            
+            # Test ticker endpoint
+            try:
+                ticker_data = self.get_ticker(symbol)
+                results['ticker_available'] = bool(ticker_data)
+            except Exception as e:
+                self.logger.debug(f"Ticker test failed for {symbol}: {e}")
+            
+        except Exception as e:
+            self.logger.error(f"Error testing symbol connectivity for {symbol}: {e}")
+        
+        return results
 

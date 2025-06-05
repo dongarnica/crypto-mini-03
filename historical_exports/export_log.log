@@ -1,181 +1,151 @@
-2025-06-01 18:30:36 - INFO - Starting data collection for BTCUSDT
-2025-06-01 18:30:39 - INFO - Collected 8760 records for BTCUSDT
-2025-06-01 18:30:39 - INFO - Starting data collection for ETHUSDT
-2025-06-01 18:30:42 - INFO - Collected 8760 records for ETHUSDT
-2025-06-01 18:30:42 - INFO - Starting data collection for ADAUSDT
-2025-06-01 18:30:45 - INFO - Collected 8760 records for ADAUSDT
-2025-06-01 18:30:45 - INFO - Starting data collection for DOTUSDT
-2025-06-01 18:30:48 - INFO - Collected 8760 records for DOTUSDT
-2025-06-01 18:30:48 - INFO - Starting data collection for LINKUSDT
-2025-06-01 18:30:50 - INFO - Collected 8760 records for LINKUSDT
-2025-06-01 18:30:50 - INFO - Starting data collection for LTCUSDT
-2025-06-01 18:30:53 - INFO - Collected 8760 records for LTCUSDT
-2025-06-01 18:30:53 - INFO - Starting data collection for BCHUSDT
-2025-06-01 18:30:56 - INFO - Collected 8760 records for BCHUSDT
-2025-06-01 18:30:56 - INFO - Starting data collection for XLMUSDT
-2025-06-01 18:30:58 - INFO - Collected 8760 records for XLMUSDT
-2025-06-01 18:30:58 - INFO - Starting data collection for UNIUSDT
-2025-06-01 18:31:01 - INFO - Collected 8760 records for UNIUSDT
-2025-06-01 18:31:01 - INFO - Starting data collection for SOLUSDT
-2025-06-01 18:31:04 - INFO - Collected 8760 records for SOLUSDT
-2025-06-01 18:31:04 - INFO - Starting data collection for MATICUSDT
-2025-06-01 18:31:06 - INFO - Collected 5335 records for MATICUSDT
-2025-06-01 18:31:06 - INFO - Starting data collection for AVAXUSDT
-2025-06-01 18:31:08 - INFO - Collected 8760 records for AVAXUSDT
-2025-06-01 20:11:56 - INFO - Starting data collection for BTCUSDT
-2025-06-01 20:11:58 - INFO - Collected 8760 records for BTCUSDT
-2025-06-01 20:11:59 - INFO - Starting data collection for ETHUSDT
-2025-06-01 20:12:02 - INFO - Collected 8760 records for ETHUSDT
-2025-06-01 20:12:02 - INFO - Starting data collection for ADAUSDT
-2025-06-01 20:12:05 - INFO - Collected 8760 records for ADAUSDT
-2025-06-01 20:12:05 - INFO - Starting data collection for DOTUSDT
-2025-06-01 20:12:08 - INFO - Collected 8760 records for DOTUSDT
-2025-06-01 20:12:08 - INFO - Starting data collection for LINKUSDT
-2025-06-01 20:12:11 - INFO - Collected 8760 records for LINKUSDT
-2025-06-01 20:12:11 - INFO - Starting data collection for LTCUSDT
-2025-06-01 20:12:14 - INFO - Collected 8760 records for LTCUSDT
-2025-06-01 20:12:14 - INFO - Starting data collection for BCHUSDT
-2025-06-01 20:12:16 - INFO - Collected 8760 records for BCHUSDT
-2025-06-01 20:12:16 - INFO - Starting data collection for XLMUSDT
-2025-06-01 20:12:19 - INFO - Collected 8760 records for XLMUSDT
-2025-06-01 20:12:19 - INFO - Starting data collection for UNIUSDT
-2025-06-01 20:12:21 - INFO - Collected 8760 records for UNIUSDT
-2025-06-01 20:12:21 - INFO - Starting data collection for SOLUSDT
-2025-06-01 20:12:24 - INFO - Collected 8760 records for SOLUSDT
-2025-06-01 20:12:24 - INFO - Starting data collection for MATICUSDT
-2025-06-01 20:12:26 - INFO - Collected 5333 records for MATICUSDT
-2025-06-01 20:12:27 - INFO - Starting data collection for AVAXUSDT
-2025-06-01 20:12:29 - INFO - Collected 8760 records for AVAXUSDT
-2025-06-02 03:00:12 - INFO - Starting data collection for BTCUSDT
-2025-06-02 03:00:17 - INFO - Collected 8760 records for BTCUSDT
-2025-06-02 03:00:18 - INFO - Starting data collection for ETHUSDT
-2025-06-02 03:00:22 - INFO - Collected 8760 records for ETHUSDT
-2025-06-02 03:00:22 - INFO - Starting data collection for ADAUSDT
-2025-06-02 03:00:26 - INFO - Collected 8760 records for ADAUSDT
-2025-06-02 03:00:26 - INFO - Starting data collection for DOTUSDT
-2025-06-02 03:00:30 - INFO - Collected 8760 records for DOTUSDT
-2025-06-02 03:00:30 - INFO - Starting data collection for LINKUSDT
-2025-06-02 03:00:33 - INFO - Collected 8760 records for LINKUSDT
-2025-06-02 03:00:33 - INFO - Starting data collection for LTCUSDT
-2025-06-02 03:00:37 - INFO - Collected 8760 records for LTCUSDT
-2025-06-02 03:00:37 - INFO - Starting data collection for BCHUSDT
-2025-06-02 03:00:41 - INFO - Collected 8760 records for BCHUSDT
-2025-06-02 03:00:41 - INFO - Starting data collection for XLMUSDT
-2025-06-02 03:00:44 - INFO - Collected 8760 records for XLMUSDT
-2025-06-02 03:00:44 - INFO - Starting data collection for UNIUSDT
-2025-06-02 03:00:48 - INFO - Collected 8760 records for UNIUSDT
-2025-06-02 03:00:48 - INFO - Starting data collection for SOLUSDT
-2025-06-02 03:00:51 - INFO - Collected 8760 records for SOLUSDT
-2025-06-02 03:00:52 - INFO - Starting data collection for MATICUSDT
-2025-06-02 03:00:54 - INFO - Collected 5326 records for MATICUSDT
-2025-06-02 03:00:55 - INFO - Starting data collection for AVAXUSDT
-2025-06-02 03:00:58 - INFO - Collected 8760 records for AVAXUSDT
-2025-06-02 05:52:57 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 05:52:57 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 05:52:57 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 05:52:57 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 05:52:57 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 05:52:57 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 05:52:57 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 05:52:57 - INFO - Starting data collection for BTCUSDT
-2025-06-02 05:53:00 - INFO - Collected 8760 records for BTCUSDT
-2025-06-02 05:53:01 - INFO - Starting data collection for ETHUSDT
-2025-06-02 05:53:04 - INFO - Collected 8760 records for ETHUSDT
-2025-06-02 05:53:04 - INFO - Starting data collection for ADAUSDT
-2025-06-02 05:53:06 - INFO - Collected 8760 records for ADAUSDT
-2025-06-02 05:53:07 - INFO - Starting data collection for DOTUSDT
-2025-06-02 05:53:25 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 05:53:25 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 05:53:25 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 05:53:25 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 05:53:25 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 05:53:25 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 05:53:25 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 05:53:25 - INFO - Starting data collection for BTCUSDT
-2025-06-02 05:53:26 - INFO - Collected 745 records for BTCUSDT
-2025-06-02 05:53:26 - INFO - Starting data collection for ETHUSDT
-2025-06-02 05:53:26 - INFO - Collected 745 records for ETHUSDT
-2025-06-02 05:53:26 - INFO - Starting data collection for ADAUSDT
-2025-06-02 05:53:26 - INFO - Collected 745 records for ADAUSDT
-2025-06-02 05:53:27 - INFO - Starting data collection for DOTUSDT
-2025-06-02 05:53:27 - INFO - Collected 745 records for DOTUSDT
-2025-06-02 05:53:27 - INFO - Starting data collection for LINKUSDT
-2025-06-02 05:53:27 - INFO - Collected 745 records for LINKUSDT
-2025-06-02 05:53:27 - INFO - Starting data collection for LTCUSDT
-2025-06-02 05:53:28 - INFO - Collected 745 records for LTCUSDT
-2025-06-02 05:53:28 - INFO - Starting data collection for BCHUSDT
-2025-06-02 05:53:28 - INFO - Collected 745 records for BCHUSDT
-2025-06-02 05:53:28 - INFO - Starting data collection for XLMUSDT
-2025-06-02 05:53:28 - INFO - Collected 745 records for XLMUSDT
-2025-06-02 05:53:29 - INFO - Starting data collection for UNIUSDT
-2025-06-02 05:53:29 - INFO - Collected 745 records for UNIUSDT
-2025-06-02 05:53:29 - INFO - Starting data collection for SOLUSDT
-2025-06-02 05:53:29 - INFO - Collected 745 records for SOLUSDT
-2025-06-02 05:53:30 - INFO - Starting data collection for MATICUSDT
-2025-06-02 05:53:30 - WARNING - No data collected for MATICUSDT
-2025-06-02 05:53:30 - INFO - Starting data collection for AVAXUSDT
-2025-06-02 05:53:30 - INFO - Collected 745 records for AVAXUSDT
-2025-06-02 05:59:40 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 05:59:40 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 05:59:40 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 05:59:40 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 05:59:40 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 05:59:40 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 05:59:40 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 05:59:40 - INFO - Fetching current prices for 12 symbols...
-2025-06-02 05:59:47 - INFO - Price retrieval completed: 12 successful, 0 failed
-2025-06-02 05:59:47 - INFO - Price data saved to historical_exports/current_prices_20250602_055947.json
-2025-06-02 06:01:48 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 06:01:48 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 06:01:48 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 06:01:48 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 06:01:48 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 06:01:48 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 06:01:48 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 06:01:48 - INFO - Fetching current prices for 12 symbols...
-2025-06-02 06:01:56 - INFO - Price retrieval completed: 12 successful, 0 failed
-2025-06-02 06:01:56 - INFO - Price data saved to historical_exports/current_prices_20250602_060156.json
-2025-06-02 06:02:08 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 06:02:08 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 06:02:08 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 06:02:08 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 06:02:08 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 06:02:08 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 06:02:08 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 06:02:08 - INFO - Fetching current prices for 12 symbols...
-2025-06-02 06:02:15 - INFO - Price retrieval completed: 12 successful, 0 failed
-2025-06-02 06:02:15 - INFO - Price data saved to historical_exports/current_prices_20250602_060215.json
-2025-06-02 06:03:16 - INFO - Loaded 12 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 06:03:16 - INFO - Found 4 DeFi symbols: UNIUSDT, LINKUSDT, AVAXUSDT, MATICUSDT
-2025-06-02 06:03:16 - INFO - Found 5 Altcoin symbols: DOTUSDT, LTCUSDT, BCHUSDT, XLMUSDT, SOLUSDT
-2025-06-02 06:03:16 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 06:03:16 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 06:03:16 - INFO - Found 1 Tertiary symbols: ADAUSDT
-2025-06-02 06:03:16 - INFO - Default symbols: BTCUSDT, ETHUSDT, ADAUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, XLMUSDT, UNIUSDT, SOLUSDT, MATICUSDT, AVAXUSDT
-2025-06-02 06:03:16 - INFO - Fetching current prices for 2 symbols...
-2025-06-02 06:03:17 - INFO - Price retrieval completed: 2 successful, 0 failed
-2025-06-02 06:03:17 - INFO - Price data saved to historical_exports/current_prices_20250602_060317.json
-2025-06-02 23:17:04 - INFO - Loaded 9 symbols from CRYPTO_SYMBOLS environment variable
-2025-06-02 23:17:04 - INFO - Found 5 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, SOLUSDT
-2025-06-02 23:17:04 - INFO - Found 1 Primary symbols: BTCUSDT
-2025-06-02 23:17:04 - INFO - Found 1 Secondary symbols: ETHUSDT
-2025-06-02 23:17:04 - INFO - Found 1 Tertiary symbols: DOTUSDT
-2025-06-02 23:17:04 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOTUSDT, LINKUSDT, LTCUSDT, BCHUSDT, UNIUSDT, SOLUSDT, AVAXUSDT
-2025-06-02 23:17:04 - INFO - Starting data collection for BTCUSDT
-2025-06-02 23:17:07 - INFO - Collected 8760 records for BTCUSDT
-2025-06-02 23:17:08 - INFO - Starting data collection for ETHUSDT
-2025-06-02 23:17:11 - INFO - Collected 8760 records for ETHUSDT
-2025-06-02 23:17:11 - INFO - Starting data collection for DOTUSDT
-2025-06-02 23:17:14 - INFO - Collected 8760 records for DOTUSDT
-2025-06-02 23:17:14 - INFO - Starting data collection for LINKUSDT
-2025-06-02 23:17:17 - INFO - Collected 8760 records for LINKUSDT
-2025-06-02 23:17:18 - INFO - Starting data collection for LTCUSDT
-2025-06-02 23:17:20 - INFO - Collected 8760 records for LTCUSDT
-2025-06-02 23:17:20 - INFO - Starting data collection for BCHUSDT
-2025-06-02 23:17:23 - INFO - Collected 8760 records for BCHUSDT
-2025-06-02 23:17:23 - INFO - Starting data collection for UNIUSDT
-2025-06-02 23:17:25 - INFO - Collected 8760 records for UNIUSDT
-2025-06-02 23:17:26 - INFO - Starting data collection for SOLUSDT
-2025-06-02 23:17:28 - INFO - Collected 8760 records for SOLUSDT
-2025-06-02 23:17:28 - INFO - Starting data collection for AVAXUSDT
-2025-06-02 23:17:31 - INFO - Collected 8760 records for AVAXUSDT
+2025-06-05 01:16:27 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:16:27 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:16:27 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:16:27 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:16:27 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:16:27 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:16:27 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:19:00 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:19:00 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:19:00 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:19:00 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:19:00 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:19:00 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:19:00 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:19:59 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:19:59 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:19:59 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:19:59 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:19:59 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:19:59 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:19:59 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:19:59 - INFO - Starting data collection for LINKUSDT
+2025-06-05 01:19:59 - INFO - Collected 48 records for LINKUSDT
+2025-06-05 01:19:59 - INFO - Starting data collection for SUSHIUSDT
+2025-06-05 01:20:00 - INFO - Collected 48 records for SUSHIUSDT
+2025-06-05 01:20:00 - INFO - Starting data collection for UNIUSDT
+2025-06-05 01:20:00 - INFO - Collected 48 records for UNIUSDT
+2025-06-05 01:20:01 - INFO - Starting data collection for DOTUSDT
+2025-06-05 01:20:01 - INFO - Collected 48 records for DOTUSDT
+2025-06-05 01:20:01 - INFO - Starting data collection for YFIUSDT
+2025-06-05 01:20:01 - INFO - Collected 48 records for YFIUSDT
+2025-06-05 01:20:01 - INFO - Starting data collection for SOLUSDT
+2025-06-05 01:20:02 - INFO - Collected 48 records for SOLUSDT
+2025-06-05 01:20:02 - INFO - Starting data collection for XRPUSDT
+2025-06-05 01:20:02 - INFO - Collected 48 records for XRPUSDT
+2025-06-05 01:20:03 - INFO - Starting data collection for DOGEUSDT
+2025-06-05 01:20:03 - INFO - Collected 48 records for DOGEUSDT
+2025-06-05 01:20:03 - INFO - Starting data collection for AVAXUSDT
+2025-06-05 01:20:03 - INFO - Collected 48 records for AVAXUSDT
+2025-06-05 01:20:03 - INFO - Starting data collection for BCHUSDT
+2025-06-05 01:20:04 - INFO - Collected 48 records for BCHUSDT
+2025-06-05 01:20:04 - INFO - Starting data collection for SHIBUSDT
+2025-06-05 01:20:04 - INFO - Collected 48 records for SHIBUSDT
+2025-06-05 01:20:05 - INFO - Starting data collection for LTCUSDT
+2025-06-05 01:20:05 - INFO - Collected 48 records for LTCUSDT
+2025-06-05 01:20:05 - INFO - Starting data collection for AAVEUSDT
+2025-06-05 01:20:05 - INFO - Collected 48 records for AAVEUSDT
+2025-06-05 01:20:05 - INFO - Starting data collection for ETHUSDT
+2025-06-05 01:20:06 - INFO - Collected 48 records for ETHUSDT
+2025-06-05 01:20:06 - INFO - Starting data collection for BTCUSDT
+2025-06-05 01:20:06 - INFO - Collected 48 records for BTCUSDT
+2025-06-05 01:26:31 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:26:31 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:26:31 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:26:31 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:26:31 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:26:31 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:26:31 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:37:05 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:37:05 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:37:05 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:37:05 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:37:05 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:37:05 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:37:05 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:37:22 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:37:22 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:37:22 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:37:22 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:37:22 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:37:22 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:37:22 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:43:46 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:43:46 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:43:46 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:43:46 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:43:46 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:43:46 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:43:46 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:44:01 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:44:01 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:44:01 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:44:01 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:44:01 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:44:01 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:44:01 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:44:22 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:44:22 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:44:22 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:44:22 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:44:22 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:44:22 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:44:22 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:44:22 - INFO - Starting data collection for LTCUSDT
+2025-06-05 01:44:25 - INFO - Collected 8760 records for LTCUSDT
+2025-06-05 01:44:26 - INFO - Starting data collection for AAVEUSDT
+2025-06-05 01:44:28 - INFO - Collected 8760 records for AAVEUSDT
+2025-06-05 01:44:29 - INFO - Starting data collection for DOGEUSDT
+2025-06-05 01:44:32 - INFO - Collected 8760 records for DOGEUSDT
+2025-06-05 01:44:32 - INFO - Starting data collection for DOTUSDT
+2025-06-05 01:44:35 - INFO - Collected 8760 records for DOTUSDT
+2025-06-05 01:44:35 - INFO - Starting data collection for SOLUSDT
+2025-06-05 01:44:38 - INFO - Collected 8760 records for SOLUSDT
+2025-06-05 01:44:38 - INFO - Starting data collection for YFIUSDT
+2025-06-05 01:44:41 - INFO - Collected 8760 records for YFIUSDT
+2025-06-05 01:44:41 - INFO - Starting data collection for UNIUSDT
+2025-06-05 01:44:43 - INFO - Collected 8760 records for UNIUSDT
+2025-06-05 01:44:43 - INFO - Starting data collection for SUSHIUSDT
+2025-06-05 01:44:46 - INFO - Collected 8760 records for SUSHIUSDT
+2025-06-05 01:44:46 - INFO - Starting data collection for AVAXUSDT
+2025-06-05 01:44:49 - INFO - Collected 8760 records for AVAXUSDT
+2025-06-05 01:44:49 - INFO - Starting data collection for XRPUSDT
+2025-06-05 01:44:51 - INFO - Collected 8760 records for XRPUSDT
+2025-06-05 01:44:52 - INFO - Starting data collection for BTCUSDT
+2025-06-05 01:44:54 - INFO - Collected 8760 records for BTCUSDT
+2025-06-05 01:44:54 - INFO - Starting data collection for BCHUSDT
+2025-06-05 01:44:57 - INFO - Collected 8760 records for BCHUSDT
+2025-06-05 01:44:57 - INFO - Starting data collection for LINKUSDT
+2025-06-05 01:44:59 - INFO - Collected 8760 records for LINKUSDT
+2025-06-05 01:44:59 - INFO - Starting data collection for ETHUSDT
+2025-06-05 01:45:02 - INFO - Collected 8760 records for ETHUSDT
+2025-06-05 01:45:02 - INFO - Starting data collection for SHIBUSDT
+2025-06-05 01:45:04 - INFO - Collected 8760 records for SHIBUSDT
+2025-06-05 01:45:56 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:45:56 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:45:56 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:45:56 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:45:56 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:45:56 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:45:56 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:46:28 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:46:28 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:46:28 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:46:28 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:46:28 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:46:28 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:46:28 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:47:39 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:47:39 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:47:39 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:47:39 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:47:39 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:47:39 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:47:39 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:58:36 - INFO - Loaded 15 symbols from CRYPTO_SYMBOLS environment variable
+2025-06-05 01:58:36 - INFO - Found 7 DeFi symbols: UNIUSDT, LINKUSDT, DOTUSDT, AVAXUSDT, AAVEUSDT, SUSHIUSDT, YFIUSDT
+2025-06-05 01:58:36 - INFO - Found 3 Altcoin symbols: DOGEUSDT, SHIBUSDT, XRPUSDT
+2025-06-05 01:58:36 - INFO - Found 1 Primary symbols: BTCUSDT
+2025-06-05 01:58:36 - INFO - Found 1 Secondary symbols: ETHUSDT
+2025-06-05 01:58:36 - INFO - Found 1 Tertiary symbols: SOLUSDT
+2025-06-05 01:58:36 - INFO - Default symbols: BTCUSDT, ETHUSDT, DOGEUSDT, SOLUSDT, AVAXUSDT, LTCUSDT, UNIUSDT, LINKUSDT, XRPUSDT, DOTUSDT, SHIBUSDT, AAVEUSDT, BCHUSDT, SUSHIUSDT, YFIUSDT

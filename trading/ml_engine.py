@@ -44,10 +44,15 @@ class MLEngine:
             # Determine log directory based on environment
             if os.path.exists('/app'):
                 # Running in Docker container
+                log_dir = '/app/trading/logs'
                 log_file = f'/app/trading/logs/trading_{datetime.now().strftime("%Y%m%d")}.log'
             else:
                 # Running in development environment
+                log_dir = '/workspaces/crypto-mini-03/trading/logs'
                 log_file = f'/workspaces/crypto-mini-03/trading/logs/trading_{datetime.now().strftime("%Y%m%d")}.log'
+            
+            # Ensure log directory exists
+            os.makedirs(log_dir, exist_ok=True)
             
             file_handler = logging.FileHandler(log_file)
             file_formatter = logging.Formatter(
@@ -81,25 +86,36 @@ class MLEngine:
                 model_path = self._get_model_path(symbol, use_3class=True)
                 
                 if os.path.exists(model_path):
-                    self.logger.info(f"Found existing 3-class model for {symbol}")
+                    self.logger.info(f"Found existing 3-class model for {symbol} at {model_path}")
                     try:
                         # First load the data (required for predictions)
                         pipeline.load_data_from_symbol(symbol)
                         pipeline.add_essential_indicators()
                         
                         # Then load the trained 3-class model
-                        pipeline.load_trained_model(model_path)
-                        self.logger.info(f"✅ Loaded 3-class model for {symbol}")
+                        if pipeline.load_trained_model(model_path):
+                            self.logger.info(f"✅ Successfully loaded 3-class model for {symbol}")
+                        else:
+                            raise Exception("Model loading failed")
+                            
                     except Exception as load_error:
-                        self.logger.warning(f"Failed to load 3-class model for {symbol}: {load_error}")
-                        self.logger.info(f"Will train new 3-class model for {symbol}")
-                        self._train_pipeline_model(pipeline, symbol)
+                        self.logger.error(f"❌ Failed to load 3-class model for {symbol}: {load_error}")
+                        self.logger.info(f"🔄 Will train new 3-class model for {symbol}")
+                        try:
+                            self._train_pipeline_model(pipeline, symbol)
+                        except Exception as train_error:
+                            self.logger.error(f"❌ Failed to train model for {symbol}: {train_error}")
+                            continue  # Skip this symbol
                 else:
-                    self.logger.info(f"No existing 3-class model for {symbol}, training new model...")
-                    # Load data before training
-                    pipeline.load_data_from_symbol(symbol)
-                    pipeline.add_essential_indicators()
-                    self._train_pipeline_model(pipeline, symbol)
+                    self.logger.info(f"No existing 3-class model for {symbol} at {model_path}, training new model...")
+                    try:
+                        # Load data before training
+                        pipeline.load_data_from_symbol(symbol)
+                        pipeline.add_essential_indicators()
+                        self._train_pipeline_model(pipeline, symbol)
+                    except Exception as train_error:
+                        self.logger.error(f"❌ Failed to train new model for {symbol}: {train_error}")
+                        continue  # Skip this symbol
                 
                 self.ml_pipelines[symbol] = pipeline
                 self.logger.info(f"✅ 3-class ML pipeline ready for {symbol}")
@@ -230,7 +246,13 @@ class MLEngine:
             self.logger.info(f"🔄 Refreshing data pipeline for {symbol}...")
             
             # Find latest historical data file
-            historical_dir = '/workspaces/crypto-mini-03/historical_exports'
+            if os.path.exists('/app'):
+                # Running in Docker container
+                historical_dir = '/app/historical_exports'
+            else:
+                # Running in development environment  
+                historical_dir = '/workspaces/crypto-mini-03/historical_exports'
+                
             if os.path.exists(historical_dir):
                 files = [f for f in os.listdir(historical_dir) 
                         if f.startswith(symbol) and f.endswith('.csv')]
@@ -363,7 +385,7 @@ class MLEngine:
         # Determine model directory based on environment
         if os.path.exists('/app'):
             # Running in Docker container
-            model_dir = '/app/ml_results/models'
+            model_dir = '/app/ml_results'
         else:
             # Running in development environment
             model_dir = '/workspaces/crypto-mini-03/ml_results'

@@ -1,126 +1,18 @@
 # ================================================================
-# Docker Ignore File - Crypto Trading App
+# Docker Ignore File for Crypto Trading App
 # ================================================================
-# Excludes unnecessary files from Docker build context
-# to reduce image size and build time.
+# Minimal exclusions to include ALL necessary files including
+# .env and supporting files for coinstardon/crypto-trading-engine:latest
+# ================================================================
 
-# ================================================================
-# Version Control
-# ================================================================
-.git
+# Only exclude git and cache files - include everything else
+.git/
 .gitignore
-.gitattributes
-.gitmodules
-
-# ================================================================
-# Documentation
-# ================================================================
-README.md
-CHANGELOG.md
-LICENSE
-*.md
-
-# ================================================================
-# Development Files
-# ================================================================
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# ================================================================
-# Python Cache Files
-# ================================================================
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# ================================================================
-# Virtual Environments
-# ================================================================
-.env/
-.venv/
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Allow .env file (configuration)
-!.env
-
-# ================================================================
-# Testing
-# ================================================================
-.tox/
-.coverage
-.coverage.*
-.cache
+**/__pycache__/
+*.pyc
 .pytest_cache/
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
 
-# ================================================================
-# Jupyter Notebooks
-# ================================================================
-.ipynb_checkpoints
-
-# ================================================================
-# Data Files (exclude from image, mount as volumes)
-# ================================================================
-trading/logs/
-# historical_exports/*.csv  # COMMENTED OUT: Include historical data in image
-binance_exports/*.csv
-ml_results/
-data/
-backups/
-
-# ================================================================
-# Temporary Files
-# ================================================================
-.tmp/
-tmp/
-temp/
-*.tmp
-*.temp
-*.log
-
-# ================================================================
-# Docker Files (don't include in build context)
-# ================================================================
-Dockerfile*
-docker-compose*.yml
-.dockerignore
-
-# ================================================================
-# Deployment Scripts
-# ================================================================
-deploy.sh
-
-# ================================================================
-# OS Generated Files
-# ================================================================
+# OS generated files only
 .DS_Store
 .DS_Store?
 ._*
@@ -129,39 +21,4 @@ deploy.sh
 ehthumbs.db
 Thumbs.db
 
-# ================================================================
-# Package Manager Files
-# ================================================================
-package-lock.json
-yarn.lock
 
-# ================================================================
-# IDE Configuration
-# ================================================================
-.editorconfig
-.eslintrc*
-.prettierrc*
-
-# ================================================================
-# CI/CD Configuration
-# ================================================================
-.github/
-.gitlab-ci.yml
-.travis.yml
-.circleci/
-
-# ================================================================
-# Security Files (sensitive data)
-# ================================================================
-*.pem
-*.key
-*.crt
-*.p12
-
-# ================================================================
-# Large Binary Files
-# ================================================================
-*.zip
-*.tar.gz
-*.rar
-*.7z

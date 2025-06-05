@@ -22,9 +22,9 @@ NC='\033[0m' # No Color
 
 # Configuration
 DOCKER_HUB_USERNAME="${DOCKER_HUB_USERNAME:-}"
-DOCKER_HUB_REPO="crypto-trading-3class"
-IMAGE_NAME="crypto-trading-3class"
-VERSION="1.0.0"
+DOCKER_HUB_REPO="crypto-trading-enhanced"
+IMAGE_NAME="crypto-trading-enhanced"
+VERSION="2.0.0"
 LATEST_TAG="latest"
 
 # Auto-detect architecture
@@ -39,7 +39,7 @@ print_header() {
     echo -e "${BLUE}"
     echo "================================================================"
     echo "  🚀 Crypto Trading Engine - Docker Hub Publisher"
-    echo "  📦 3-Class Model Focus - Zero Execution Rate Fix"
+    echo "  📦 Enhanced Version with Docker Process Manager"
     echo "================================================================"
     echo -e "${NC}"
 }
@@ -98,38 +98,42 @@ check_dependencies() {
     print_success "All dependencies available"
 }
 
-# Function to verify 3-class system configuration
-verify_3class_config() {
-    print_step "Verifying 3-class system configuration..."
+# Function to verify enhanced system configuration
+verify_enhanced_config() {
+    print_step "Verifying enhanced system configuration..."
     
-    # Check if verification script exists and run it
-    if [ -f "verify_3class_system.py" ]; then
-        if python3 verify_3class_system.py >/dev/null 2>&1; then
-            print_success "3-class system verification passed"
-        else
-            print_error "3-class system verification failed"
-            exit 1
-        fi
+    # Check if Docker Process Manager exists
+    if [ -f "docker_process_manager.py" ]; then
+        print_success "Docker Process Manager found"
     else
-        print_warning "3-class verification script not found, proceeding..."
+        print_error "Docker Process Manager not found!"
+        exit 1
     fi
     
-    # Check if 3-class models exist
+    # Check if enhanced configuration files exist
+    if [ -f "scheduled_data_manager.py" ]; then
+        print_success "Scheduled Data Manager found"
+    else
+        print_warning "Scheduled Data Manager not found"
+    fi
+    
+    # Check if ML models exist
     if [ -d "ml_results" ]; then
-        model_count=$(find ml_results -name "*3class_enhanced.h5" | wc -l)
-        binary_count=$(find ml_results -name "*binary*" | wc -l)
+        model_count=$(find ml_results -name "*.h5" | wc -l)
+        scaler_count=$(find ml_results -name "*.pkl" | wc -l)
         
-        print_info "Found $model_count 3-class models"
-        print_info "Found $binary_count binary models (should be 0)"
+        print_info "Found $model_count ML models"
+        print_info "Found $scaler_count scalers"
         
         if [ "$model_count" -eq 0 ]; then
-            print_error "No 3-class models found! Please train models first."
-            exit 1
+            print_warning "No ML models found. The system will work but without ML predictions."
         fi
-        
-        if [ "$binary_count" -gt 0 ]; then
-            print_warning "Binary models still exist. Consider running cleanup_binary_models.py"
-        fi
+    fi
+    
+    # Check if historical data exists
+    if [ -d "historical_exports" ]; then
+        data_count=$(find historical_exports -name "*.csv" | wc -l)
+        print_info "Found $data_count historical data files"
     fi
 }
 
@@ -149,7 +153,7 @@ build_image() {
         --tag "$full_image_name:$LATEST_TAG" \
         --label "version=$VERSION" \
         --label "build-date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
-        --label "description=3-Class Crypto Trading Engine - Zero Execution Rate Fix" \
+        --label "description=Enhanced Crypto Trading Engine with Docker Process Manager" \
         --label "architecture=$ARCH" \
         .
     
@@ -174,10 +178,13 @@ test_image() {
     if docker run --rm "$full_image_name" python3 -c "
 import sys
 sys.path.insert(0, '/app')
-from trading.models import TradingConfig
-config = TradingConfig()
-print(f'✅ Config loaded: binary={config.use_binary_classification}')
-print('✅ Container test passed')
+try:
+    from docker_process_manager import DockerProcessManager
+    print('✅ Docker Process Manager available')
+    print('✅ Container test passed')
+except ImportError as e:
+    print(f'❌ Import error: {e}')
+    sys.exit(1)
 " 2>/dev/null; then
         print_success "Docker image test passed"
     else
@@ -228,8 +235,8 @@ push_to_docker_hub() {
         echo -e "${PURPLE}   docker pull $full_image_name:$VERSION${NC}"
         echo -e "${PURPLE}   docker pull $full_image_name:$LATEST_TAG${NC}"
         echo ""
-        print_info "📊 To run the 3-class trading engine:"
-        echo -e "${PURPLE}   docker run -d --name crypto-trader $full_image_name:$LATEST_TAG${NC}"
+        print_info "📊 To run the enhanced trading engine:"
+        echo -e "${PURPLE}   docker run -d --name crypto-trader -p 8080:8080 -p 8081:8081 --env-file .env $full_image_name:$LATEST_TAG${NC}"
     else
         print_error "Failed to publish to Docker Hub"
         exit 1
@@ -313,7 +320,7 @@ main() {
     # Execute build and publish pipeline
     get_docker_hub_username
     check_dependencies
-    verify_3class_config
+    verify_enhanced_config
     build_image
     
     if [ "$SKIP_TEST" = false ]; then
@@ -329,7 +336,7 @@ main() {
     
     echo ""
     print_success "🎉 Docker Hub publication complete!"
-    print_info "🚀 Your 3-class crypto trading engine is now publicly available"
+    print_info "🚀 Your enhanced crypto trading engine is now publicly available"
 }
 
 # Execute main function with all arguments

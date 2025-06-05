@@ -124,7 +124,7 @@ class SymbolManager:
         Convert Alpaca symbol to Binance format.
         
         Args:
-            alpaca_symbol: Symbol in Alpaca format (e.g., 'BTC/USD')
+            alpaca_symbol: Symbol in Alpaca format (e.g., 'BTC/USD', 'BTCUSD')
             
         Returns:
             Symbol in Binance format (e.g., 'BTCUSDT')
@@ -134,11 +134,18 @@ class SymbolManager:
             
         # Fallback conversion for unmapped symbols
         if '/' in alpaca_symbol:
+            # Handle BTC/USD format
             base, quote = alpaca_symbol.split('/')
             if quote.upper() == 'USD':
                 binance_format = f"{base}USDT"
                 self.logger.warning(f"Using fallback conversion: {alpaca_symbol} -> {binance_format}")
                 return binance_format
+        elif alpaca_symbol.endswith('USD') and len(alpaca_symbol) > 3:
+            # Handle BTCUSD format (no slash)
+            base = alpaca_symbol[:-3]
+            binance_format = f"{base}USDT"
+            self.logger.warning(f"Using fallback conversion for no-slash format: {alpaca_symbol} -> {binance_format}")
+            return binance_format
                 
         self.logger.warning(f"Unknown symbol format: {alpaca_symbol}")
         return alpaca_symbol
@@ -198,7 +205,184 @@ class SymbolManager:
         print("-" * 60)
         for binance_symbol, mapping in self.mappings.items():
             print(f"{mapping.binance:10} -> {mapping.alpaca:10} ({mapping.display})")
-
+    
+    def validate_symbol_format(self, symbol: str, format_type: str = 'auto') -> bool:
+        """
+        Enhanced symbol format validation with specific format checking.
+        
+        Args:
+            symbol: Symbol to validate
+            format_type: 'binance', 'alpaca', or 'auto' for auto-detection
+            
+        Returns:
+            True if symbol format is valid
+        """
+        try:
+            if not symbol or not isinstance(symbol, str):
+                return False
+            
+            symbol = symbol.upper().strip()
+            
+            if format_type == 'binance' or format_type == 'auto':
+                # Check Binance format (BTCUSDT)
+                if symbol in self.mappings:
+                    return True
+                
+                # Check USDT pairs
+                if symbol.endswith('USDT') and len(symbol) > 4:
+                    base = symbol[:-4]
+                    if base.isalpha() and len(base) >= 2:
+                        return True
+                
+                # Check other quote currencies
+                for quote in ['USD', 'BTC', 'ETH', 'BNB']:
+                    if symbol.endswith(quote) and len(symbol) > len(quote):
+                        base = symbol[:-len(quote)]
+                        if base.isalpha() and len(base) >= 2:
+                            return True
+            
+            if format_type == 'alpaca' or format_type == 'auto':
+                # Check Alpaca format (BTC/USD)
+                if '/' in symbol:
+                    parts = symbol.split('/')
+                    if len(parts) == 2:
+                        base, quote = parts
+                        if (base.isalpha() and quote.isalpha() and 
+                            len(base) >= 2 and len(quote) >= 3):
+                            return True
+                
+                # Check no-slash format (BTCUSD)
+                if symbol.endswith('USD') and len(symbol) > 3:
+                    base = symbol[:-3]
+                    if base.isalpha() and len(base) >= 2:
+                        return True
+            
+            return False
+            
+        except Exception as e:
+            self.logger.warning(f"Error validating symbol format {symbol}: {e}")
+            return False
+    
+    def detect_symbol_format(self, symbol: str) -> str:
+        """
+        Detect the format of a symbol.
+        
+        Args:
+            symbol: Symbol to analyze
+            
+        Returns:
+            'binance', 'alpaca', or 'unknown'
+        """
+        try:
+            if not symbol or not isinstance(symbol, str):
+                return 'unknown'
+            
+            symbol = symbol.upper().strip()
+            
+            # Check if it's in our predefined mappings
+            if symbol in self.mappings:
+                return 'binance'
+            if symbol in self.alpaca_to_binance:
+                return 'alpaca'
+            
+            # Check for slash format (typical Alpaca)
+            if '/' in symbol:
+                return 'alpaca'
+            
+            # Check for Alpaca no-slash format (BTCUSD) vs Binance (BTCUSDT)
+            if symbol.endswith('USD') and not symbol.endswith('USDT'):
+                return 'alpaca'
+            
+            # Check for Binance patterns
+            if (symbol.endswith('USDT') or 
+                symbol.endswith('BTC') or symbol.endswith('ETH')):
+                return 'binance'
+            
+            return 'unknown'
+            
+        except Exception as e:
+            self.logger.warning(f"Error detecting format for {symbol}: {e}")
+            return 'unknown'
+    
+    def normalize_symbol(self, symbol: str, target_format: str = 'binance') -> str:
+        """
+        Normalize symbol to target format with enhanced error handling.
+        
+        Args:
+            symbol: Input symbol in any format
+            target_format: 'binance' or 'alpaca'
+            
+        Returns:
+            Normalized symbol in target format
+        """
+        try:
+            if not symbol:
+                return symbol
+            
+            symbol = symbol.upper().strip()
+            current_format = self.detect_symbol_format(symbol)
+            
+            # If already in target format, return as-is
+            if current_format == target_format:
+                return symbol
+            
+            # Convert based on current format
+            if target_format == 'binance':
+                if current_format == 'alpaca':
+                    return self.alpaca_to_binance_format(symbol)
+                else:
+                    # Try to parse unknown format
+                    return self._parse_to_binance(symbol)
+            
+            elif target_format == 'alpaca':
+                if current_format == 'binance':
+                    return self.binance_to_alpaca_format(symbol)
+                else:
+                    # Try to parse unknown format
+                    return self._parse_to_alpaca(symbol)
+            
+            return symbol
+            
+        except Exception as e:
+            self.logger.warning(f"Error normalizing symbol {symbol}: {e}")
+            return symbol
+    
+    def _parse_to_binance(self, symbol: str) -> str:
+        """Parse unknown format to Binance format."""
+        try:
+            # Remove common separators
+            clean_symbol = symbol.replace('/', '').replace('-', '').replace('_', '')
+            
+            # If it looks like a USD pair, convert to USDT
+            if clean_symbol.endswith('USD') and len(clean_symbol) > 3:
+                base = clean_symbol[:-3]
+                return f"{base}USDT"
+            
+            # Return as-is if can't parse
+            return symbol
+            
+        except Exception:
+            return symbol
+    
+    def _parse_to_alpaca(self, symbol: str) -> str:
+        """Parse unknown format to Alpaca format."""
+        try:
+            # If USDT pair, convert to USD with slash
+            if symbol.endswith('USDT') and len(symbol) > 4:
+                base = symbol[:-4]
+                return f"{base}/USD"
+            
+            # If USD pair without slash, add slash
+            if symbol.endswith('USD') and len(symbol) > 3 and '/' not in symbol:
+                base = symbol[:-3]
+                return f"{base}/USD"
+            
+            # Return as-is if can't parse
+            return symbol
+            
+        except Exception:
+            return symbol
+        
 
 # Global symbol manager instance
 symbol_manager = SymbolManager()

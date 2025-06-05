@@ -76,14 +76,27 @@ class CryptoSymbolsConfig:
         # Create priority-ordered lists
         self.primary_symbols = [self.primary_symbol, self.secondary_symbol, self.tertiary_symbol]
         
-        # High-priority symbols (most liquid and popular)
+        # High-priority symbols (most liquid and popular) - UPDATED FOR USER'S CRYPTO LIST
         self.high_priority_symbols = [
-            'BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'DOTUSDT', 'LINKUSDT'
+            'BTCUSDT',    # Bitcoin - King of Crypto
+            'ETHUSDT',    # Ethereum - Smart Contracts Leader  
+            'SOLUSDT',    # Solana - High Performance Blockchain
+            'DOGEUSDT',   # Dogecoin - Popular Meme Coin
+            'XRPUSDT',    # Ripple - Cross-border Payments
+            'AVAXUSDT',   # Avalanche - DeFi Ecosystem
+            'LINKUSDT',   # Chainlink - Oracle Network
+            'DOTUSDT'     # Polkadot - Interoperability
         ]
         
-        # Medium-priority symbols
+        # Medium-priority symbols - UPDATED FOR COMPREHENSIVE TRADING
         self.medium_priority_symbols = [
-            'LTCUSDT', 'BCHUSDT', 'AVAXUSDT', 'MATICUSDT', 'UNIUSDT'
+            'LTCUSDT',    # Litecoin - Silver to Bitcoin's Gold
+            'BCHUSDT',    # Bitcoin Cash - Bitcoin Fork
+            'UNIUSDT',    # Uniswap - DEX Leader
+            'AAVEUSDT',   # Aave - Lending Protocol
+            'SUSHIUSDT',  # SushiSwap - DEX Alternative
+            'YFIUSDT',    # Yearn Finance - Yield Farming
+            'SHIBUSDT'    # Shiba Inu - Meme Coin
         ]
         
         # All trading symbols (filter only those we have in our master list)

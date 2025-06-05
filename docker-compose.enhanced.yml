@@ -1,0 +1,236 @@
+# ================================================================
+# Enhanced Crypto Trading App - Docker Compose Configuration
+# ================================================================
+# Complete deployment configuration optimized for Docker container
+# with enhanced output, countdown timers, and integrated services.
+
+version: '3.8'
+
+services:
+  # ================================================================
+  # Main Enhanced Trading Application
+  # ================================================================
+  crypto-trader-enhanced:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: crypto-trading-enhanced
+    restart: unless-stopped
+    
+    # Environment variables (override in .env file)
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+      - PAPER_TRADING=true
+      - ENHANCED_OUTPUT=true
+      - DOCKER_MODE=true
+      - TRADING_CYCLE_MINUTES=5
+      - EXPORT_CYCLE_HOURS=2
+      - ML_RETRAIN_CYCLE_HOURS=6
+    
+    # Mount configuration and data volumes
+    volumes:
+      # Configuration (mount your actual .env file here)
+      - ./.env:/app/.env:ro
+      
+      # Persistent data storage
+      - trading-logs:/app/trading/logs
+      - ml-models:/app/ml_results
+      - binance-data:/app/binance_exports
+      
+      # Optional: Mount custom configuration
+      # - ./config:/app/config:ro
+    
+    # Logging configuration with enhanced output
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "10"
+        labels: "service=crypto-trading-enhanced"
+    
+    # Health check with enhanced monitoring
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      interval: 2m
+      timeout: 30s
+      retries: 3
+      start_period: 1m
+    
+    # Resource limits for optimal performance
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 6G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+    
+    # Network configuration
+    networks:
+      - crypto-trading-network
+    
+    # Command: Start enhanced Docker process manager
+    command: ["python", "/app/docker_process_manager.py", "--output-dir", "/app/historical_exports"]
+    
+    # Optional: Expose port for future web interface
+    # ports:
+    #   - "8080:8080"
+
+  # ================================================================
+  # Enhanced Log Monitoring Service
+  # ================================================================
+  log-viewer-enhanced:
+    image: amir20/dozzle:latest
+    container_name: crypto-log-viewer-enhanced
+    restart: unless-stopped
+    ports:
+      - "9999:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - DOZZLE_LEVEL=info
+      - DOZZLE_TAILSIZE=500
+      - DOZZLE_FILTER=name=crypto-trading-enhanced
+    networks:
+      - crypto-trading-network
+    profiles:
+      - monitoring
+    depends_on:
+      - crypto-trader-enhanced
+
+  # ================================================================
+  # Data Backup Service with Enhanced Scheduling
+  # ================================================================
+  data-backup-enhanced:
+    image: alpine:latest
+    container_name: crypto-data-backup-enhanced
+    restart: "no"
+    volumes:
+      - trading-logs:/data/trading-logs:ro
+      - ml-models:/data/ml-models:ro
+      - ./backups:/backups
+    command: >
+      sh -c "
+        echo '🔄 Creating enhanced backup at $(date)...' &&
+        backup_dir=/backups/enhanced_$(date +%Y%m%d_%H%M%S) &&
+        mkdir -p $$backup_dir &&
+        echo '📊 Backing up trading logs...' &&
+        cp -r /data/trading-logs $$backup_dir/ 2>/dev/null || echo 'No trading logs found' &&
+        echo '🤖 Backing up ML models...' &&
+        cp -r /data/ml-models $$backup_dir/ 2>/dev/null || echo 'No ML models found' &&
+        echo '📋 Creating backup manifest...' &&
+        echo 'Enhanced Crypto Trading Backup' > $$backup_dir/README.txt &&
+        echo 'Created: $(date)' >> $$backup_dir/README.txt &&
+        echo 'Components: Trading logs, ML models' >> $$backup_dir/README.txt &&
+        find $$backup_dir -type f | wc -l > $$backup_dir/file_count.txt &&
+        echo '✅ Enhanced backup completed successfully!' &&
+        echo 'Backup location: $$backup_dir'
+      "
+    networks:
+      - crypto-trading-network
+    profiles:
+      - backup
+
+  # ================================================================
+  # Development/Debug Container with Enhanced Features
+  # ================================================================
+  crypto-trader-dev-enhanced:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: application
+    container_name: crypto-trading-dev-enhanced
+    restart: "no"
+    
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=DEBUG
+      - PAPER_TRADING=true
+      - ENHANCED_OUTPUT=true
+      - DOCKER_MODE=true
+      - DEV_MODE=true
+    
+    volumes:
+      # Mount source code for development
+      - .:/app
+      - trading-logs:/app/trading/logs
+      - ml-models:/app/ml_results
+    
+    command: ["python", "/app/docker_process_manager.py", "--output-dir", "/app/historical_exports"]
+    stdin_open: true
+    tty: true
+    
+    networks:
+      - crypto-trading-network
+    profiles:
+      - development
+
+  # ================================================================
+  # Standalone Trading Engine (for comparison)
+  # ================================================================
+  trading-engine-standalone:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: trading-engine-standalone
+    restart: unless-stopped
+    
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+      - PAPER_TRADING=true
+      - ENHANCED_OUTPUT=true
+    
+    volumes:
+      - ./.env:/app/.env:ro
+      - trading-logs:/app/trading/logs
+      - ml-models:/app/ml_results
+    
+    command: ["python", "/app/trading/strategy_engine_refactored.py"]
+    
+    networks:
+      - crypto-trading-network
+    profiles:
+      - standalone
+
+# ================================================================
+# Enhanced Volume Definitions
+# ================================================================
+volumes:
+  trading-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/trading-logs
+  
+  ml-models:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/ml-results
+  
+  binance-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/binance-exports
+
+# ================================================================
+# Enhanced Network Configuration
+# ================================================================
+networks:
+  crypto-trading-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+    labels:
+      - "service=crypto-trading-enhanced"
+      - "environment=production"

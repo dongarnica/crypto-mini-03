@@ -1,0 +1,419 @@
+2025-06-05 01:07:39 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:07:39 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:07:39 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:07:39 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:07:56 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:07:56 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:07:56 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:07:56 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:08:51 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:08:51 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:08:51 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:08:51 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:09:34 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:09:34 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:09:34 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:09:34 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:11:12 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:11:12 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:11:12 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:11:12 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Starting cleanup of old export files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Found files for 12 symbols
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - ADAUSDT: Keeping 1 files, deleting 4 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ADAUSDT_1year_hourly_20250602_055306.csv (0.92 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ADAUSDT_1year_hourly_20250602_030026.csv (0.92 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ADAUSDT_1year_hourly_20250601_201205.csv (0.92 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ADAUSDT_1year_hourly_20250601_183045.csv (0.92 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - BTCUSDT: Keeping 1 files, deleting 5 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250602_055326.csv (0.09 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250602_055300.csv (1.06 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250602_030017.csv (1.06 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250601_201158.csv (1.06 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250601_183039.csv (1.06 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - ETHUSDT: Keeping 1 files, deleting 5 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250602_055326.csv (0.08 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250602_055304.csv (0.98 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250602_030022.csv (0.98 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250601_201202.csv (0.98 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250601_183042.csv (0.98 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - AVAXUSDT: Keeping 1 files, deleting 4 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: AVAXUSDT_1year_hourly_20250602_055330.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: AVAXUSDT_1year_hourly_20250602_030058.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: AVAXUSDT_1year_hourly_20250601_201229.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: AVAXUSDT_1year_hourly_20250601_183108.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - BCHUSDT: Keeping 1 files, deleting 4 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BCHUSDT_1year_hourly_20250602_055328.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BCHUSDT_1year_hourly_20250602_030041.csv (0.80 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BCHUSDT_1year_hourly_20250601_201216.csv (0.80 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: BCHUSDT_1year_hourly_20250601_183056.csv (0.80 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - LINKUSDT: Keeping 1 files, deleting 6 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250602_055327.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250602_030033.csv (0.85 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250601_201211.csv (0.85 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250601_183050.csv (0.85 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250601_163805.csv (0.85 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250601_025201.csv (0.85 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - LTCUSDT: Keeping 1 files, deleting 6 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250602_055328.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250602_030037.csv (0.87 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250601_201214.csv (0.87 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250601_183053.csv (0.87 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250601_163808.csv (0.87 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250601_025204.csv (0.87 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - XLMUSDT: Keeping 1 files, deleting 5 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: XLMUSDT_1year_hourly_20250602_030044.csv (0.88 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: XLMUSDT_1year_hourly_20250601_201219.csv (0.88 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: XLMUSDT_1year_hourly_20250601_183058.csv (0.88 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: XLMUSDT_1year_hourly_20250601_163813.csv (0.88 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: XLMUSDT_1year_hourly_20250601_025210.csv (0.88 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - MATICUSDT: Keeping 1 files, deleting 4 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: MATICUSDT_1year_hourly_20250601_201226.csv (0.54 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: MATICUSDT_1year_hourly_20250601_183106.csv (0.54 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: MATICUSDT_1year_hourly_20250601_163821.csv (0.54 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: MATICUSDT_1year_hourly_20250601_025219.csv (0.54 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - DOTUSDT: Keeping 1 files, deleting 4 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: DOTUSDT_1year_hourly_20250602_055327.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: DOTUSDT_1year_hourly_20250602_030030.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: DOTUSDT_1year_hourly_20250601_201208.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: DOTUSDT_1year_hourly_20250601_183048.csv (0.84 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - SOLUSDT: Keeping 1 files, deleting 6 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250602_055329.csv (0.08 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250602_030051.csv (0.94 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250601_201224.csv (0.94 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250601_183104.csv (0.94 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250601_163819.csv (0.94 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250601_025216.csv (0.94 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - UNIUSDT: Keeping 1 files, deleting 6 files
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250602_055329.csv (0.07 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250602_030048.csv (0.82 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250601_201221.csv (0.82 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250601_183101.csv (0.82 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250601_163816.csv (0.82 MB)
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250601_025213.csv (0.82 MB)
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250601_201202.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250601_201202.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BCHUSDT_1year_hourly_20250602_055328.csv: [Errno 2] No such file or directory: 'historical_exports/BCHUSDT_1year_hourly_20250602_055328.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250601_025216.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250601_025216.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/XLMUSDT_1year_hourly_20250601_025210.csv: [Errno 2] No such file or directory: 'historical_exports/XLMUSDT_1year_hourly_20250601_025210.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/DOTUSDT_1year_hourly_20250601_183048.csv: [Errno 2] No such file or directory: 'historical_exports/DOTUSDT_1year_hourly_20250601_183048.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ADAUSDT_1year_hourly_20250602_055306.csv: [Errno 2] No such file or directory: 'historical_exports/ADAUSDT_1year_hourly_20250602_055306.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250601_183050.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250601_183050.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ADAUSDT_1year_hourly_20250602_030026.csv: [Errno 2] No such file or directory: 'historical_exports/ADAUSDT_1year_hourly_20250602_030026.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250602_055326.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250602_055326.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250602_030022.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250602_030022.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250601_025204.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250601_025204.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250601_163819.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250601_163819.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BCHUSDT_1year_hourly_20250602_030041.csv: [Errno 2] No such file or directory: 'historical_exports/BCHUSDT_1year_hourly_20250602_030041.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250601_025201.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250601_025201.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250601_201214.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250601_201214.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BCHUSDT_1year_hourly_20250601_201216.csv: [Errno 2] No such file or directory: 'historical_exports/BCHUSDT_1year_hourly_20250601_201216.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/MATICUSDT_1year_hourly_20250601_163821.csv: [Errno 2] No such file or directory: 'historical_exports/MATICUSDT_1year_hourly_20250601_163821.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250601_163805.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250601_163805.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/DOTUSDT_1year_hourly_20250602_030030.csv: [Errno 2] No such file or directory: 'historical_exports/DOTUSDT_1year_hourly_20250602_030030.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/XLMUSDT_1year_hourly_20250601_183058.csv: [Errno 2] No such file or directory: 'historical_exports/XLMUSDT_1year_hourly_20250601_183058.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250601_183042.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250601_183042.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/DOTUSDT_1year_hourly_20250601_201208.csv: [Errno 2] No such file or directory: 'historical_exports/DOTUSDT_1year_hourly_20250601_201208.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250601_183053.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250601_183053.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250602_055329.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250602_055329.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250602_030048.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250602_030048.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/MATICUSDT_1year_hourly_20250601_201226.csv: [Errno 2] No such file or directory: 'historical_exports/MATICUSDT_1year_hourly_20250601_201226.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250601_201158.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250601_201158.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250602_030037.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250602_030037.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250601_201224.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250601_201224.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/AVAXUSDT_1year_hourly_20250601_201229.csv: [Errno 2] No such file or directory: 'historical_exports/AVAXUSDT_1year_hourly_20250601_201229.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ADAUSDT_1year_hourly_20250601_201205.csv: [Errno 2] No such file or directory: 'historical_exports/ADAUSDT_1year_hourly_20250601_201205.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/AVAXUSDT_1year_hourly_20250602_055330.csv: [Errno 2] No such file or directory: 'historical_exports/AVAXUSDT_1year_hourly_20250602_055330.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ADAUSDT_1year_hourly_20250601_183045.csv: [Errno 2] No such file or directory: 'historical_exports/ADAUSDT_1year_hourly_20250601_183045.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250601_163816.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250601_163816.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250602_030017.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250602_030017.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/XLMUSDT_1year_hourly_20250601_163813.csv: [Errno 2] No such file or directory: 'historical_exports/XLMUSDT_1year_hourly_20250601_163813.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250602_055328.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250602_055328.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250601_183101.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250601_183101.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250602_055326.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250602_055326.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/XLMUSDT_1year_hourly_20250602_030044.csv: [Errno 2] No such file or directory: 'historical_exports/XLMUSDT_1year_hourly_20250602_030044.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/XLMUSDT_1year_hourly_20250601_201219.csv: [Errno 2] No such file or directory: 'historical_exports/XLMUSDT_1year_hourly_20250601_201219.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250601_163808.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250601_163808.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/DOTUSDT_1year_hourly_20250602_055327.csv: [Errno 2] No such file or directory: 'historical_exports/DOTUSDT_1year_hourly_20250602_055327.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/AVAXUSDT_1year_hourly_20250602_030058.csv: [Errno 2] No such file or directory: 'historical_exports/AVAXUSDT_1year_hourly_20250602_030058.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250601_183104.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250601_183104.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250601_183039.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250601_183039.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250602_030033.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250602_030033.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250602_055327.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250602_055327.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/AVAXUSDT_1year_hourly_20250601_183108.csv: [Errno 2] No such file or directory: 'historical_exports/AVAXUSDT_1year_hourly_20250601_183108.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BCHUSDT_1year_hourly_20250601_183056.csv: [Errno 2] No such file or directory: 'historical_exports/BCHUSDT_1year_hourly_20250601_183056.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250602_030051.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250602_030051.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250602_055304.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250602_055304.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250601_025213.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250601_025213.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/MATICUSDT_1year_hourly_20250601_025219.csv: [Errno 2] No such file or directory: 'historical_exports/MATICUSDT_1year_hourly_20250601_025219.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250602_055300.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250602_055300.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250601_201221.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250601_201221.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/MATICUSDT_1year_hourly_20250601_183106.csv: [Errno 2] No such file or directory: 'historical_exports/MATICUSDT_1year_hourly_20250601_183106.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250601_201211.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250601_201211.csv'
+2025-06-05 01:11:12 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250602_055329.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250602_055329.csv'
+2025-06-05 01:11:12 - INFO - [cleanup_old_files] - Cleanup completed: {'symbols_processed': 12, 'files_deleted': 59, 'space_freed_mb': 43.94096851348877, 'errors': 59}
+2025-06-05 01:11:52 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:11:52 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:11:52 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:11:52 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:12:51 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:12:51 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:12:51 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:12:51 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:13:48 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:13:48 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:13:48 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:13:48 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:13:59 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:13:59 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:13:59 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:13:59 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:14:33 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:14:33 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:14:33 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:14:33 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:16:27 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:16:27 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:16:27 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:16:27 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:16:27 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:19:00 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:19:00 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:19:00 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:19:00 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:19:00 - INFO - [cleanup_old_files] - Starting cleanup of old export files
+2025-06-05 01:19:00 - INFO - [cleanup_old_files] - Found files for 12 symbols
+2025-06-05 01:19:00 - INFO - [cleanup_old_files] - Cleanup completed: {'symbols_processed': 12, 'files_deleted': 0, 'space_freed_mb': 0, 'errors': 0}
+2025-06-05 01:19:59 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:19:59 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:19:59 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:19:59 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:19:59 - INFO - [run_manual_job] - Running manual data management job
+2025-06-05 01:19:59 - INFO - [run_scheduled_job] - ================================================================================
+2025-06-05 01:19:59 - INFO - [run_scheduled_job] - SCHEDULED DATA MANAGEMENT JOB STARTED
+2025-06-05 01:19:59 - INFO - [run_scheduled_job] - ================================================================================
+2025-06-05 01:19:59 - INFO - [run_scheduled_job] - Step 1: Exporting historical data
+2025-06-05 01:19:59 - INFO - [export_historical_data] - Starting scheduled historical data export
+2025-06-05 01:19:59 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:19:59 - INFO - [export_historical_data] - Exporting data for 15 symbols
+2025-06-05 01:19:59 - INFO - [export_historical_data] - Date range: 2025-06-03 to 2025-06-05
+2025-06-05 01:20:06 - INFO - [export_historical_data] - Export completed - Success: 15, Failed: 0
+2025-06-05 01:20:06 - INFO - [run_scheduled_job] - ✅ Historical data export completed successfully
+2025-06-05 01:20:06 - INFO - [run_scheduled_job] - Step 2: Cleaning up old files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Starting cleanup of old export files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Found files for 18 symbols
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - LINKUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: LINKUSDT_1year_hourly_20250602_231717.csv (0.85 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - UNIUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: UNIUSDT_1year_hourly_20250602_231725.csv (0.82 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - DOTUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: DOTUSDT_1year_hourly_20250602_231714.csv (0.84 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - SOLUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: SOLUSDT_1year_hourly_20250602_231728.csv (0.94 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - AVAXUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: AVAXUSDT_1year_hourly_20250602_231731.csv (0.84 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - BCHUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: BCHUSDT_1year_hourly_20250602_231723.csv (0.80 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - LTCUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: LTCUSDT_1year_hourly_20250602_231720.csv (0.87 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - ETHUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: ETHUSDT_1year_hourly_20250602_231711.csv (0.98 MB)
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - BTCUSDT: Keeping 1 files, deleting 1 files
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Deleted: BTCUSDT_1year_hourly_20250602_231707.csv (1.06 MB)
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/DOTUSDT_1year_hourly_20250602_231714.csv: [Errno 2] No such file or directory: 'historical_exports/DOTUSDT_1year_hourly_20250602_231714.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BCHUSDT_1year_hourly_20250602_231723.csv: [Errno 2] No such file or directory: 'historical_exports/BCHUSDT_1year_hourly_20250602_231723.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LTCUSDT_1year_hourly_20250602_231720.csv: [Errno 2] No such file or directory: 'historical_exports/LTCUSDT_1year_hourly_20250602_231720.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/SOLUSDT_1year_hourly_20250602_231728.csv: [Errno 2] No such file or directory: 'historical_exports/SOLUSDT_1year_hourly_20250602_231728.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/ETHUSDT_1year_hourly_20250602_231711.csv: [Errno 2] No such file or directory: 'historical_exports/ETHUSDT_1year_hourly_20250602_231711.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/AVAXUSDT_1year_hourly_20250602_231731.csv: [Errno 2] No such file or directory: 'historical_exports/AVAXUSDT_1year_hourly_20250602_231731.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/BTCUSDT_1year_hourly_20250602_231707.csv: [Errno 2] No such file or directory: 'historical_exports/BTCUSDT_1year_hourly_20250602_231707.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/LINKUSDT_1year_hourly_20250602_231717.csv: [Errno 2] No such file or directory: 'historical_exports/LINKUSDT_1year_hourly_20250602_231717.csv'
+2025-06-05 01:20:06 - ERROR - [cleanup_old_files] - Error deleting old file historical_exports/UNIUSDT_1year_hourly_20250602_231725.csv: [Errno 2] No such file or directory: 'historical_exports/UNIUSDT_1year_hourly_20250602_231725.csv'
+2025-06-05 01:20:06 - INFO - [cleanup_old_files] - Cleanup completed: {'symbols_processed': 18, 'files_deleted': 9, 'space_freed_mb': 8.00133991241455, 'errors': 9}
+2025-06-05 01:20:06 - INFO - [run_scheduled_job] - ✅ Cleanup completed: 9 files deleted, 8.00 MB freed
+2025-06-05 01:20:06 - INFO - [generate_status_report] - Status report saved: historical_exports/status_report.json
+2025-06-05 01:20:06 - INFO - [generate_status_report] - Current status: 18 files, 18 symbols, 0.76 MB total
+2025-06-05 01:20:06 - INFO - [run_scheduled_job] - Scheduled job completed in 0:00:07.382905
+2025-06-05 01:20:06 - INFO - [run_scheduled_job] - ================================================================================
+2025-06-05 01:26:31 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:26:31 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:26:31 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:26:31 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:37:05 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:37:05 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:37:05 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:37:05 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:37:05 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:37:05 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:37:22 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:37:22 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:37:22 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:37:22 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:37:22 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:37:22 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:37:22 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:37:22 - INFO - [detect_new_data_files] - First run detected - will retrain all available models
+2025-06-05 01:37:22 - INFO - [detect_new_data_files] - Detected new data for 15 symbols: ['SUSHIUSDT', 'DOTUSDT', 'SOLUSDT', 'SHIBUSDT', 'LTCUSDT', 'YFIUSDT', 'BCHUSDT', 'AAVEUSDT', 'LINKUSDT', 'DOGEUSDT', 'XRPUSDT', 'BTCUSDT', 'AVAXUSDT', 'ETHUSDT', 'UNIUSDT']
+2025-06-05 01:37:22 - INFO - [retrain_ml_models] - 🤖 Starting ML model retraining process
+2025-06-05 01:37:22 - INFO - [retrain_ml_models] - Symbols to retrain: ['SUSHIUSDT', 'DOTUSDT', 'SOLUSDT', 'SHIBUSDT', 'LTCUSDT', 'YFIUSDT', 'BCHUSDT', 'AAVEUSDT', 'LINKUSDT', 'DOGEUSDT', 'XRPUSDT', 'BTCUSDT', 'AVAXUSDT', 'ETHUSDT', 'UNIUSDT']
+2025-06-05 01:37:22 - INFO - [retrain_ml_models] - Initializing ML pipelines for 15 symbols...
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - Successfully initialized 15/15 ML pipelines
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for SUSHIUSDT using SUSHIUSDT_1year_hourly_20250605_012000.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for SUSHIUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for DOTUSDT using DOTUSDT_1year_hourly_20250605_012001.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for DOTUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for SOLUSDT using SOLUSDT_1year_hourly_20250605_012002.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for SOLUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for SHIBUSDT using SHIBUSDT_1year_hourly_20250605_012004.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for SHIBUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for LTCUSDT using LTCUSDT_1year_hourly_20250605_012005.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for LTCUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for YFIUSDT using YFIUSDT_1year_hourly_20250605_012001.csv
+2025-06-05 01:37:23 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for YFIUSDT
+2025-06-05 01:37:23 - INFO - [retrain_ml_models] - 🔄 Retraining model for BCHUSDT using BCHUSDT_1year_hourly_20250605_012004.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for BCHUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for AAVEUSDT using AAVEUSDT_1year_hourly_20250605_012005.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for AAVEUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for LINKUSDT using LINKUSDT_1year_hourly_20250605_011959.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for LINKUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for DOGEUSDT using DOGEUSDT_1year_hourly_20250605_012003.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for DOGEUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for XRPUSDT using XRPUSDT_1year_hourly_20250605_012002.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for XRPUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for BTCUSDT using BTCUSDT_1year_hourly_20250605_012006.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for BTCUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for AVAXUSDT using AVAXUSDT_1year_hourly_20250605_012003.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for AVAXUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for ETHUSDT using ETHUSDT_1year_hourly_20250605_012006.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for ETHUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🔄 Retraining model for UNIUSDT using UNIUSDT_1year_hourly_20250605_012000.csv
+2025-06-05 01:37:24 - ERROR - [retrain_ml_models] - ❌ Failed to retrain model for UNIUSDT
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] - 🎯 ML Retraining Summary:
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] -    Total models processed: 15
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] -    Successfully retrained: 0
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] -    Failed retraining: 15
+2025-06-05 01:37:24 - INFO - [retrain_ml_models] -    Success rate: 0.0%
+2025-06-05 01:43:46 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:43:46 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:43:46 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:43:46 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:43:46 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:43:46 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:44:01 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:44:01 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:44:01 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:44:01 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:44:01 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:44:01 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - 🤖 Starting ML model retraining process
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - Symbols to retrain: ['BTCUSDT', 'ETHUSDT']
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - Initializing ML pipelines for 2 symbols...
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - Using symbol-based data loading for comprehensive historical data...
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - Successfully initialized 2/2 ML pipelines
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BTCUSDT
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for ETHUSDT
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] - 🎯 ML Retraining Summary:
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] -    Total models processed: 2
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] -    Successfully retrained: 2
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] -    Failed retraining: 0
+2025-06-05 01:44:01 - INFO - [retrain_ml_models] -    Success rate: 100.0%
+2025-06-05 01:44:22 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:44:22 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:44:22 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:44:22 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:44:22 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:44:22 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:44:22 - INFO - [export_ml_training_data] - Starting ML training data export
+2025-06-05 01:44:22 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:44:22 - INFO - [export_ml_training_data] - Exporting ML training data for 15 symbols
+2025-06-05 01:44:22 - INFO - [export_ml_training_data] - Date range (12 months): 2024-06-05 to 2025-06-05
+2025-06-05 01:45:04 - INFO - [export_ml_training_data] - ML training data export completed - Success: 15, Failed: 0
+2025-06-05 01:45:56 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:45:56 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:45:56 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:45:56 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:45:56 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:45:56 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:45:56 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:46:28 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:46:28 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:46:28 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:46:28 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:46:28 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:46:28 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:46:28 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - 🤖 Starting ML model retraining process
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - Symbols to retrain: ['BTCUSDT', 'ETHUSDT']
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - Initializing ML pipelines for 2 symbols...
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - Using symbol-based data loading for comprehensive historical data...
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - Successfully initialized 2/2 ML pipelines
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BTCUSDT
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for ETHUSDT
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] - 🎯 ML Retraining Summary:
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] -    Total models processed: 2
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] -    Successfully retrained: 2
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] -    Failed retraining: 0
+2025-06-05 01:46:28 - INFO - [retrain_ml_models] -    Success rate: 100.0%
+2025-06-05 01:47:39 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:47:39 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:47:39 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:47:39 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:47:39 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:47:39 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:47:39 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:47:39 - INFO - [retrain_ml_models] - 🤖 Starting ML model retraining process
+2025-06-05 01:47:39 - INFO - [retrain_ml_models] - Symbols to retrain: ['SUSHIUSDT', 'AAVEUSDT', 'LINKUSDT', 'DOTUSDT', 'ETHUSDT', 'SOLUSDT', 'AVAXUSDT', 'UNIUSDT', 'BTCUSDT', 'BCHUSDT', 'DOGEUSDT', 'SHIBUSDT', 'LTCUSDT', 'XRPUSDT', 'YFIUSDT']
+2025-06-05 01:47:39 - INFO - [retrain_ml_models] - Initializing ML pipelines for 15 symbols...
+2025-06-05 01:47:39 - INFO - [retrain_ml_models] - Using symbol-based data loading for comprehensive historical data...
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - Successfully initialized 15/15 ML pipelines
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SUSHIUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for AAVEUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for LINKUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for DOTUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for ETHUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SOLUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for AVAXUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for UNIUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BTCUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BCHUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for DOGEUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SHIBUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for LTCUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for XRPUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for YFIUSDT
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] - 🎯 ML Retraining Summary:
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] -    Total models processed: 15
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] -    Successfully retrained: 15
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] -    Failed retraining: 0
+2025-06-05 01:56:12 - INFO - [retrain_ml_models] -    Success rate: 100.0%
+2025-06-05 01:58:36 - INFO - [_initialize_ml_engine] - ✅ ML Engine initialized for retraining
+2025-06-05 01:58:36 - INFO - [__init__] - ScheduledDataManager initialized
+2025-06-05 01:58:36 - INFO - [__init__] - Export directory: historical_exports
+2025-06-05 01:58:36 - INFO - [__init__] - Export interval: 2 hours
+2025-06-05 01:58:36 - INFO - [__init__] - Data retention: 7 days
+2025-06-05 01:58:36 - INFO - [__init__] - ML Retraining enabled: True
+2025-06-05 01:58:36 - INFO - [get_active_symbols] - Active symbols for export: 15 symbols
+2025-06-05 01:58:36 - INFO - [retrain_ml_models] - 🤖 Starting ML model retraining process
+2025-06-05 01:58:36 - INFO - [retrain_ml_models] - Symbols to retrain: ['DOTUSDT', 'AVAXUSDT', 'SUSHIUSDT', 'AAVEUSDT', 'BCHUSDT', 'LINKUSDT', 'LTCUSDT', 'YFIUSDT', 'ETHUSDT', 'SOLUSDT', 'BTCUSDT', 'UNIUSDT', 'XRPUSDT', 'SHIBUSDT', 'DOGEUSDT']
+2025-06-05 01:58:36 - INFO - [retrain_ml_models] - Initializing ML pipelines for 15 symbols...
+2025-06-05 01:58:36 - INFO - [retrain_ml_models] - Using symbol-based data loading for comprehensive historical data...
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - Successfully initialized 15/15 ML pipelines
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for DOTUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for AVAXUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SUSHIUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for AAVEUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BCHUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for LINKUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for LTCUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for YFIUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for ETHUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SOLUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for BTCUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for UNIUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for XRPUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for SHIBUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - ✅ Successfully trained/loaded model for DOGEUSDT
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] - 🎯 ML Retraining Summary:
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] -    Total models processed: 15
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] -    Successfully retrained: 15
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] -    Failed retraining: 0
+2025-06-05 01:58:38 - INFO - [retrain_ml_models] -    Success rate: 100.0%
