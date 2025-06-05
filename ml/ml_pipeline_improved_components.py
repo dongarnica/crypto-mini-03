@@ -63,8 +63,13 @@ class ImprovedCryptoLSTMPipeline:
         self.sell_threshold = sell_threshold
         self.use_binary_classification = use_binary_classification
         
-        # Historical exports directory
-        self.historical_exports_dir = "/workspaces/crypto-mini-03/historical_exports"
+        # Historical exports directory - handle both development and container environments
+        if os.path.exists('/app'):
+            # Running in Docker container
+            self.historical_exports_dir = "/app/historical_exports"
+        else:
+            # Running in development environment
+            self.historical_exports_dir = "/workspaces/crypto-mini-03/historical_exports"
         
         # Data storage
         self.raw_data = None
@@ -1410,6 +1415,9 @@ class ImprovedCryptoLSTMPipeline:
             # Save preprocessing components
             model_dir = os.path.dirname(model_path)
             symbol = os.path.basename(model_path).split('_')[0]
+            
+            # Ensure model directory exists
+            os.makedirs(model_dir, exist_ok=True)
             
             # Save scaler
             if hasattr(self, 'scaler') and self.scaler is not None:

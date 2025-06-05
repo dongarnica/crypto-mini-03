@@ -1,0 +1,10 @@
+2025-06-05 01:26:31 - ProcessManager - INFO - ProcessManager initialized
+2025-06-05 01:26:31 - ProcessManager - INFO - Starting Process Manager
+2025-06-05 01:26:31 - ProcessManager - INFO - Starting trading engine process...
+2025-06-05 01:26:31 - ProcessManager - INFO - Trading engine started (PID: 35613)
+2025-06-05 01:26:31 - ProcessManager - INFO - Process Manager started successfully
+2025-06-05 01:26:41 - ProcessManager - INFO - Received signal 15, initiating graceful shutdown...
+2025-06-05 01:26:41 - ProcessManager - INFO - Stopping Process Manager
+2025-06-05 01:26:41 - ProcessManager - INFO - Stopping trading process (PID: 35613)
+2025-06-05 01:26:51 - ProcessManager - WARNING - Force killing trading process
+2025-06-05 01:26:51 - ProcessManager - INFO - Process Manager stopped

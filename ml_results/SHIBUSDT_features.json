@@ -1,0 +1,21 @@
+{
+  "selected_features": [
+    "return_3",
+    "price_vs_sma10",
+    "price_vs_sma20",
+    "rsi",
+    "volatility_10",
+    "bb_width",
+    "close",
+    "volume",
+    "return_1",
+    "sma_10",
+    "sma_20",
+    "ema_12",
+    "macd",
+    "ema_26",
+    "atr_pct"
+  ],
+  "feature_count": 15,
+  "saved_at": "2025-06-05T01:52:48.459460"
+}

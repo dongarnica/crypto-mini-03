@@ -1,9 +1,9 @@
 # ================================================================
 # Crypto Trading App - Production Dockerfile
 # ================================================================
-# Multi-stage Docker build for the crypto trading application
-# Optimized for production deployment with proper security and
-# performance considerations.
+# Multi-stage build for remote deployment
+# Optimized for coinstardon/crypto-trading-engine:latest
+# Includes .env, ML models, and historical data for full functionality
 # ================================================================
 
 # Stage 1: Base Python Image with System Dependencies
@@ -58,21 +58,52 @@ RUN mkdir -p /app/trading/logs \
     /app/historical_exports \
     /app/binance_exports \
     /app/ml_results \
+    /app/data \
+    /app/backups \
     && chown -R trader:trader /app
 
-# Copy application code
+# Copy ALL application files including .env and supporting files
 COPY --chown=trader:trader . .
 
-# Ensure .env file is available for configuration
-COPY --chown=trader:trader .env .env
+# Verify .env file was included in the copy
+RUN test -f .env && echo "✅ .env file included" || echo "⚠️  No .env file found - using environment variables"
 
-# Copy and set permissions for startup and health check scripts
-COPY --chown=trader:trader start.sh /app/start.sh
-COPY --chown=trader:trader healthcheck.py /app/healthcheck.py
-RUN chmod +x /app/start.sh /app/healthcheck.py
+# ================================================================
+# VERIFICATION: Ensure ALL files are included
+# ================================================================
 
-# Create data persistence volumes (excluding historical_exports to use image data)
-VOLUME ["/app/trading/logs", "/app/ml_results"]
+# Verify that ML model files are included
+RUN echo "🔍 Checking for ML models..." && \
+    find /app/ml_results -name "*.h5" -type f | head -10 && \
+    find /app/ml_results -name "*.pkl" -type f | head -10 && \
+    echo "📊 ML models check complete"
+
+# Verify that historical data files are included  
+RUN echo "🔍 Checking for historical data..." && \
+    find /app/historical_exports -name "*.csv" -type f | head -5 && \
+    echo "📈 Historical data check complete"
+
+# Verify .env and configuration files
+RUN echo "🔍 Checking configuration files..." && \
+    ls -la /app/.env* 2>/dev/null || echo "No .env files found" && \
+    ls -la /app/config/ && \
+    echo "⚙️  Configuration check complete"
+
+# Verify all supporting files are present
+RUN echo "🔍 Checking supporting files..." && \
+    ls -la /app/*.py /app/*.sh /app/*.md 2>/dev/null | head -10 && \
+    echo "📁 Supporting files check complete"
+
+# Set proper file permissions for ALL data directories
+RUN chown -R trader:trader /app
+
+# Set executable permissions for all scripts
+RUN find /app -name "*.sh" -type f -exec chmod +x {} \; && \
+    find /app -name "*.py" -type f -exec chmod +x {} \; && \
+    chmod +x /app/start.sh /app/docker_process_manager.py /app/healthcheck.py
+
+# Create data persistence volumes for runtime data only
+VOLUME ["/app/trading/logs"]
 
 # ================================================================
 # Stage 4: Production Image
@@ -88,21 +119,34 @@ USER trader
 # Set Python path
 ENV PYTHONPATH=/app
 
-# Expose port for potential web interface (future enhancement)
+# Set production environment variables
+ENV FLASK_ENV=production \
+    PYTHONPATH=/app \
+    TRADING_ENV=production \
+    LOG_LEVEL=INFO \
+    MAX_WORKERS=4
+
+# Expose port for web interface
 EXPOSE 8080
 
 # Set default command
 CMD ["/app/start.sh", "trading"]
 
-# Health check
-HEALTHCHECK --interval=5m --timeout=30s --start-period=2m --retries=3 \
-    CMD python /app/healthcheck.py
+# Health check with better endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8080/health || python /app/healthcheck.py || exit 1
 
 # ================================================================
-# Build Information
+# Build Information & Labels
 # ================================================================
-LABEL maintainer="Crypto Trading Team" \
+LABEL maintainer="Coinstardon <coinstardon@example.com>" \
       version="1.0.0" \
-      description="Automated Crypto Trading Application with ML Predictions" \
-      org.opencontainers.image.source="https://github.com/your-repo/crypto-trading" \
-      org.opencontainers.image.documentation="https://github.com/your-repo/crypto-trading/README.md"
+      description="Production Crypto Trading Engine with ML Models and Historical Data" \
+      org.opencontainers.image.title="crypto-trading-engine" \
+      org.opencontainers.image.description="Automated Crypto Trading Application with ML Predictions - Production Ready" \
+      org.opencontainers.image.version="1.0.0" \
+      org.opencontainers.image.vendor="Coinstardon" \
+      org.opencontainers.image.url="https://hub.docker.com/r/coinstardon/crypto-trading-engine" \
+      org.opencontainers.image.documentation="https://github.com/coinstardon/crypto-trading-engine" \
+      org.opencontainers.image.source="https://github.com/coinstardon/crypto-trading-engine" \
+      org.opencontainers.image.licenses="MIT"

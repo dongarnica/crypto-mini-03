@@ -82,10 +82,20 @@ class PositionManager:
     def get_total_position_value(self) -> float:
         """Calculate total value of all positions."""
         total_value = 0.0
-        for position in self.positions.values():
+        position_details = []
+        
+        for symbol, position in self.positions.items():
             if position.current_price:
                 position_value = position.quantity * position.current_price
                 total_value += abs(position_value)
+                position_details.append(f"{symbol}: {position.quantity:.6f} × ${position.current_price:.2f} = ${abs(position_value):,.2f}")
+        
+        if position_details:
+            self.logger.debug(f"Position value breakdown:")
+            for detail in position_details:
+                self.logger.debug(f"  {detail}")
+            self.logger.debug(f"Total position value: ${total_value:,.2f}")
+        
         return total_value
     
     def get_total_unrealized_pnl(self) -> float:

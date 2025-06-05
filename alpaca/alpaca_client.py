@@ -321,9 +321,11 @@ class AlpacaCryptoClient:
             }
             
             if qty is not None:
-                order_params['qty'] = str(qty)
+                # Round quantity to 8 decimal places for crypto precision
+                order_params['qty'] = f"{qty:.8f}"
             elif notional is not None:
-                order_params['notional'] = str(notional)
+                # CRITICAL FIX: Round notional to 2 decimal places for Alpaca requirement
+                order_params['notional'] = f"{notional:.2f}"
             else:
                 raise ValueError("Either qty or notional must be specified")
             
@@ -374,9 +376,11 @@ class AlpacaCryptoClient:
             }
             
             if qty is not None:
-                order_params['qty'] = str(qty)
+                # Round quantity to 8 decimal places for crypto precision
+                order_params['qty'] = f"{qty:.8f}"
             elif notional is not None:
-                order_params['notional'] = str(notional)
+                # CRITICAL FIX: Round notional to 2 decimal places for Alpaca requirement
+                order_params['notional'] = f"{notional:.2f}"
             else:
                 raise ValueError("Either qty or notional must be specified")
             
@@ -429,9 +433,11 @@ class AlpacaCryptoClient:
             }
             
             if qty is not None:
-                order_params['qty'] = str(qty)
+                # Round quantity to 8 decimal places for crypto precision
+                order_params['qty'] = f"{qty:.8f}"
             elif notional is not None:
-                order_params['notional'] = str(notional)
+                # CRITICAL FIX: Round notional to 2 decimal places for Alpaca requirement
+                order_params['notional'] = f"{notional:.2f}"
             else:
                 raise ValueError("Either qty or notional must be specified")
             

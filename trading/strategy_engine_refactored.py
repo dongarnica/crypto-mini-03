@@ -16,6 +16,7 @@ import logging
 import time
 import signal
 import traceback
+import argparse
 from datetime import datetime
 from typing import List
 
@@ -66,6 +67,10 @@ class TradingStrategyEngine:
         """
         self.config = config
         self.running = False
+        
+        # Initialize enhanced display timer (5 minutes = 300 seconds)
+        self.last_enhanced_display_time = 0
+        self.enhanced_display_interval = 300  # 5 minutes
         
         # Setup logging
         self.setup_logging()
@@ -221,8 +226,11 @@ class TradingStrategyEngine:
         self.position_manager = PositionManager(self.config, self.trading_client)
         self.portfolio_manager = PortfolioManager(self.trading_client)
         self.trade_executor = TradeExecutor(self.config, self.trading_client, self.position_manager)
-        self.risk_manager = RiskManager(self.config, self.position_manager, self.trading_client)
+        self.risk_manager = RiskManager(self.config, self.position_manager, self.trading_client, self.trade_executor)
         self.ml_engine = MLEngine(self.config)
+        
+        # CRITICAL FIX: Link trade executor to risk manager for proper stop loss execution
+        self.risk_manager.set_trade_executor(self.trade_executor)
         
         # Initialize enhanced output display
         self.enhanced_display = EnhancedOutputDisplay(self.logger)
@@ -333,8 +341,35 @@ class TradingStrategyEngine:
                     continue
             
             # Display enhanced output with signal summary and predictions
-            if ml_predictions and self.enhanced_display:
+            current_time = time.time()
+            time_since_last_display = current_time - self.last_enhanced_display_time
+            
+            # Show enhanced display every 5 minutes when there are trade updates
+            if (self.enhanced_display and 
+                (ml_predictions or time_since_last_display >= self.enhanced_display_interval)):
+                
+                if not ml_predictions:
+                    # Create dummy predictions for display if none exist
+                    ml_predictions = []
+                    for symbol in symbols[:3]:  # Show status for first 3 symbols
+                        dummy_prediction = {
+                            'symbol': symbol,
+                            'signal': 'HOLD',
+                            'confidence': 0.5,
+                            'current_price': self.get_current_price_with_fallback(
+                                self.converted_symbols[symbols.index(symbol)] if symbol in symbols else symbol, 
+                                symbol
+                            ),
+                            'predicted_return': 0.0,
+                            'timestamp': datetime.now().isoformat()
+                        }
+                        ml_predictions.append(dummy_prediction)
+                
                 self.enhanced_display.display_full_status(ml_predictions)
+                self.last_enhanced_display_time = current_time
+                self.logger.info(f"📊 Enhanced display shown at {datetime.now().strftime('%H:%M:%S')}")
+            elif time_since_last_display >= self.enhanced_display_interval:
+                self.logger.info(f"⏰ Enhanced display interval reached ({self.enhanced_display_interval}s), but no enhanced display available")
             
             # Update position prices with current Binance data before risk checks
             self.update_position_prices_from_binance()
@@ -451,43 +486,33 @@ class TradingStrategyEngine:
     
     def get_current_price_with_fallback(self, symbol: str, original_symbol: str = None) -> float:
         """
-        Get current price using Binance as primary source.
+        Get current price using Binance as primary source with improved symbol handling.
         
         Args:
-            symbol: Symbol in Alpaca format (e.g., 'BTC/USD') - kept for compatibility
-            original_symbol: Symbol in Binance format (e.g., 'BTCUSDT')
+            symbol: Symbol in Alpaca format (e.g., 'BTC/USD') - for compatibility
+            original_symbol: Symbol in Binance format (e.g., 'BTCUSDT') - preferred
             
         Returns:
             Current price as float, or 0.0 if failed
         """
         try:
+            # Determine the Binance symbol to use
+            binance_symbol = original_symbol if original_symbol else symbol_manager.alpaca_to_binance_format(symbol)
+            
+            # Validate Binance symbol format
+            if not self._validate_binance_symbol_format(binance_symbol):
+                self.logger.error(f"❌ Invalid Binance symbol format: {binance_symbol}")
+                return 0.0
+            
             # Use Binance as primary price source
-            if self.binance_client and original_symbol:
-                try:
-                    price_data = self.binance_client.get_price(original_symbol)
-                    if price_data and 'price' in price_data:
-                        price = float(price_data['price'])
-                        self.logger.debug(f"💰 Binance price for {original_symbol}: ${price:,.2f}")
-                        return price
-                except Exception as e:
-                    self.logger.warning(f"Binance price failed for {original_symbol}: {e}")
+            if self.binance_client:
+                return self._get_binance_price_direct(binance_symbol)
             
-            # Fallback to average price from Binance
-            if self.binance_client and original_symbol:
-                try:
-                    avg_data = self.binance_client.get_avg_price(original_symbol)
-                    if avg_data and 'price' in avg_data:
-                        price = float(avg_data['price'])
-                        self.logger.info(f"💰 Binance avg price for {original_symbol}: ${price:,.2f}")
-                        return price
-                except Exception as e:
-                    self.logger.warning(f"Binance avg price failed for {original_symbol}: {e}")
-            
-            self.logger.error(f"❌ No price data available for {original_symbol}")
+            self.logger.error(f"❌ No Binance client available for {binance_symbol}")
             return 0.0
             
         except Exception as e:
-            self.logger.error(f"Error getting price for {original_symbol}: {e}")
+            self.logger.error(f"Error getting price for {original_symbol or symbol}: {e}")
             return 0.0
     
     def update_position_prices_from_binance(self) -> None:
@@ -497,8 +522,14 @@ class TradingStrategyEngine:
             
             for symbol, position in positions.items():
                 try:
-                    # Get current price from Binance
-                    binance_price = self.get_current_price_with_fallback(None, symbol)
+                    # CRITICAL FIX: symbol from position manager is already in Binance format (BTCUSDT)
+                    # Validate the symbol format before making API calls
+                    if not self._validate_binance_symbol_format(symbol):
+                        self.logger.error(f"❌ Invalid Binance symbol format: {symbol}")
+                        continue
+                    
+                    # Get current price directly from Binance using Binance format
+                    binance_price = self._get_binance_price_direct(symbol)
                     
                     if binance_price > 0:
                         # Update position with current Binance price
@@ -513,39 +544,267 @@ class TradingStrategyEngine:
                     
         except Exception as e:
             self.logger.error(f"Error updating position prices from Binance: {e}")
+    
+    def force_enhanced_display(self, symbols: List[str]) -> None:
+        """
+        Force display of enhanced output for testing purposes.
+        
+        Args:
+            symbols: List of symbols to display status for
+        """
+        if not self.enhanced_display:
+            self.logger.warning("Enhanced display not initialized")
+            return
+        
+        try:
+            # Create current predictions for display
+            ml_predictions = []
+            
+            for symbol in symbols[:5]:  # Show status for up to 5 symbols
+                try:
+                    # Get current price
+                    trading_symbol = self._convert_symbol_format(symbol)
+                    current_price = self.get_current_price_with_fallback(trading_symbol, symbol)
+                    
+                    # Try to get real ML prediction
+                    ml_prediction = None
+                    if self.ml_engine:
+                        ml_prediction = self.ml_engine.get_prediction(symbol)
+                    
+                    if ml_prediction:
+                        ml_prediction['symbol'] = symbol
+                        if current_price > 0:
+                            ml_prediction['current_price'] = current_price
+                        ml_predictions.append(ml_prediction)
+                    else:
+                        # Create dummy prediction for display
+                        dummy_prediction = {
+                            'symbol': symbol,
+                            'signal': 'HOLD',
+                            'confidence': 0.5,
+                            'current_price': current_price if current_price > 0 else 0.0,
+                            'predicted_return': 0.0,
+                            'timestamp': datetime.now().isoformat()
+                        }
+                        ml_predictions.append(dummy_prediction)
+                        
+                except Exception as e:
+                    self.logger.error(f"Error creating prediction for {symbol}: {e}")
+                    continue
+            
+            if ml_predictions:
+                self.enhanced_display.display_full_status(ml_predictions)
+                self.last_enhanced_display_time = time.time()
+                self.logger.info(f"🎯 Enhanced display forced at {datetime.now().strftime('%H:%M:%S')}")
+            else:
+                self.logger.warning("No predictions available for enhanced display")
+                
+        except Exception as e:
+            self.logger.error(f"Error forcing enhanced display: {e}")
+    
+    def _validate_binance_symbol_format(self, symbol: str) -> bool:
+        """
+        Validate that symbol is in proper Binance format.
+        
+        Args:
+            symbol: Symbol to validate
+            
+        Returns:
+            True if valid Binance format
+        """
+        try:
+            if not symbol or not isinstance(symbol, str):
+                return False
+            
+            # Check if it's a known mapped symbol
+            if symbol in symbol_manager.mappings:
+                return True
+            
+            # Check if it follows Binance USDT pattern
+            if symbol.endswith('USDT') and len(symbol) > 4:
+                base = symbol[:-4]
+                return base.isalpha() and base.isupper()
+            
+            # Check for other quote currencies if needed
+            for quote in ['USD', 'BTC', 'ETH', 'BNB']:
+                if symbol.endswith(quote) and len(symbol) > len(quote):
+                    base = symbol[:-len(quote)]
+                    if base.isalpha() and base.isupper():
+                        return True
+            
+            return False
+            
+        except Exception as e:
+            self.logger.warning(f"Error validating symbol format {symbol}: {e}")
+            return False
+    
+    def _get_binance_price_direct(self, binance_symbol: str) -> float:
+        """
+        Get price directly from Binance with multiple fallback strategies.
+        
+        Args:
+            binance_symbol: Symbol in Binance format (e.g., 'BTCUSDT')
+            
+        Returns:
+            Current price as float, or 0.0 if failed
+        """
+        try:
+            if not self.binance_client:
+                self.logger.error("❌ Binance client not available")
+                return 0.0
+            
+            # Strategy 1: Get current price ticker
+            try:
+                price_data = self.binance_client.get_price(binance_symbol)
+                if price_data and 'price' in price_data:
+                    price = float(price_data['price'])
+                    if price > 0:
+                        self.logger.debug(f"💰 Binance ticker price for {binance_symbol}: ${price:,.2f}")
+                        return price
+            except Exception as e:
+                self.logger.warning(f"Binance ticker price failed for {binance_symbol}: {e}")
+            
+            # Strategy 2: Get 24h average price
+            try:
+                avg_data = self.binance_client.get_avg_price(binance_symbol)
+                if avg_data and 'price' in avg_data:
+                    price = float(avg_data['price'])
+                    if price > 0:
+                        self.logger.info(f"💰 Binance avg price for {binance_symbol}: ${price:,.2f}")
+                        return price
+            except Exception as e:
+                self.logger.warning(f"Binance avg price failed for {binance_symbol}: {e}")
+            
+            # Strategy 3: Try with alternative symbol formats (if available)
+            alternative_symbols = self._get_alternative_symbol_formats(binance_symbol)
+            for alt_symbol in alternative_symbols:
+                try:
+                    price_data = self.binance_client.get_price(alt_symbol)
+                    if price_data and 'price' in price_data:
+                        price = float(price_data['price'])
+                        if price > 0:
+                            self.logger.info(f"💰 Binance price (alt format) for {alt_symbol}: ${price:,.2f}")
+                            return price
+                except Exception:
+                    continue
+            
+            self.logger.error(f"❌ All price strategies failed for {binance_symbol}")
+            return 0.0
+            
+        except Exception as e:
+            self.logger.error(f"Error getting Binance price for {binance_symbol}: {e}")
+            return 0.0
+    
+    def _get_alternative_symbol_formats(self, binance_symbol: str) -> List[str]:
+        """
+        Get alternative symbol formats to try if main symbol fails.
+        
+        Args:
+            binance_symbol: Original Binance symbol
+            
+        Returns:
+            List of alternative symbol formats to try
+        """
+        alternatives = []
+        
+        try:
+            # If symbol ends with USDT, try USD
+            if binance_symbol.endswith('USDT'):
+                base = binance_symbol[:-4]
+                alternatives.append(f"{base}USD")
+            
+            # If symbol ends with USD, try USDT
+            elif binance_symbol.endswith('USD') and not binance_symbol.endswith('USDT'):
+                base = binance_symbol[:-3]
+                alternatives.append(f"{base}USDT")
+                alternatives.append(f"{base}BUSD")  # Also try BUSD
+            
+        except Exception as e:
+            self.logger.debug(f"Error generating alternatives for {binance_symbol}: {e}")
+        
+        return alternatives
+
 
 def main():
-    """Example usage of the refactored trading strategy engine."""
+    """
+    Example usage of the refactored trading strategy engine.
+    
+    Command-line options:
+    --test-display              Test the enhanced display and exit (useful for debugging)
+    --symbols SYMBOL1 SYMBOL2   Override symbols to trade (e.g., BTCUSDT ETHUSDT)
+    --max-symbols N             Maximum number of symbols to trade (default: 8)
+    
+    Examples:
+    python strategy_engine_refactored.py --test-display
+    python strategy_engine_refactored.py --symbols BTCUSDT ETHUSDT ADAUSDT
+    python strategy_engine_refactored.py --max-symbols 5
+    python strategy_engine_refactored.py --test-display --symbols BTCUSDT ETHUSDT
+    """
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description='Crypto Trading Strategy Engine (Refactored)')
+    parser.add_argument('--test-display', action='store_true', 
+                       help='Test the enhanced display and exit')
+    parser.add_argument('--symbols', nargs='+', 
+                       help='Override symbols to trade (e.g., BTCUSDT ETHUSDT)')
+    parser.add_argument('--max-symbols', type=int, default=15,
+                       help='Maximum number of symbols to trade (default: 15)')
+    
+    args = parser.parse_args()
+    
     print("🚀 Crypto Trading Strategy Engine (Refactored)")
     print("="*50)
     
-    # Configuration
+    # Configuration - UPDATED FOR COMPREHENSIVE CRYPTO TRADING
     config = TradingConfig(
-        max_position_size=0.05,  # 5% max per position
-        min_confidence=0.35,     # 35% minimum confidence (optimized for 3-class)
+        max_position_size=0.15,  # 15% max per position (balanced for 15 symbols)
+        max_portfolio_risk=0.95,  # 95% max portfolio risk (up from 35% for dedicated crypto trading)
+        min_confidence=0.20,     # 20% minimum confidence (lowered for more trades)
         paper_trading=True,      # Start with paper trading
-        max_trades_per_day=20,   # Max 20 trades per day
+        max_trades_per_day=25,   # Max 25 trades per day (increased for more symbols)
         log_level="DEBUG",       # Enable detailed logging
         use_binary_classification=False  # CRITICAL: 3-class models only
     )
     
-    # Import symbols from centralized configuration
-    try:
-        from config.symbols_config import get_trading_symbols
-        symbols = get_trading_symbols(max_symbols=8, priority='high')
-        print(f"📊 Using centralized symbol configuration: {symbols}")
-    except ImportError:
-        # Fallback to hardcoded symbols if config module not available
-        symbols = ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT', 'ADAUSDT']
-        print(f"⚠️  Using fallback symbols: {symbols}")
+    # Determine symbols to use
+    if args.symbols:
+        symbols = args.symbols
+        print(f"📊 Using command-line symbols: {symbols}")
+    else:
+        # Import symbols from centralized configuration - USE ALL CONFIGURED CRYPTOS
+        try:
+            from config.symbols_config import get_trading_symbols
+            # Get more symbols for comprehensive crypto trading (increased from 8 to 15)
+            symbols = get_trading_symbols(max_symbols=15, priority='high')
+            print(f"📊 Using centralized symbol configuration: {symbols}")
+        except ImportError:
+            # Fallback to comprehensive crypto list if config module not available
+            symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'DOGEUSDT', 'XRPUSDT', 
+                      'AVAXUSDT', 'LINKUSDT', 'DOTUSDT', 'LTCUSDT', 'BCHUSDT',
+                      'UNIUSDT', 'AAVEUSDT', 'SUSHIUSDT', 'YFIUSDT', 'SHIBUSDT']
+            print(f"⚠️  Using fallback comprehensive crypto symbols: {symbols}")
     
     try:
-        # Create and start trading engine
+        # Create trading engine
         engine = TradingStrategyEngine(config)
         
         # Validate symbols against available historical data
         validated_symbols = engine.validate_symbols_with_data(symbols)
         print(f"🎯 Validated symbols with historical data: {validated_symbols}")
+        
+        if args.test_display:
+            # Test enhanced display mode
+            print("\n🎯 Testing Enhanced Display...")
+            print("Initializing components for display test...")
+            
+            # Initialize only the components needed for display testing
+            engine.initialize_components(validated_symbols)
+            
+            print("Forcing enhanced display...")
+            engine.force_enhanced_display(validated_symbols)
+            
+            print("\n✅ Enhanced display test completed!")
+            print("You can now run without --test-display to start normal trading.")
+            return
         
         print("Starting trading engine...")
         print("Press Ctrl+C to stop")

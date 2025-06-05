@@ -1,0 +1,11 @@
+2025-06-05 01:12:03 - INFO - [__init__] - HistoricalDataFileManager initialized for historical_exports
+2025-06-05 01:12:51 - INFO - [__init__] - HistoricalDataFileManager initialized for historical_exports
+2025-06-05 01:13:48 - INFO - [__init__] - HistoricalDataFileManager initialized for historical_exports
+2025-06-05 01:16:27 - INFO - [__init__] - HistoricalDataFileManager initialized for historical_exports
+2025-06-05 01:16:27 - INFO - [find_duplicate_files] - Searching for duplicate files...
+2025-06-05 01:16:27 - INFO - [find_duplicate_files] - Found 0 duplicate file groups
+2025-06-05 01:16:27 - INFO - [validate_files] - Validating files...
+2025-06-05 01:16:27 - INFO - [validate_files] - valid_files: 12 files
+2025-06-05 01:16:27 - INFO - [validate_files] - invalid_files: 0 files
+2025-06-05 01:16:27 - INFO - [validate_files] - empty_files: 0 files
+2025-06-05 01:16:27 - INFO - [validate_files] - corrupted_files: 0 files

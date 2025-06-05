@@ -1,0 +1,21 @@
+{
+  "selected_features": [
+    "close",
+    "return_3",
+    "return_5",
+    "ema_12",
+    "ema_26",
+    "rsi",
+    "momentum_5",
+    "momentum_10",
+    "atr_pct",
+    "rsi_14",
+    "rsi_7",
+    "sma_10",
+    "sma_20",
+    "macd",
+    "volatility_10"
+  ],
+  "feature_count": 15,
+  "saved_at": "2025-06-05T01:48:21.752665"
+}

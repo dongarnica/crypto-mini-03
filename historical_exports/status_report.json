@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-06-05T01:20:06.545080",
+  "manager_info": {
+    "export_interval_hours": 2,
+    "data_retention_days": 7,
+    "max_files_per_symbol": 1
+  },
+  "statistics": {
+    "total_exports_run": 1,
+    "total_cleanups_run": 1,
+    "last_export_time": "2025-06-05T01:20:06.534675",
+    "last_cleanup_time": "2025-06-05T01:20:06.544691"
+  },
+  "current_data": {
+    "total_files": 18,
+    "symbols_with_data": 18,
+    "total_size_mb": 0.76,
+    "symbols_list": [
+      "AAVEUSDT",
+      "ADAUSDT",
+      "AVAXUSDT",
+      "BCHUSDT",
+      "BTCUSDT",
+      "DOGEUSDT",
+      "DOTUSDT",
+      "ETHUSDT",
+      "LINKUSDT",
+      "LTCUSDT",
+      "MATICUSDT",
+      "SHIBUSDT",
+      "SOLUSDT",
+      "SUSHIUSDT",
+      "UNIUSDT",
+      "XLMUSDT",
+      "XRPUSDT",
+      "YFIUSDT"
+    ]
+  }
+}

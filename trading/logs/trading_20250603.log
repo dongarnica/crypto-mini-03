@@ -374,3 +374,901 @@
 2025-06-03 02:43:59,544 - TradingEngine - DEBUG - 💰 Updated DOTUSD position price: $4.21
 2025-06-03 02:43:59,664 - TradingEngine - DEBUG - 💰 Binance price for ETHUSD: $2,635.00
 2025-06-03 02:43:59,664 - TradingEngine - DEBUG - 💰 Updated ETHUSD position price: $2,635.00
+2025-06-03 02:54:15,993 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 02:54:15,993 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 02:54:15,993 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 02:54:15,993 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 02:54:15,993 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 02:54:15,993 - TradingEngine - INFO - ✅ ADAUSDT: Historical data available
+2025-06-03 02:54:15,994 - TradingEngine - INFO - 🎯 Using 3 validated symbols: ['BTCUSDT', 'ETHUSDT', 'ADAUSDT']
+2025-06-03 02:54:15,994 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 02:54:15,994 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'ADAUSDT'] -> ['BTC/USD', 'ETH/USD', 'ADA/USD']
+2025-06-03 02:54:16,192 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 02:54:16,192 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 02:54:16,192 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 02:54:16,193 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 02:54:16,353 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 02:54:16,353 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 02:54:16,353 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 02:54:16,461 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 02:54:16,461 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 02:54:16,461 - MLEngine - INFO - No existing 3-class model for ADAUSDT, training new model...
+2025-06-03 02:54:16,495 - MLEngine - INFO - 🎓 Training model for ADAUSDT...
+2025-06-03 02:54:16,506 - MLEngine - ERROR - ❌ Model training failed for ADAUSDT: Insufficient data: only 745 samples
+2025-06-03 02:54:16,506 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ADAUSDT
+2025-06-03 02:54:16,506 - MLEngine - INFO - Initialized 3 3-class ML pipelines
+2025-06-03 02:54:16,506 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 02:54:16,507 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 02:54:16,692 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 02:54:16,909 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,645.63
+2025-06-03 02:54:17,188 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 02:54:17,189 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 02:54:17,189 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 02:54:17,189 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:54:17,189 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 02:54:17,189 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 02:54:17,310 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,614.00
+2025-06-03 02:54:17,578 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 02:54:17,578 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 02:54:17,578 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 02:54:17,578 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:54:17,578 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 02:54:17,579 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 02:54:17,707 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.70
+2025-06-03 02:54:17,707 - MLEngine - WARNING - Model not trained for ADAUSDT
+2025-06-03 02:54:17,727 - TradingEngine - INFO - 🎯 Enhanced display forced at 02:54:17
+2025-06-03 02:54:38,393 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 02:54:38,393 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 02:54:38,393 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 02:54:38,393 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 02:54:38,393 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 02:54:38,393 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 02:54:38,394 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 02:54:38,394 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 02:54:38,394 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 02:54:38,394 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 02:54:38,586 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 02:54:38,586 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 02:54:38,587 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 02:54:38,587 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 02:54:38,749 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 02:54:38,749 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 02:54:38,749 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 02:54:38,866 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 02:54:38,866 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 02:54:38,866 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 02:54:38,979 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 02:54:38,979 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 02:54:38,979 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 02:54:39,093 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 02:54:39,093 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 02:54:39,093 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 02:54:39,093 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 02:54:39,093 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 02:54:39,276 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 02:54:39,408 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,645.63
+2025-06-03 02:54:39,690 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 02:54:39,690 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 02:54:39,690 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 02:54:39,690 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:54:39,690 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 02:54:39,691 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 02:54:39,811 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,614.00
+2025-06-03 02:54:40,068 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 02:54:40,068 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 02:54:40,068 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 02:54:40,068 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:54:40,068 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 02:54:40,068 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 02:54:40,312 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.17
+2025-06-03 02:54:40,573 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 02:54:40,573 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 02:54:40,573 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 02:54:40,573 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 02:54:40,573 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 02:54:40,573 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 02:54:40,695 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.21
+2025-06-03 02:54:41,100 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 02:54:41,100 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 02:54:41,100 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 02:54:41,100 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:54:41,100 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 02:54:41,101 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 02:54:41,121 - TradingEngine - INFO - 🎯 Enhanced display forced at 02:54:41
+2025-06-03 02:55:21,593 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 02:55:21,593 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 02:55:21,594 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 02:55:21,594 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 02:55:21,594 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 02:55:21,594 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 02:55:21,594 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 02:55:21,594 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 02:55:21,594 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 02:55:21,594 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 02:55:21,594 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 02:55:21,790 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 02:55:21,790 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 02:55:21,790 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 02:55:21,790 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 02:55:21,942 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 02:55:21,942 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 02:55:21,943 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 02:55:22,054 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 02:55:22,054 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 02:55:22,054 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 02:55:22,161 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 02:55:22,161 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 02:55:22,161 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 02:55:22,270 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 02:55:22,270 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 02:55:22,270 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 02:55:22,270 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 02:55:22,270 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 02:55:22,457 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 02:55:22,458 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 02:55:22,738 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 02:55:22,738 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 02:55:22,738 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 02:55:22,738 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:55:22,738 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 02:55:22,738 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 02:55:22,909 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,645.63
+2025-06-03 02:55:22,910 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,645.63
+2025-06-03 02:55:23,167 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 02:55:23,168 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 02:55:23,168 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 02:55:23,168 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:55:23,168 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 02:55:23,168 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 02:55:23,288 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,614.00
+2025-06-03 02:55:23,288 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,614.00
+2025-06-03 02:55:23,555 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 02:55:23,555 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 02:55:23,555 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 02:55:23,556 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 02:55:23,556 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 02:55:23,556 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 02:55:23,679 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.17
+2025-06-03 02:55:23,679 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.17
+2025-06-03 02:55:24,266 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 02:55:24,267 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 02:55:24,267 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 02:55:24,267 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 02:55:24,267 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 02:55:24,267 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 02:55:24,390 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.21
+2025-06-03 02:55:24,390 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.21
+2025-06-03 02:55:24,410 - TradingEngine - INFO - 📊 Enhanced display shown at 02:55:24
+2025-06-03 02:55:24,533 - TradingEngine - DEBUG - 💰 Binance price for BTCUSD: $105,732.00
+2025-06-03 02:55:24,534 - TradingEngine - DEBUG - 💰 Updated BTCUSD position price: $105,732.00
+2025-06-03 02:55:24,659 - TradingEngine - DEBUG - 💰 Binance price for DOTUSD: $4.21
+2025-06-03 02:55:24,659 - TradingEngine - DEBUG - 💰 Updated DOTUSD position price: $4.21
+2025-06-03 02:55:24,780 - TradingEngine - DEBUG - 💰 Binance price for ETHUSD: $2,635.00
+2025-06-03 02:55:24,781 - TradingEngine - DEBUG - 💰 Updated ETHUSD position price: $2,635.00
+2025-06-03 02:56:38,302 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 02:57:11,310 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 02:57:14,230 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:03:50,089 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:03:50,089 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:03:50,090 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:03:50,090 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:03:50,090 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:03:50,090 - TradingEngine - INFO - 🎯 Using 2 validated symbols: ['BTCUSDT', 'ETHUSDT']
+2025-06-03 03:03:50,090 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:03:50,090 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT'] -> ['BTC/USD', 'ETH/USD']
+2025-06-03 03:03:50,284 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:03:50,284 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:03:50,285 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:03:50,285 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:03:50,439 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:03:50,439 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:03:50,439 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:03:50,546 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:03:50,546 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:03:50,546 - MLEngine - INFO - Initialized 2 3-class ML pipelines
+2025-06-03 03:03:50,546 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:03:50,546 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:03:50,731 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:03:50,915 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,601.00
+2025-06-03 03:03:51,189 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:03:51,190 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:03:51,190 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:03:51,190 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:03:51,190 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 03:03:51,190 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:03:51,311 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,614.51
+2025-06-03 03:03:51,568 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:03:51,569 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:03:51,569 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:03:51,569 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:03:51,569 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 03:03:51,569 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:03:51,589 - TradingEngine - INFO - 🎯 Enhanced display forced at 03:03:51
+2025-06-03 03:27:27,743 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:27:27,743 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:27:27,743 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:27:27,743 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:27:27,743 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:27:27,743 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 03:27:27,743 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 03:27:27,744 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 03:27:27,744 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 03:27:27,744 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:27:27,744 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 03:27:28,562 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:27:28,563 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:27:28,563 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:27:28,563 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:27:28,719 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:27:28,719 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:27:28,719 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:27:28,825 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:27:28,826 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:27:28,826 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 03:27:28,932 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 03:27:28,932 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 03:27:28,932 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 03:27:29,037 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 03:27:29,037 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 03:27:29,037 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 03:27:29,037 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:27:29,037 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:27:29,224 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:27:29,224 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 03:27:29,503 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:27:29,503 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:27:29,503 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:27:29,504 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:27:29,504 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 03:27:29,504 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:27:29,795 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,536.31
+2025-06-03 03:27:29,795 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,536.31
+2025-06-03 03:27:30,070 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:27:30,071 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:27:30,071 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:27:30,071 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:27:30,071 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 03:27:30,071 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:27:30,197 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,603.53
+2025-06-03 03:27:30,197 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,603.53
+2025-06-03 03:27:30,469 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 03:27:30,470 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 03:27:30,470 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 03:27:30,470 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:27:30,470 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 03:27:30,470 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 03:27:30,658 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.17
+2025-06-03 03:27:30,659 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.17
+2025-06-03 03:27:31,242 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 03:27:31,242 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:27:31,242 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 03:27:31,242 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:27:31,243 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 03:27:31,243 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 03:27:31,429 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 03:27:31,429 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 03:27:31,448 - TradingEngine - INFO - 📊 Enhanced display shown at 03:27:31
+2025-06-03 03:27:31,639 - TradingEngine - DEBUG - 💰 Binance price for BTCUSD: $105,500.00
+2025-06-03 03:27:31,640 - TradingEngine - DEBUG - 💰 Updated BTCUSD position price: $105,500.00
+2025-06-03 03:27:31,828 - TradingEngine - DEBUG - 💰 Binance price for DOTUSD: $4.21
+2025-06-03 03:27:31,828 - TradingEngine - DEBUG - 💰 Updated DOTUSD position price: $4.21
+2025-06-03 03:27:31,956 - TradingEngine - DEBUG - 💰 Binance price for ETHUSD: $2,604.50
+2025-06-03 03:27:31,956 - TradingEngine - DEBUG - 💰 Updated ETHUSD position price: $2,604.50
+2025-06-03 03:30:34,733 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:30:34,733 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.35, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:30:34,733 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:30:34,734 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:30:34,734 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:30:34,734 - TradingEngine - INFO - 🎯 Using 2 validated symbols: ['BTCUSDT', 'ETHUSDT']
+2025-06-03 03:30:34,734 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:30:34,734 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT'] -> ['BTC/USD', 'ETH/USD']
+2025-06-03 03:30:34,921 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:30:34,921 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:30:34,921 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:30:34,921 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:30:35,092 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:30:35,092 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:30:35,092 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:30:35,200 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:30:35,201 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:30:35,201 - MLEngine - INFO - Initialized 2 3-class ML pipelines
+2025-06-03 03:30:35,201 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:30:35,201 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:30:35,389 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:30:35,645 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,325.21
+2025-06-03 03:30:35,923 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:30:35,923 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:30:35,923 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:30:35,923 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:30:35,923 - MLEngine - DEBUG -    Recommendation: WAIT: Buy (LOW confidence: 33.7%)
+2025-06-03 03:30:35,923 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:30:36,053 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.87
+2025-06-03 03:30:36,318 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:30:36,318 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:30:36,318 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:30:36,318 - MLEngine - DEBUG -    Tradeable: False
+2025-06-03 03:30:36,318 - MLEngine - DEBUG -    Recommendation: WAIT: Sell (LOW confidence: 34.0%)
+2025-06-03 03:30:36,318 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:30:36,338 - TradingEngine - INFO - 🎯 Enhanced display forced at 03:30:36
+2025-06-03 03:32:34,937 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:32:34,937 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:32:34,937 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:32:34,938 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:32:34,938 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:32:34,938 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 03:32:34,938 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 03:32:34,938 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 03:32:34,938 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 03:32:34,938 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:32:34,938 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 03:32:35,135 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:32:35,135 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:32:35,135 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:32:35,135 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:32:35,288 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:32:35,288 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:32:35,288 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:32:35,393 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:32:35,393 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:32:35,393 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 03:32:35,496 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 03:32:35,496 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 03:32:35,496 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 03:32:35,600 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 03:32:35,600 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 03:32:35,600 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 03:32:35,600 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:32:35,600 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:32:35,790 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:32:35,790 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 03:32:36,069 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:32:36,070 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:32:36,070 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:32:36,070 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:32:36,070 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 03:32:36,070 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:32:36,285 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,325.24
+2025-06-03 03:32:36,285 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,325.24
+2025-06-03 03:32:36,740 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:32:36,740 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:32:36,740 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:32:36,741 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:32:36,741 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:32:36,741 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:32:36,868 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.16
+2025-06-03 03:32:36,868 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,594.16
+2025-06-03 03:32:37,133 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 03:32:37,133 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 03:32:37,134 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 03:32:37,134 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:32:37,134 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 03:32:37,134 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 03:32:37,258 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.17
+2025-06-03 03:32:37,258 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.17
+2025-06-03 03:32:37,841 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 03:32:37,841 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:32:37,841 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 03:32:37,841 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:32:37,841 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:32:37,841 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 03:32:37,967 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 03:32:37,967 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 03:32:37,987 - TradingEngine - INFO - 📊 Enhanced display shown at 03:32:37
+2025-06-03 03:32:38,111 - TradingEngine - DEBUG - 💰 Binance price for BTCUSD: $105,500.00
+2025-06-03 03:32:38,111 - TradingEngine - DEBUG - 💰 Updated BTCUSD position price: $105,500.00
+2025-06-03 03:32:38,235 - TradingEngine - DEBUG - 💰 Binance price for DOTUSD: $4.21
+2025-06-03 03:32:38,236 - TradingEngine - DEBUG - 💰 Updated DOTUSD position price: $4.21
+2025-06-03 03:32:38,361 - TradingEngine - DEBUG - 💰 Binance price for ETHUSD: $2,604.50
+2025-06-03 03:32:38,362 - TradingEngine - DEBUG - 💰 Updated ETHUSD position price: $2,604.50
+2025-06-03 03:41:38,230 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:41:38,230 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 10, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:42:41,649 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:42:41,649 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:42:41,649 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:42:41,650 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:42:41,650 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:42:41,650 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 03:42:41,650 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 03:42:41,650 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 03:42:41,650 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 03:42:41,650 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:42:41,650 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 03:42:41,834 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:42:41,834 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:42:41,834 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:42:41,834 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:42:41,993 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:42:41,993 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:42:41,993 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:42:42,099 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:42:42,099 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:42:42,099 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 03:42:42,212 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 03:42:42,212 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 03:42:42,212 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 03:42:42,330 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 03:42:42,330 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 03:42:42,330 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 03:42:42,330 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:42:42,330 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:42:42,517 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:42:42,517 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 03:42:42,796 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:42:42,796 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:42:42,797 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:42:42,797 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:42:42,797 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 03:42:42,797 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:42:43,033 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,296.58
+2025-06-03 03:42:43,033 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,296.58
+2025-06-03 03:42:43,100 - TradingEngine - INFO - ✅ Trade executed: BUY BTC/USD (from BTCUSDT)
+2025-06-03 03:42:43,369 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:42:43,369 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:42:43,369 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:42:43,369 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:42:43,369 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:42:43,369 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:42:43,491 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,599.50
+2025-06-03 03:42:43,491 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,599.50
+2025-06-03 03:42:43,753 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 03:42:43,753 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 03:42:43,753 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 03:42:43,753 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:42:43,753 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 03:42:43,753 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 03:42:44,003 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 03:42:44,003 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 03:42:44,069 - TradingEngine - INFO - ✅ Trade executed: BUY DOT/USD (from DOTUSDT)
+2025-06-03 03:42:44,483 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 03:42:44,483 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:42:44,483 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 03:42:44,483 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:42:44,483 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:42:44,483 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 03:42:44,608 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 03:42:44,608 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 03:42:44,628 - TradingEngine - INFO - 📊 Enhanced display shown at 03:42:44
+2025-06-03 03:42:44,746 - TradingEngine - DEBUG - 💰 Binance price for BTCUSD: $105,500.00
+2025-06-03 03:42:44,746 - TradingEngine - DEBUG - 💰 Updated BTCUSD position price: $105,500.00
+2025-06-03 03:42:44,869 - TradingEngine - DEBUG - 💰 Binance price for DOTUSD: $4.21
+2025-06-03 03:42:44,870 - TradingEngine - DEBUG - 💰 Updated DOTUSD position price: $4.21
+2025-06-03 03:42:44,989 - TradingEngine - DEBUG - 💰 Binance price for ETHUSD: $2,604.50
+2025-06-03 03:42:44,989 - TradingEngine - DEBUG - 💰 Updated ETHUSD position price: $2,604.50
+2025-06-03 03:42:45,112 - TradingEngine - WARNING - Binance price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:42:45,236 - TradingEngine - WARNING - Binance avg price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:42:45,236 - TradingEngine - ERROR - ❌ No price data available for BTC/USD
+2025-06-03 03:42:45,236 - TradingEngine - WARNING - ❌ Failed to get Binance price for position BTC/USD
+2025-06-03 03:42:45,357 - TradingEngine - WARNING - Binance price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:42:45,480 - TradingEngine - WARNING - Binance avg price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:42:45,480 - TradingEngine - ERROR - ❌ No price data available for DOT/USD
+2025-06-03 03:42:45,480 - TradingEngine - WARNING - ❌ Failed to get Binance price for position DOT/USD
+2025-06-03 03:53:32,826 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:53:32,826 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:53:34,842 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:34,842 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:34,966 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:34,966 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:35,089 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:35,089 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:35,212 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:35,212 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:35,331 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:35,331 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:35,448 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:35,449 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:37,573 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:37,573 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:37,695 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:37,695 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:37,815 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:37,815 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:39,938 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:39,938 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:40,062 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:40,062 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:40,188 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:40,188 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:55,051 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:53:55,051 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:53:56,653 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:56,653 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:56,774 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:56,774 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:56,909 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:56,909 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:57,034 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:57,034 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:57,155 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:57,156 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:57,274 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:57,274 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:53:59,413 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:53:59,414 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:53:59,534 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:53:59,534 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:53:59,657 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:53:59,657 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:54:01,783 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,332.12
+2025-06-03 03:54:01,783 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,332.12
+2025-06-03 03:54:01,911 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:54:01,911 - TradingEngine - DEBUG - 💰 Updated ETHUSDT position price: $2,594.71
+2025-06-03 03:54:02,037 - TradingEngine - DEBUG - 💰 Binance price for ADAUSDT: $0.69
+2025-06-03 03:54:02,037 - TradingEngine - DEBUG - 💰 Updated ADAUSDT position price: $0.69
+2025-06-03 03:54:40,413 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 03:54:40,413 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 03:54:40,414 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 03:54:40,414 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 03:54:40,414 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 03:54:40,414 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 03:54:40,414 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 03:54:40,414 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 03:54:40,414 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 03:54:40,414 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 03:54:40,414 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 03:54:40,613 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 03:54:40,613 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 03:54:40,613 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 03:54:40,613 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 03:54:40,771 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 03:54:40,771 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 03:54:40,772 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 03:54:40,881 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 03:54:40,881 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 03:54:40,881 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 03:54:40,989 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 03:54:40,989 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 03:54:40,989 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 03:54:41,097 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 03:54:41,097 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 03:54:41,097 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 03:54:41,097 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 03:54:41,097 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 03:54:41,283 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 03:54:41,284 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 03:54:41,561 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 03:54:41,561 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 03:54:41,561 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 03:54:41,561 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:54:41,561 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 03:54:41,561 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 03:54:41,811 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,440.80
+2025-06-03 03:54:41,811 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,440.80
+2025-06-03 03:54:41,880 - TradingEngine - INFO - ✅ Trade executed: BUY BTC/USD (from BTCUSDT)
+2025-06-03 03:54:42,140 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 03:54:42,140 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:54:42,140 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 03:54:42,140 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:54:42,141 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:54:42,141 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 03:54:42,263 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:54:42,264 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,594.71
+2025-06-03 03:54:42,541 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 03:54:42,542 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 03:54:42,542 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 03:54:42,542 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:54:42,542 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 03:54:42,542 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 03:54:42,664 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 03:54:42,664 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 03:54:42,730 - TradingEngine - INFO - ✅ Trade executed: BUY DOT/USD (from DOTUSDT)
+2025-06-03 03:54:43,136 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 03:54:43,136 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 03:54:43,136 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 03:54:43,137 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 03:54:43,137 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 03:54:43,137 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 03:54:43,261 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 03:54:43,261 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 03:54:43,282 - TradingEngine - INFO - 📊 Enhanced display shown at 03:54:43
+2025-06-03 03:54:43,401 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,440.80
+2025-06-03 03:54:43,401 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,440.80
+2025-06-03 03:54:43,523 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 03:54:43,523 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 03:54:43,648 - TradingEngine - WARNING - Binance price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:54:43,772 - TradingEngine - WARNING - Binance avg price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:54:43,772 - TradingEngine - ERROR - ❌ No price data available for BTC/USD
+2025-06-03 03:54:43,772 - TradingEngine - WARNING - ❌ Failed to get Binance price for position BTC/USD
+2025-06-03 03:54:43,893 - TradingEngine - WARNING - Binance price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:54:44,017 - TradingEngine - WARNING - Binance avg price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 03:54:44,017 - TradingEngine - ERROR - ❌ No price data available for DOT/USD
+2025-06-03 03:54:44,017 - TradingEngine - WARNING - ❌ Failed to get Binance price for position DOT/USD
+2025-06-03 03:56:38,624 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:46,925 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:47,085 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:47,265 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:47,447 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:47,612 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:56:47,797 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:57:34,910 - TradingEngine - INFO - Received signal 2, stopping trading...
+2025-06-03 03:59:41,267 - TradingEngine - INFO - 🛑 Stopping trading engine...
+2025-06-03 03:59:41,267 - TradingEngine - INFO - ✅ Trading engine stopped
+2025-06-03 04:01:39,181 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 04:01:39,181 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 10, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'INFO', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 04:02:53,056 - TradingEngine - INFO - 🚀 Trading Strategy Engine initialized
+2025-06-03 04:02:53,056 - TradingEngine - INFO - Configuration: {'max_position_size': 0.05, 'max_portfolio_risk': 0.2, 'stop_loss_pct': 0.02, 'take_profit_pct': 0.04, 'dynamic_stop_loss': True, 'trailing_stop_loss': True, 'min_confidence': 0.25, 'high_confidence': 0.55, 'base_position_size': 0.02, 'confidence_multiplier': 2.0, 'volatility_adjustment': True, 'max_trades_per_day': 20, 'min_time_between_trades': 300, 'paper_trading': True, 'prediction_horizon': 4, 'lookback_period': 24, 'use_binary_classification': False, 'log_level': 'DEBUG', 'save_trades': True, 'real_time_monitoring': True}
+2025-06-03 04:02:53,057 - TradingEngine - INFO - 📁 Found historical data for 12 symbols: ['ADAUSDT', 'AVAXUSDT', 'BCHUSDT', 'BTCUSDT', 'DOTUSDT', 'ETHUSDT', 'LINKUSDT', 'LTCUSDT', 'MATICUSDT', 'SOLUSDT', 'UNIUSDT', 'XLMUSDT']
+2025-06-03 04:02:53,057 - TradingEngine - INFO - ✅ BTCUSDT: Historical data available
+2025-06-03 04:02:53,057 - TradingEngine - INFO - ✅ ETHUSDT: Historical data available
+2025-06-03 04:02:53,057 - TradingEngine - INFO - ✅ DOTUSDT: Historical data available
+2025-06-03 04:02:53,057 - TradingEngine - INFO - ✅ LINKUSDT: Historical data available
+2025-06-03 04:02:53,057 - TradingEngine - INFO - 🎯 Using 4 validated symbols: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT']
+2025-06-03 04:02:53,057 - TradingEngine - INFO - 🚀 Starting Crypto Trading Strategy Engine...
+2025-06-03 04:02:53,057 - TradingEngine - INFO - 🔧 Initializing trading components...
+2025-06-03 04:02:53,057 - TradingEngine - INFO - 🔄 Symbol conversion: ['BTCUSDT', 'ETHUSDT', 'DOTUSDT', 'LINKUSDT'] -> ['BTC/USD', 'ETH/USD', 'DOT/USD', 'LINK/USD']
+2025-06-03 04:02:53,265 - TradingEngine - INFO - ✅ Alpaca trading client initialized
+2025-06-03 04:02:53,265 - TradingEngine - INFO - ✅ Binance client initialized for price data
+2025-06-03 04:02:53,266 - MLEngine - INFO - 🤖 Initializing ML pipelines (3-CLASS ONLY - BINARY ABANDONED)...
+2025-06-03 04:02:53,266 - MLEngine - INFO - Found existing 3-class model for BTCUSDT
+2025-06-03 04:02:53,422 - MLEngine - INFO - ✅ Loaded 3-class model for BTCUSDT
+2025-06-03 04:02:53,422 - MLEngine - INFO - ✅ 3-class ML pipeline ready for BTCUSDT
+2025-06-03 04:02:53,422 - MLEngine - INFO - Found existing 3-class model for ETHUSDT
+2025-06-03 04:02:53,534 - MLEngine - INFO - ✅ Loaded 3-class model for ETHUSDT
+2025-06-03 04:02:53,535 - MLEngine - INFO - ✅ 3-class ML pipeline ready for ETHUSDT
+2025-06-03 04:02:53,535 - MLEngine - INFO - Found existing 3-class model for DOTUSDT
+2025-06-03 04:02:53,646 - MLEngine - INFO - ✅ Loaded 3-class model for DOTUSDT
+2025-06-03 04:02:53,646 - MLEngine - INFO - ✅ 3-class ML pipeline ready for DOTUSDT
+2025-06-03 04:02:53,646 - MLEngine - INFO - Found existing 3-class model for LINKUSDT
+2025-06-03 04:02:53,756 - MLEngine - INFO - ✅ Loaded 3-class model for LINKUSDT
+2025-06-03 04:02:53,757 - MLEngine - INFO - ✅ 3-class ML pipeline ready for LINKUSDT
+2025-06-03 04:02:53,757 - MLEngine - INFO - Initialized 4 3-class ML pipelines
+2025-06-03 04:02:53,757 - TradingEngine - INFO - 🎯 CRITICAL: Using 3-class models exclusively - binary models abandoned
+2025-06-03 04:02:53,757 - TradingEngine - INFO - 📊 3-class models provide: Buy, Hold, Sell signals with higher profitability
+2025-06-03 04:02:53,945 - TradingEngine - INFO - ✅ All components initialized successfully
+2025-06-03 04:02:53,945 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:02:54,227 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:02:54,227 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:02:54,227 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:02:54,227 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:02:54,227 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:02:54,228 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:02:54,468 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,404.88
+2025-06-03 04:02:54,468 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,404.88
+2025-06-03 04:02:54,535 - TradingEngine - INFO - ✅ Trade executed: BUY BTC/USD (from BTCUSDT)
+2025-06-03 04:02:54,807 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:02:54,807 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:02:54,807 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:02:54,807 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:02:54,807 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:02:54,807 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:02:54,933 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:02:54,933 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:02:55,201 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:02:55,202 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:02:55,202 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:02:55,202 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:02:55,202 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:02:55,202 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:02:55,327 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:02:55,328 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:02:55,393 - TradingEngine - INFO - ✅ Trade executed: BUY DOT/USD (from DOTUSDT)
+2025-06-03 04:02:55,791 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:02:55,791 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:02:55,791 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:02:55,791 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:02:55,792 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:02:55,792 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:02:55,913 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 04:02:55,913 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 04:02:55,933 - TradingEngine - INFO - 📊 Enhanced display shown at 04:02:55
+2025-06-03 04:02:56,056 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,404.88
+2025-06-03 04:02:56,056 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,404.88
+2025-06-03 04:02:56,189 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:02:56,189 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 04:02:56,310 - TradingEngine - WARNING - Binance price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:02:56,431 - TradingEngine - WARNING - Binance avg price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:02:56,431 - TradingEngine - ERROR - ❌ No price data available for BTC/USD
+2025-06-03 04:02:56,431 - TradingEngine - WARNING - ❌ Failed to get Binance price for position BTC/USD
+2025-06-03 04:02:56,555 - TradingEngine - WARNING - Binance price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:02:56,684 - TradingEngine - WARNING - Binance avg price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:02:56,684 - TradingEngine - ERROR - ❌ No price data available for DOT/USD
+2025-06-03 04:02:56,684 - TradingEngine - WARNING - ❌ Failed to get Binance price for position DOT/USD
+2025-06-03 04:07:53,937 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:07:53,986 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:07:53,986 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:07:53,986 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:07:53,986 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:07:53,986 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:07:53,986 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:07:54,225 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,308.03
+2025-06-03 04:07:54,226 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,308.03
+2025-06-03 04:07:54,275 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:07:54,275 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:07:54,275 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:07:54,275 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:07:54,275 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:07:54,275 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:07:54,402 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:07:54,402 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:07:54,456 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:07:54,456 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:07:54,456 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:07:54,456 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:07:54,456 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:07:54,456 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:07:54,582 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:07:54,582 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:07:54,633 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:07:54,633 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:07:54,633 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:07:54,633 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:07:54,633 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:07:54,633 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:07:54,756 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 04:07:54,756 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 04:07:54,774 - TradingEngine - INFO - 📊 Enhanced display shown at 04:07:54
+2025-06-03 04:07:54,895 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,308.03
+2025-06-03 04:07:54,896 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,308.03
+2025-06-03 04:07:55,015 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:07:55,015 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 04:12:53,400 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:12:53,449 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:12:53,449 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:12:53,449 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:12:53,449 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:12:53,449 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:12:53,450 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:12:53,663 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,264.07
+2025-06-03 04:12:53,663 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,264.07
+2025-06-03 04:12:53,864 - TradingEngine - INFO - ✅ Trade executed: BUY BTC/USD (from BTCUSDT)
+2025-06-03 04:12:53,912 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:12:53,912 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:12:53,912 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:12:53,912 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:12:53,912 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:12:53,913 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:12:54,064 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:12:54,064 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:12:54,113 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:12:54,113 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:12:54,113 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:12:54,113 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:12:54,113 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:12:54,113 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:12:54,234 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:12:54,234 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:12:54,300 - TradingEngine - INFO - ✅ Trade executed: BUY DOT/USD (from DOTUSDT)
+2025-06-03 04:12:54,349 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:12:54,349 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:12:54,349 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:12:54,349 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:12:54,349 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:12:54,349 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:12:54,471 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.13
+2025-06-03 04:12:54,471 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.13
+2025-06-03 04:12:54,491 - TradingEngine - INFO - 📊 Enhanced display shown at 04:12:54
+2025-06-03 04:12:54,616 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,264.07
+2025-06-03 04:12:54,616 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,264.07
+2025-06-03 04:12:54,739 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:12:54,739 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 04:12:54,860 - TradingEngine - WARNING - Binance price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:12:54,982 - TradingEngine - WARNING - Binance avg price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:12:54,982 - TradingEngine - ERROR - ❌ No price data available for BTC/USD
+2025-06-03 04:12:54,983 - TradingEngine - WARNING - ❌ Failed to get Binance price for position BTC/USD
+2025-06-03 04:12:55,102 - TradingEngine - WARNING - Binance price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:12:55,353 - TradingEngine - WARNING - Binance avg price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:12:55,353 - TradingEngine - ERROR - ❌ No price data available for DOT/USD
+2025-06-03 04:12:55,353 - TradingEngine - WARNING - ❌ Failed to get Binance price for position DOT/USD
+2025-06-03 04:17:52,599 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:17:52,649 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:17:52,649 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:17:52,649 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:17:52,649 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:17:52,649 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:17:52,649 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:17:52,815 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,273.54
+2025-06-03 04:17:52,815 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,273.54
+2025-06-03 04:17:52,863 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:17:52,863 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:17:52,864 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:17:52,864 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:17:52,864 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:17:52,864 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:17:52,987 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:17:52,987 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:17:53,034 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:17:53,035 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:17:53,035 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:17:53,035 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:17:53,035 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:17:53,035 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:17:53,155 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:17:53,155 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:17:53,203 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:17:53,203 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:17:53,203 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:17:53,203 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:17:53,203 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:17:53,204 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:17:53,328 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.10
+2025-06-03 04:17:53,328 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.10
+2025-06-03 04:17:53,346 - TradingEngine - INFO - 📊 Enhanced display shown at 04:17:53
+2025-06-03 04:17:53,466 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,273.54
+2025-06-03 04:17:53,466 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,273.54
+2025-06-03 04:17:53,585 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:17:53,586 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 04:22:51,969 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:22:52,018 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:22:52,018 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:22:52,018 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:22:52,018 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:22:52,018 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:22:52,018 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:22:52,234 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,272.77
+2025-06-03 04:22:52,234 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,272.77
+2025-06-03 04:22:52,446 - TradingEngine - INFO - ✅ Trade executed: BUY BTC/USD (from BTCUSDT)
+2025-06-03 04:22:52,494 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:22:52,494 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:22:52,494 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:22:52,494 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:22:52,494 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:22:52,495 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:22:52,621 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:22:52,622 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:22:52,670 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:22:52,670 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:22:52,670 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:22:52,671 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:22:52,671 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:22:52,671 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:22:52,794 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:22:52,794 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:22:52,863 - TradingEngine - INFO - ✅ Trade executed: BUY DOT/USD (from DOTUSDT)
+2025-06-03 04:22:52,912 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:22:52,912 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:22:52,912 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:22:52,912 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:22:52,912 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:22:52,912 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:22:53,036 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.10
+2025-06-03 04:22:53,036 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.10
+2025-06-03 04:22:53,054 - TradingEngine - INFO - 📊 Enhanced display shown at 04:22:53
+2025-06-03 04:22:53,175 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,272.77
+2025-06-03 04:22:53,175 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,272.77
+2025-06-03 04:22:53,294 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:22:53,295 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
+2025-06-03 04:22:53,413 - TradingEngine - WARNING - Binance price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:22:53,545 - TradingEngine - WARNING - Binance avg price failed for BTC/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:22:53,545 - TradingEngine - ERROR - ❌ No price data available for BTC/USD
+2025-06-03 04:22:53,545 - TradingEngine - WARNING - ❌ Failed to get Binance price for position BTC/USD
+2025-06-03 04:22:53,666 - TradingEngine - WARNING - Binance price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:22:53,789 - TradingEngine - WARNING - Binance avg price failed for DOT/USD: HTTP 400: {"code":-1100,"msg":"Illegal characters found in parameter 'symbol'; legal range is '^[A-Z0-9-_.]{1,20}$'."}
+2025-06-03 04:22:53,789 - TradingEngine - ERROR - ❌ No price data available for DOT/USD
+2025-06-03 04:22:53,790 - TradingEngine - WARNING - ❌ Failed to get Binance price for position DOT/USD
+2025-06-03 04:27:51,037 - TradingEngine - INFO - 📡 Processing trading signals for 4 symbols...
+2025-06-03 04:27:51,086 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for BTCUSDT:
+2025-06-03 04:27:51,086 - MLEngine - DEBUG -    Signal: Buy (confidence: 33.7%)
+2025-06-03 04:27:51,086 - MLEngine - DEBUG -    Price: $105700.00
+2025-06-03 04:27:51,086 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:27:51,086 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 33.7%)
+2025-06-03 04:27:51,086 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3293112814426422, 'Hold': 0.33375832438468933, 'Buy': 0.33693042397499084}
+2025-06-03 04:27:51,366 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,286.03
+2025-06-03 04:27:51,366 - TradingEngine - DEBUG - 💰 Using Binance price for BTCUSDT: $105,286.03
+2025-06-03 04:27:51,415 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for ETHUSDT:
+2025-06-03 04:27:51,416 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:27:51,416 - MLEngine - DEBUG -    Price: $2592.58
+2025-06-03 04:27:51,416 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:27:51,416 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:27:51,416 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3403770923614502, 'Hold': 0.33222049474716187, 'Buy': 0.32740241289138794}
+2025-06-03 04:27:51,542 - TradingEngine - DEBUG - 💰 Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:27:51,542 - TradingEngine - DEBUG - 💰 Using Binance price for ETHUSDT: $2,604.01
+2025-06-03 04:27:51,590 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for DOTUSDT:
+2025-06-03 04:27:51,590 - MLEngine - DEBUG -    Signal: Buy (confidence: 35.0%)
+2025-06-03 04:27:51,590 - MLEngine - DEBUG -    Price: $4.16
+2025-06-03 04:27:51,590 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:27:51,590 - MLEngine - DEBUG -    Recommendation: TRADE: Buy (MEDIUM confidence: 35.0%)
+2025-06-03 04:27:51,590 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3320911228656769, 'Hold': 0.31773126125335693, 'Buy': 0.3501775562763214}
+2025-06-03 04:27:51,779 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:27:51,779 - TradingEngine - DEBUG - 💰 Using Binance price for DOTUSDT: $4.15
+2025-06-03 04:27:51,826 - MLEngine - DEBUG - 🔮 3-Class ML Prediction for LINKUSDT:
+2025-06-03 04:27:51,827 - MLEngine - DEBUG -    Signal: Sell (confidence: 34.0%)
+2025-06-03 04:27:51,827 - MLEngine - DEBUG -    Price: $14.09
+2025-06-03 04:27:51,827 - MLEngine - DEBUG -    Tradeable: True
+2025-06-03 04:27:51,827 - MLEngine - DEBUG -    Recommendation: TRADE: Sell (MEDIUM confidence: 34.0%)
+2025-06-03 04:27:51,827 - MLEngine - DEBUG -    Probabilities: {'Sell': 0.3402656316757202, 'Hold': 0.32735753059387207, 'Buy': 0.3323768377304077}
+2025-06-03 04:27:52,016 - TradingEngine - DEBUG - 💰 Binance price for LINKUSDT: $14.11
+2025-06-03 04:27:52,016 - TradingEngine - DEBUG - 💰 Using Binance price for LINKUSDT: $14.11
+2025-06-03 04:27:52,035 - TradingEngine - INFO - 📊 Enhanced display shown at 04:27:52
+2025-06-03 04:27:52,224 - TradingEngine - DEBUG - 💰 Binance price for BTCUSDT: $105,286.03
+2025-06-03 04:27:52,224 - TradingEngine - DEBUG - 💰 Updated BTCUSDT position price: $105,286.03
+2025-06-03 04:27:52,352 - TradingEngine - DEBUG - 💰 Binance price for DOTUSDT: $4.15
+2025-06-03 04:27:52,352 - TradingEngine - DEBUG - 💰 Updated DOTUSDT position price: $4.15
